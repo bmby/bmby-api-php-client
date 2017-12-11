@@ -11,6 +11,11 @@ abstract class BmbyhoodEntity
         return json_encode($this->fields);
     }
 
+    public function ToArray()
+    {
+        return $this->fields;
+    }
+
     protected $fields = [];
 }
 

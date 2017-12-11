@@ -35,6 +35,92 @@ abstract class Enumeration
     protected $value = self::Unknown;
 }
 
+
+class UserType extends Enumeration
+{
+    const Client = 1;
+    const Broker = 2;
+
+    /**
+     * Converts integer value to UserType
+     *
+     * @param int $value
+     *
+     * @return int
+     */
+    public function setValue($value)
+    {
+        $intValue = (int)$value;
+
+        switch ($intValue)
+        {
+            case self::Client:
+            case self::Broker:
+                return $intValue;
+            default:
+                return self::Unknown;
+        }
+    }
+}
+
+class NotificationInterval extends Enumeration
+{
+    const Online = 1;
+    const Hourly = 2;
+    const Daily = 3;
+
+    /**
+     * Converts integer value to NotificationInterval
+     *
+     * @param int $value
+     *
+     * @return int
+     */
+    public function setValue($value)
+    {
+        $intValue = (int)$value;
+
+        switch ($intValue)
+        {
+            case self::Online:
+            case self::Hourly:
+            case self::Daily:
+                return $intValue;
+            default:
+                return self::Unknown;
+        }
+    }
+}
+
+class NotificationScope extends Enumeration
+{
+    const None = 1;
+    const User = 2;
+    const Project = 3;
+
+    /**
+     * Converts integer value to NotificationScope
+     *
+     * @param int $value
+     *
+     * @return int
+     */
+    public function setValue($value)
+    {
+        $intValue = (int)$value;
+
+        switch ($intValue)
+        {
+            case self::None:
+            case self::User:
+            case self::Project:
+                return $intValue;
+            default:
+                return self::Unknown;
+        }
+    }
+}
+
 class DealType extends Enumeration
 {
     const Sale = 1;
