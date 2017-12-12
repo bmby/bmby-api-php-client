@@ -6,12 +6,12 @@ use GuzzleHttp;
 
 abstract class BmbyhoodEntity
 {
-    public function ToJson()
+    public function toJson()
     {
         return json_encode($this->fields);
     }
 
-    public function ToArray()
+    public function toArray()
     {
         return $this->fields;
     }

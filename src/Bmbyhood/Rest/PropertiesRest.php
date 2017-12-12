@@ -13,7 +13,7 @@ class PropertiesRest extends EntityRest
      * @return RestResponse
      *
      */
-    public function UpsertProperty(Entities\Property $property)
+    public function upsertProperty(Entities\Property $property)
     {
         $response = $this->client->post('properties', $property->ToArray());
 
@@ -27,7 +27,7 @@ class PropertiesRest extends EntityRest
      * @return RestResponse
      *
      */
-    public function DeleteProperty($propertyId)
+    public function deleteProperty($propertyId)
     {
         $response = $this->client->delete('properties/'.$propertyId);
 
@@ -37,7 +37,7 @@ class PropertiesRest extends EntityRest
     /**
      * Sync parser record properties (only for BMBY internal use)
      */
-    public function SyncParserRecordProperties()
+    public function syncParserRecordProperties()
     {
         $this->client->post('syncproperties', []);
     }
@@ -47,9 +47,9 @@ class PropertiesRest extends EntityRest
      *
      * @param string $agencyId
      */
-    public function SyncAgencyProperties($agencyId)
+    public function syncAgencyProperties($agencyId)
     {
-        $this->client->post('syncproperties', [ 'agency_id' => $agencyId ]);
+        $this->client->post('syncproperties', [ 'agencyId' => $agencyId ]);
     }
 }
 

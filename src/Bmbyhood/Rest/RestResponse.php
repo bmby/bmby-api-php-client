@@ -43,7 +43,7 @@ class RestResponse
         return \GuzzleHttp\json_encode([
             'status' => $this->status,
             'id' => $this->id,
-            'error_message' => $this->errorMessage
+            'error' => $this->errorMessage
         ]);
     }
 }

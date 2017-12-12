@@ -10,7 +10,7 @@ class QueriesRest extends EntityRest
      *
      * @return RestResponse
      */
-    public function CreateQuery(Entities\Query $query)
+    public function createQuery(Entities\Query $query)
     {
         $response = $this->client->post('queries', $query->ToArray());
 
@@ -22,7 +22,7 @@ class QueriesRest extends EntityRest
      * @return RestResponse
      *
      */
-    public function DeleteQuery($queryId)
+    public function deleteQuery($queryId)
     {
         $response = $this->client->delete('queries/'.$queryId);
 

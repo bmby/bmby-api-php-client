@@ -5,7 +5,9 @@ class Property extends BmbyhoodEntity
 {
     protected $fields = [
         'property_id' => 0,
+        'agency_id' => 0,
         'bmby_property_id' => 0,
+        'bmby_owners_property_id' => 0,
         'bmby_company_id' => 0,
         'bmby_project_id' => 0,
         'bmby_broker_id' => 0,
@@ -80,6 +82,21 @@ class Property extends BmbyhoodEntity
     /**
      * @param int $value
      */
+    public function setAgencyId($value)
+    {
+        $this->fields['agency_id'] = (int)$value;
+    }
+    /**
+     * @return int
+     */
+    public function getAgencyId()
+    {
+        return $this->fields['agency_id'];
+    }
+
+    /**
+     * @param int $value
+     */
     public function setBmbyPropertyId($value)
     {
         $this->fields['bmby_property_id'] = (int)$value;
@@ -90,6 +107,21 @@ class Property extends BmbyhoodEntity
     public function getBmbyPropertyId()
     {
         return $this->fields['bmby_property_id'];
+    }
+
+    /**
+     * @param int $value
+     */
+    public function setBmbyOwnersPropertyId($value)
+    {
+        $this->fields['bmby_owners_property_id'] = (int)$value;
+    }
+    /**
+     * @return int
+     */
+    public function getBmbyOwnersPropertyId()
+    {
+        return $this->fields['bmby_owners_property_id'];
     }
 
     /**
