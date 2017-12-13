@@ -1,6 +1,8 @@
 <?php
 namespace Bmbyhood\Entities;
 
+use Bmbyhood\Enumerations as Enumerations;
+
 class AgencyBroker extends BmbyhoodEntity
 {
     public function __construct()
@@ -9,7 +11,7 @@ class AgencyBroker extends BmbyhoodEntity
             'agency_id' => 0,
             'user_id' => 0,
             'broker_license' => '',
-            'notification_scope' => NotificationScope::Unknown,
+            'notification_scope' => Enumerations\NotificationScope::Unknown,
             'enable_client_service' => 0,
             'enable_broker_service' => 0,
             'is_external_broker' => 0
@@ -62,18 +64,18 @@ class AgencyBroker extends BmbyhoodEntity
     }
 
     /**
-     * @param NotificationScope $value
+     * @param Enumerations\NotificationScope $value
      */
-    public function setNotificationScope(NotificationScope $value)
+    public function setNotificationScope(Enumerations\NotificationScope $value)
     {
-        $this->fields['notification_scope'] = $value ? $value : new NotificationScope(NotificationScope::Unknown);
+        $this->fields['notification_scope'] = $value ? $value : new Enumerations\NotificationScope(Enumerations\NotificationScope::Unknown);
     }
     /**
-     * @return NotificationScope
+     * @return Enumerations\NotificationScope
      */
     public function getNotificationScope()
     {
-        return new NotificationScope($this->fields['notification_scope']);
+        return new Enumerations\NotificationScope($this->fields['notification_scope']);
     }
 
     /**
