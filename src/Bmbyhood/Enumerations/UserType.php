@@ -22,9 +22,11 @@ class UserType extends Enumeration
         {
             case self::Client:
             case self::Broker:
-                return $intValue;
+                $this->value = $intValue;
+                break;
             default:
-                return self::Unknown;
+                $this->value = self::Unknown;
+                break;
         }
     }
 }

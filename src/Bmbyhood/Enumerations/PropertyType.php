@@ -58,7 +58,7 @@ class PropertyType extends Enumeration
      * Converts integer value to PropertyType
      *
      * @param int $value
-     * @return int
+     * @return void
      */
     public function setValue($value)
     {
@@ -115,9 +115,11 @@ class PropertyType extends Enumeration
             case self::ClusterHousing:
             case self::SpaceHeat:
             case self::Ranches:
-                return $intValue;
+                $this->value = $intValue;
+                break;
             default:
-                return self::Unknown;
+                $this->value = self::Unknown;
+                break;
         }
     }
 }

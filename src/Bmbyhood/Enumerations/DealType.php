@@ -12,7 +12,7 @@ class DealType extends Enumeration
      *
      * @param int $value
      *
-     * @return int|void
+     * @return void
      */
     public function setValue($value)
     {
@@ -22,9 +22,11 @@ class DealType extends Enumeration
         {
             case self::Sale:
             case self::Rent:
-                return $intValue;
+                $this->value = $intValue;
+                break;
             default:
-                return self::Unknown;
+                $this->value = self::Unknown;
+                break;
         }
     }
 }

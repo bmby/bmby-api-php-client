@@ -13,7 +13,7 @@ class NotificationScope extends Enumeration
      *
      * @param int $value
      *
-     * @return int
+     * @return void
      */
     public function setValue($value)
     {
@@ -24,9 +24,11 @@ class NotificationScope extends Enumeration
             case self::None:
             case self::User:
             case self::Project:
-                return $intValue;
+                $this->value = $intValue;
+                break;
             default:
-                return self::Unknown;
+                $this->value = self::Unknown;
+                break;
         }
     }
 }

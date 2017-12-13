@@ -23,9 +23,11 @@ class RealEstateMedia extends Enumeration
             case self::Yad2:
             case self::WinWin:
             case self::Madas:
-                return $intValue;
+                $this->value = $intValue;
+                break;
             default:
-                return self::Unknown;
+                $this->value = self::Unknown;
+                break;
         }
     }
 }

@@ -13,7 +13,7 @@ class NotificationInterval extends Enumeration
      *
      * @param int $value
      *
-     * @return int
+     * @return void
      */
     public function setValue($value)
     {
@@ -24,9 +24,11 @@ class NotificationInterval extends Enumeration
             case self::Online:
             case self::Hourly:
             case self::Daily:
-                return $intValue;
+                $this->value = $intValue;
+                break;
             default:
-                return self::Unknown;
+                $this->value = self::Unknown;
+                break;
         }
     }
 }

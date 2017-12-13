@@ -25,9 +25,11 @@ class WindDirection extends Enumeration
             case self::South:
             case self::East:
             case self::West:
-                return $intValue;
+                $this->value = $intValue;
+                break;
             default:
-                return self::Unknown;
+                $this->value = self::Unknown;
+                break;
         }
     }
 }

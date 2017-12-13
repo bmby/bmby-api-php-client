@@ -21,9 +21,11 @@ class RoommateGender extends Enumeration
         {
             case self::Male:
             case self::Female:
-                return $intValue;
+                $this->value = $intValue;
+                break;
             default:
-                return self::Unknown;
+                $this->value = self::Unknown;
+                break;
         }
     }
 }
