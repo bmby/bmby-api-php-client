@@ -1,68 +1,73 @@
 <?php
 namespace Bmbyhood\Entities;
 
+use Bmbyhood\Enumerations as Enumerations;
+
 class Property extends BmbyhoodEntity
 {
-    protected $fields = [
-        'property_id' => 0,
-        'agency_id' => 0,
-        'bmby_property_id' => 0,
-        'bmby_owners_property_id' => 0,
-        'bmby_company_id' => 0,
-        'bmby_project_id' => 0,
-        'bmby_broker_id' => 0,
-        'is_published' => false,
-        'parser_record_id' => 0,
-        'media' => 0,
-        'property_media_id' => 0,
-        'page_link' => '',
-        'is_commercial' => false,
-        'deal_type' => 0,
-        'number_of_payments_per_year' => 0,
-        'can_be_rented_with_roommate' => false,
-        'roommate_gender' => 0,
-        'rommate_can_smoke' => false,
-        'zone_id' => 0,
-        'city_id' => 0,
-        'neighbourhood_id' => 0,
-        'street_id' => 0,
-        'house_number' => '',
-        'property_type' => 0,
-        'floor' => 0,
-        'floors' => 0,
-        'rooms' => 0.0,
-        'area' => 0.0,
-        'plot_area' => 0.0,
-        'rent_price' => 0.0,
-        'sale_price' => 0.0,
-        'contact_name' => '',
-        'contact_phone1' => '',
-        'contact_phone2' => '',
-        'contact_fax' => '',
-        'contact_mobile1' => '',
-        'contact_mobile2' => '',
-        'contact_email' => '',
-        'entry_date' => '',
-        'comments' => '',
-        'has_air_conditioner' => false,
-        'has_window_bars' => false,
-        'has_parking' => false,
-        'has_furniture' => false,
-        'furniture_description' => '',
-        'has_storage' => false,
-        'has_elevator' => false,
-        'has_secure_room' => false,
-        'has_balcony' => false,
-        'has_access_for_disabled' => false,
-        'has_garden' => false,
-        'garden_area' => 0.0,
-        'has_panorama' => false,
-        'on_columns' => false,
-        'published_by_agency' => false,
-        'wind_direction' => 0,
-        'creation_time' => 0,
-        'last_update_time' => 0
-    ];
+    public function __construct()
+    {
+        $this->fields = [
+            'property_id' => 0,
+            'agency_id' => 0,
+            'bmby_property_id' => 0,
+            'bmby_owners_property_id' => 0,
+            'bmby_company_id' => 0,
+            'bmby_project_id' => 0,
+            'bmby_broker_id' => 0,
+            'is_published' => false,
+            'parser_record_id' => 0,
+            'media' => 0,
+            'property_media_id' => 0,
+            'page_link' => '',
+            'is_commercial' => false,
+            'deal_type' => 0,
+            'number_of_payments_per_year' => 0,
+            'can_be_rented_with_roommate' => false,
+            'roommate_gender' => 0,
+            'rommate_can_smoke' => false,
+            'zone_id' => 0,
+            'city_id' => 0,
+            'neighbourhood_id' => 0,
+            'street_id' => 0,
+            'house_number' => '',
+            'property_type' => 0,
+            'floor' => 0,
+            'floors' => 0,
+            'rooms' => 0.0,
+            'area' => 0.0,
+            'plot_area' => 0.0,
+            'rent_price' => 0.0,
+            'sale_price' => 0.0,
+            'contact_name' => '',
+            'contact_phone1' => '',
+            'contact_phone2' => '',
+            'contact_fax' => '',
+            'contact_mobile1' => '',
+            'contact_mobile2' => '',
+            'contact_email' => '',
+            'entry_date' => '',
+            'comments' => '',
+            'has_air_conditioner' => false,
+            'has_window_bars' => false,
+            'has_parking' => false,
+            'has_furniture' => false,
+            'furniture_description' => '',
+            'has_storage' => false,
+            'has_elevator' => false,
+            'has_secure_room' => false,
+            'has_balcony' => false,
+            'has_access_for_disabled' => false,
+            'has_garden' => false,
+            'garden_area' => 0.0,
+            'has_panorama' => false,
+            'on_columns' => false,
+            'published_by_agency' => false,
+            'wind_direction' => 0,
+            'creation_time' => 0,
+            'last_update_time' => 0
+        ];
+    }
 
     /**
      * @param int $value
@@ -185,18 +190,18 @@ class Property extends BmbyhoodEntity
     }
 
     /**
-     * @param RealEstateMedia $value
+     * @param Enumerations\RealEstateMedia $value
      */
-    public function setMedia(RealEstateMedia $value)
+    public function setMedia(Enumerations\RealEstateMedia $value)
     {
-        $this->fields['parser_record_id'] = $value ? $value->getValue() : RealEstateMedia::Unknown;
+        $this->fields['parser_record_id'] = $value ? $value->getValue() : Enumerations\RealEstateMedia::Unknown;
     }
     /**
-     * @return RealEstateMedia
+     * @return Enumerations\RealEstateMedia
      */
     public function getMedia()
     {
-        return new RealEstateMedia($this->fields['parser_record_id']);
+        return new Enumerations\RealEstateMedia($this->fields['parser_record_id']);
     }
 
     /**
@@ -245,18 +250,18 @@ class Property extends BmbyhoodEntity
     }
 
     /**
-     * @param DealType $value
+     * @param Enumerations\DealType $value
      */
-    public function setDealType(DealType $value)
+    public function setDealType(Enumerations\DealType $value)
     {
-        $this->fields['deal_type'] = $value ? $value->getValue() : DealType::Unknown;
+        $this->fields['deal_type'] = $value ? $value->getValue() : Enumerations\DealType::Unknown;
     }
     /**
-     * @return DealType
+     * @return Enumerations\DealType
      */
     public function getDealType()
     {
-        return new DealType($this->fields['deal_type']);
+        return new Enumerations\DealType($this->fields['deal_type']);
     }
 
     /**
@@ -290,18 +295,18 @@ class Property extends BmbyhoodEntity
     }
 
     /**
-     * @param RoommateGender $value
+     * @param Enumerations\RoommateGender $value
      */
-    public function setRoommateGender(RoommateGender $value)
+    public function setRoommateGender(Enumerations\RoommateGender $value)
     {
-        $this->fields['roommate_gender'] = $value ? $value->getValue() : RoommateGender::Unknown;
+        $this->fields['roommate_gender'] = $value ? $value->getValue() : Enumerations\RoommateGender::Unknown;
     }
     /**
-     * @return RoommateGender
+     * @return Enumerations\RoommateGender
      */
     public function getRoommateGender()
     {
-        return new RoommateGender($this->fields['roommate_gender']);
+        return new Enumerations\RoommateGender($this->fields['roommate_gender']);
     }
 
     /**
@@ -395,18 +400,18 @@ class Property extends BmbyhoodEntity
     }
 
     /**
-     * @param PropertyType $value
+     * @param Enumerations\PropertyType $value
      */
-    public function setPropertyType(PropertyType $value)
+    public function setPropertyType(Enumerations\PropertyType $value)
     {
-        $this->fields['property_type'] = $value ? $value->getValue() : PropertyType::Unknown;
+        $this->fields['property_type'] = $value ? $value->getValue() : Enumerations\PropertyType::Unknown;
     }
     /**
-     * @return PropertyType
+     * @return Enumerations\PropertyType
      */
     public function getPropertyType()
     {
-        return new PropertyType($this->fields['property_type']);
+        return new Enumerations\PropertyType($this->fields['property_type']);
     }
 
     /**
@@ -875,18 +880,18 @@ class Property extends BmbyhoodEntity
     }
 
     /**
-     * @param WindDirection $value
+     * @param Enumerations\WindDirection $value
      */
-    public function setWindDirection(WindDirection $value)
+    public function setWindDirection(Enumerations\WindDirection $value)
     {
-        $this->fields['wind_direction'] = $value ? $value->getValue() : WindDirection::Unknown;
+        $this->fields['wind_direction'] = $value ? $value->getValue() : Enumerations\WindDirection::Unknown;
     }
     /**
-     * @return WindDirection
+     * @return Enumerations\WindDirection
      */
     public function getWindDirection()
     {
-        return new WindDirection($this->fields['wind_direction']);
+        return new Enumerations\WindDirection($this->fields['wind_direction']);
     }
 
     /**

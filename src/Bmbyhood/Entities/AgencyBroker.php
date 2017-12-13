@@ -3,15 +3,18 @@ namespace Bmbyhood\Entities;
 
 class AgencyBroker extends BmbyhoodEntity
 {
-    protected $fields = [
-        'agency_id' => 0,
-        'user_id' => 0,
-        'broker_license' => '',
-        'notification_scope' => NotificationScope::Unknown,
-        'enable_client_service' => 0,
-        'enable_broker_service' => 0,
-        'is_external_broker' => 0
-    ];
+    public function __construct()
+    {
+        $this->fields = [
+            'agency_id' => 0,
+            'user_id' => 0,
+            'broker_license' => '',
+            'notification_scope' => NotificationScope::Unknown,
+            'enable_client_service' => 0,
+            'enable_broker_service' => 0,
+            'is_external_broker' => 0
+        ];
+    }
 
     /**
      * @param int $value

@@ -1,37 +1,42 @@
 <?php
 namespace Bmbyhood\Entities;
 
+use Bmbyhood\Enumerations as Enumerations;
+
 class Query extends BmbyhoodEntity
 {
-    protected $fields = [
-        'query_id' => '',
-        'user_id' => 0,
-        'agency_id' => 0,
-        'min_rooms' => NULL,
-        'max_rooms' => NULL,
-        'min_floor' => NULL,
-        'max_floor' => NULL,
-        'min_price' => NULL,
-        'max_price' => NULL,
-        'min_area' => NULL,
-        'max_area' => NULL,
-        'wind_direction' => NULL,
-        'has_balcony' => NULL,
-        'has_security_room' => NULL,
-        'has_parking' => NULL,
-        'has_air_conditioner' => NULL,
-        'has_storage' => NULL,
-        'is_new_building' => NULL,
-        'has_garden' => NULL,
-        'has_elevator' => NULL,
-        'has_furniture' => NULL,
-        'is_active' => NULL,
-        'deal_types' => array(),
-        'zones' => array(),
-        'cities' => array(),
-        'neighbourhoods' => array(),
-        'streets' => array()
-    ];
+    public function __construct()
+    {
+        $this->fields = [
+            'query_id' => '',
+            'user_id' => 0,
+            'agency_id' => 0,
+            'min_rooms' => NULL,
+            'max_rooms' => NULL,
+            'min_floor' => NULL,
+            'max_floor' => NULL,
+            'min_price' => NULL,
+            'max_price' => NULL,
+            'min_area' => NULL,
+            'max_area' => NULL,
+            'wind_direction' => NULL,
+            'has_balcony' => NULL,
+            'has_security_room' => NULL,
+            'has_parking' => NULL,
+            'has_air_conditioner' => NULL,
+            'has_storage' => NULL,
+            'is_new_building' => NULL,
+            'has_garden' => NULL,
+            'has_elevator' => NULL,
+            'has_furniture' => NULL,
+            'is_active' => NULL,
+            'deal_types' => array(),
+            'zones' => array(),
+            'cities' => array(),
+            'neighbourhoods' => array(),
+            'streets' => array()
+        ];
+    }
 
     /**
      * @param string $value
@@ -199,18 +204,18 @@ class Query extends BmbyhoodEntity
     }
 
     /**
-     * @param WindDirection $value
+     * @param Enumerations\WindDirection $value
      */
-    public function setWindDirection(WindDirection $value)
+    public function setWindDirection(Enumerations\WindDirection $value)
     {
-        $this->fields['wind_direction'] = $value ? $value : new WindDirection(WindDirection::Unknown);
+        $this->fields['wind_direction'] = $value ? $value : new Enumerations\WindDirection(Enumerations\WindDirection::Unknown);
     }
     /**
-     * @return WindDirection
+     * @return Enumerations\WindDirection
      */
     public function getWindDirection()
     {
-        return new WindDirection($this->fields['wind_direction']);
+        return new Enumerations\WindDirection($this->fields['wind_direction']);
     }
 
     /**
@@ -349,9 +354,9 @@ class Query extends BmbyhoodEntity
     }
 
     /**
-     * @param DealType $value
+     * @param Enumerations\DealType $value
      */
-    public function addDealType(DealType $value)
+    public function addDealType(Enumerations\DealType $value)
     {
         if (!$value || in_array($value->getValue(), $this->fields['deal_types'])) {
             return;
@@ -360,9 +365,9 @@ class Query extends BmbyhoodEntity
         $this->fields['deal_types'][] = $value->getValue();
     }
     /**
-     * @param DealType $value
+     * @param Enumerations\DealType $value
      */
-    public function removeDealType(DealType $value)
+    public function removeDealType(Enumerations\DealType $value)
     {
         if (($key = array_search($value->getValue(), $this->fields['deal_types'])) !== false) {
             unset($this->fields['deal_types'][$key]);

@@ -1,20 +1,25 @@
 <?php
 namespace Bmbyhood\Entities;
 
+use Bmbyhood\Enumerations as Enumerations;
+
 class User extends BmbyhoodEntity
 {
-    protected $fields = [
-        'email' => '',
-        'password' => '',
-        'bmby_user_id' => 0,
-        'mobile' => '',
-        'first_name' => '',
-        'last_name' => '',
-        'avatar_url' => '',
-        'notification_interval' => '',
-        'user_type' => UserType::Unknown,
-        'agencies' => array()
-    ];
+    public function __construct()
+    {
+        $this->fields = [
+            'email' => '',
+            'password' => '',
+            'bmby_user_id' => 0,
+            'mobile' => '',
+            'first_name' => '',
+            'last_name' => '',
+            'avatar_url' => '',
+            'notification_interval' => '',
+            'user_type' => Enumerations\UserType::Unknown,
+            'agencies' => array()
+        ];
+    }
 
     /**
      * @param string $value
@@ -122,39 +127,39 @@ class User extends BmbyhoodEntity
     }
 
     /**
-     * @param NotificationInterval $value
+     * @param Enumerations\NotificationInterval $value
      */
-    public function setNotificationInterval(NotificationInterval $value)
+    public function setNotificationInterval(Enumerations\NotificationInterval $value)
     {
-        $this->fields['notification_interval'] = $value ? $value : new NotificationInterval(NotificationInterval::Unknown);
+        $this->fields['notification_interval'] = $value ? $value : new Enumerations\NotificationInterval(Enumerations\NotificationInterval::Unknown);
     }
     /**
-     * @return NotificationInterval
+     * @return Enumerations\NotificationInterval
      */
     public function getNotificationInterval()
     {
-        return new NotificationInterval($this->fields['notification_interval']);
+        return new Enumerations\NotificationInterval($this->fields['notification_interval']);
     }
 
     /**
-     * @param UserType $value
+     * @param Enumerations\UserType $value
      */
-    public function setUserType(UserType $value)
+    public function setUserType(Enumerations\UserType $value)
     {
-        $this->fields['user_type'] = $value ? $value : new UserType(UserType::Unknown);
+        $this->fields['user_type'] = $value ? $value : new Enumerations\UserType(Enumerations\UserType::Unknown);
     }
     /**
-     * @return UserType
+     * @return Enumerations\UserType
      */
     public function getUserType()
     {
-        return new UserType($this->fields['user_type']);
+        return new Enumerations\UserType($this->fields['user_type']);
     }
 
     /**
-     * @param AgencyBroker $value
+     * @param Enumerations\AgencyBroker $value
      */
-    public function addAgency(AgencyBroker $value)
+    public function addAgency(Enumerations\AgencyBroker $value)
     {
         if (!$value) {
             return;
@@ -171,9 +176,9 @@ class User extends BmbyhoodEntity
         $this->fields['agencies'][] = $value;
     }
     /**
-     * @param AgencyBroker $value
+     * @param Enumerations\AgencyBroker $value
      */
-    public function removeAgency(AgencyBroker $value)
+    public function removeAgency(Enumerations\AgencyBroker $value)
     {
         foreach ($this->fields['agencies'] as $key => $agency)
         {
