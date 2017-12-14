@@ -68,7 +68,7 @@ class AgencyBroker extends BmbyhoodEntity
      */
     public function setNotificationScope(Enumerations\NotificationScope $value)
     {
-        $this->fields['notification_scope'] = $value ? $value : new Enumerations\NotificationScope(Enumerations\NotificationScope::Unknown);
+        $this->fields['notification_scope'] = $value ? $value->getValue() : Enumerations\NotificationScope::Unknown;
     }
     /**
      * @return Enumerations\NotificationScope

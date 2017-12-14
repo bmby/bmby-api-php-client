@@ -19,7 +19,7 @@ class Query extends BmbyhoodEntity
             'max_price' => NULL,
             'min_area' => NULL,
             'max_area' => NULL,
-            'wind_direction' => NULL,
+            'wind_direction' => Enumerations\WindDirection::Unknown,
             'has_balcony' => NULL,
             'has_security_room' => NULL,
             'has_parking' => NULL,
@@ -208,7 +208,7 @@ class Query extends BmbyhoodEntity
      */
     public function setWindDirection(Enumerations\WindDirection $value)
     {
-        $this->fields['wind_direction'] = $value ? $value : new Enumerations\WindDirection(Enumerations\WindDirection::Unknown);
+        $this->fields['wind_direction'] = $value ? $value->getValue() : Enumerations\WindDirection::Unknown;
     }
     /**
      * @return Enumerations\WindDirection

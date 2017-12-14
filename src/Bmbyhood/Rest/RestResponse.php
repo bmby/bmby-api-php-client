@@ -21,6 +21,7 @@ class RestResponse
     {
         $this->status = $status == self::Success ? self::Success : self::Error;
         $this->errorMessage = $errorMessage;
+        $this->id = $id;
     }
 
     public function getStatus()

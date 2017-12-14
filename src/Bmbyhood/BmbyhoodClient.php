@@ -5,6 +5,7 @@ namespace Bmbyhood;
 use GuzzleHttp;
 use GuzzleHttp\ClientInterface;
 use Firebase\JWT;
+use Mbeat\Sms\Exception\Exception;
 
 class BmbyhoodClient
 {
@@ -51,8 +52,8 @@ class BmbyhoodClient
      */
     private function tokenIsExpired()
     {
-        if ($this->token == NULL || !isset($this->token['exp'])) {
-            return false;
+        if (!$this->token || !isset($this->token['exp'])) {
+            return true;
         }
 
         $time = $this->getUtcTime();
@@ -63,7 +64,7 @@ class BmbyhoodClient
         $tokenExpirationTime = (int)$payloadData['exp'];
 
         if ($tokenExpirationTime - $time < 30) {//30 seconds left
-            return false;
+            return true;
         }
 
         return false;
@@ -72,7 +73,7 @@ class BmbyhoodClient
     private function getToken()
     {
         $response = $this->http->request('POST', self::TOKEN_URI, [
-            'json' => $this->config
+            'form_params' => $this->config
         ]);
 
         if ($response->getStatusCode() != 200)
@@ -106,7 +107,26 @@ class BmbyhoodClient
             $config
         );
 
-        $this->http = new GuzzleHttp\Client(['base_uri' => self::API_BASE_PATH]);
+        $this->http = new GuzzleHttp\Client([
+            'base_uri' => self::API_BASE_PATH,
+            'verify' => false,
+            'http_errors' => false
+        ]);
+    }
+
+    private function request($method, $uri, $data)
+    {
+        $this->checkToken();
+
+        $params = [
+            'headers' => $this->getHeaders()
+        ];
+
+        if ($data) {
+            $params['json'] = $data;
+        }
+
+        return $this->http->request($method, $uri, $params);
     }
 
     /**
@@ -117,12 +137,7 @@ class BmbyhoodClient
      */
     public function post($uri, $data)
     {
-        $this->checkToken();
-
-        return $this->http->request('POST', $uri, [
-            'headers'     => $this->getHeaders(),
-            'json' => $data
-        ]);
+        return $this->request('POST', $uri, $data);
     }
 
     /**
@@ -133,12 +148,7 @@ class BmbyhoodClient
      */
     public function put($uri, $data)
     {
-        $this->checkToken();
-
-        return $this->http->request('PUT', $uri, [
-            'headers'     => $this->getHeaders(),
-            'json' => $data
-        ]);
+        return $this->request('PUT', $uri, $data);
     }
 
     /**
@@ -149,12 +159,7 @@ class BmbyhoodClient
      */
     public function patch($uri, $data)
     {
-        $this->checkToken();
-
-        return $this->http->request('PATCH', $uri, [
-            'headers'     => $this->getHeaders(),
-            'json' => $data
-        ]);
+        return $this->request('PATCH', $uri, $data);
     }
 
     /**
@@ -164,11 +169,7 @@ class BmbyhoodClient
      */
     public function delete($uri)
     {
-        $this->checkToken();
-
-        return $this->http->request('DELETE', $uri, [
-            'headers'     => $this->getHeaders()
-        ]);
+        return $this->request('DELETE', $uri, []);
     }
 }
 ?>
