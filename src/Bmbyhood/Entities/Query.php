@@ -29,6 +29,7 @@ class Query extends BmbyhoodEntity
             'has_garden' => NULL,
             'has_elevator' => NULL,
             'has_furniture' => NULL,
+            'has_access_to_disabled' => NULL,
             'is_active' => NULL,
             'deal_types' => array(),
             'zones' => array(),
@@ -231,6 +232,21 @@ class Query extends BmbyhoodEntity
     public function getHasBalcony()
     {
         return $this->fields['has_balcony'];
+    }
+
+    /**
+     * @param bool $value
+     */
+    public function setHasAccessToDisabled($value)
+    {
+        $this->fields['has_access_to_disabled'] = $value != NULL ? (bool)$value : NULL;
+    }
+    /**
+     * @return bool|NULL
+     */
+    public function getHasAccessToDisabled()
+    {
+        return $this->fields['has_access_to_disabled'];
     }
 
     /**
