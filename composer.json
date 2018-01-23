@@ -1,9 +1,9 @@
 {
-  "name": "bmbyhood",
+  "name": "bmby/bmby-api-php-client",
   "type": "library",
-  "description": "Client library for Bmbyhood API",
-  "keywords": ["bmbyhood", "bmby APIs"],
-  "homepage": "https://github.com/bmby/bmbyhood-api-client-php",
+  "description": "Client library for BMBY API",
+  "keywords": ["bmby APIs"],
+  "homepage": "https://github.com/bmby/bmby-api-php-client",
   "license": "MIT",
   "require": {
     "php": ">=5.4",
