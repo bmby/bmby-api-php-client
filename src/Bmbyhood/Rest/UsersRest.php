@@ -15,6 +15,17 @@ class UsersRest extends EntityRest
 
         return $this->response($response);
     }
+
+    /**
+     * @param Entities\User $user
+     * @return RestResponse
+     */
+    public function syncUser(Entities\User $user)
+    {
+        $response = $this->client->post('syncuser', $user->ToArray());
+
+        return $this->response($response);
+    }
 }
 
 ?>

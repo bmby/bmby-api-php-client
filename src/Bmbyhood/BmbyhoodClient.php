@@ -5,7 +5,6 @@ namespace Bmbyhood;
 use GuzzleHttp;
 use GuzzleHttp\ClientInterface;
 use Firebase\JWT;
-use Mbeat\Sms\Exception\Exception;
 
 class BmbyhoodClient
 {
@@ -13,12 +12,18 @@ class BmbyhoodClient
     const REVOKE_URI = '/connect/revoke';
     const TOKEN_URI = '/connect/token';
     const AUTH_URI = '/connect/auth';
-    const API_BASE_PATH = 'https://bmbyhoodapi.bmby.com/';
+    const AUTH_BASE_PATH = 'https://identity.bmby.com/';
+    const API_BASE_PATH = 'https://api.bmby.com/';
 
     /**
      * @var ClientInterface $http
      */
-    private $http;
+    private $apiHttp;
+
+    /**
+     * @var ClientInterface $http
+     */
+    private $authHttp;
 
     /**
      * @var string access token
@@ -72,7 +77,7 @@ class BmbyhoodClient
 
     private function getToken()
     {
-        $response = $this->http->request('POST', self::TOKEN_URI, [
+        $response = $this->authHttp->request('POST', self::TOKEN_URI, [
             'form_params' => $this->config
         ]);
 
@@ -102,13 +107,19 @@ class BmbyhoodClient
                 'client_id' => '',
                 'client_secret' => '',
                 'grant_type' => 'client_credentials',
-                'scope' => 'portalAPI.users.read',
+                'scope' => 'bmbyAPI.users.read',
             ],
             $config
         );
 
-        $this->http = new GuzzleHttp\Client([
+        $this->apiHttp = new GuzzleHttp\Client([
             'base_uri' => self::API_BASE_PATH,
+            'verify' => false,
+            'http_errors' => false
+        ]);
+
+        $this->authHttp = new GuzzleHttp\Client([
+            'base_uri' => self::AUTH_BASE_PATH,
             'verify' => false,
             'http_errors' => false
         ]);
@@ -126,7 +137,7 @@ class BmbyhoodClient
             $params['json'] = $data;
         }
 
-        return $this->http->request($method, $uri, $params);
+        return $this->apiHttp->request($method, $uri, $params);
     }
 
     /**
