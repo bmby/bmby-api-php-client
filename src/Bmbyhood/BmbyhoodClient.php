@@ -125,7 +125,7 @@ class BmbyhoodClient
         ]);
     }
 
-    private function request($method, $uri, $data)
+    private function request($method, $uri, $data, $files = [])
     {
         $this->checkToken();
 
@@ -133,7 +133,35 @@ class BmbyhoodClient
             'headers' => $this->getHeaders()
         ];
 
-        if ($data) {
+        if ($files) {
+            $params['multipart'] = [
+                [
+                    'name' => 'metaData',
+                    'contents' => GuzzleHttp\json_encode($data)
+                ]
+            ];
+
+            foreach ($files as $field => $fileList) {
+                if (count($fileList) == 1) {
+                    $params['multipart'][] = [
+                        'name' => $field,
+                        'contents' => \fopen($fileList[0], 'r')
+                    ];
+                } else {
+                    $i = 0;
+
+                    foreach ($fileList as $filePath) {
+                        $params['multipart'][] = [
+                            'name' => $field.'['.$i.']',
+                            'contents' => \fopen($filePath, 'r')
+                        ];
+
+                        $i++;
+                    }
+                }
+            }
+        }
+        elseif ($data) {
             $params['json'] = $data;
         }
 
@@ -143,23 +171,25 @@ class BmbyhoodClient
     /**
      * @param string $uri
      * @param array $data
+     * @param array $files
      *
      * @return mixed|\Psr\Http\Message\ResponseInterface
      */
-    public function post($uri, $data)
+    public function post($uri, $data, $files = [])
     {
-        return $this->request('POST', $uri, $data);
+        return $this->request('POST', $uri, $data, $files);
     }
 
     /**
      * @param string $uri
      * @param array $data
+     * @param array $files
      *
      * @return mixed|\Psr\Http\Message\ResponseInterface
      */
-    public function put($uri, $data)
+    public function put($uri, $data, $files = [])
     {
-        return $this->request('PUT', $uri, $data);
+        return $this->request('PUT', $uri, $data, $files);
     }
 
     /**

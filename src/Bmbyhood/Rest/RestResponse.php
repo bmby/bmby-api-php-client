@@ -11,17 +11,19 @@ class RestResponse
     private $status = '';
     private $errorMessage = '';
     private $id = NULL;
+    private $response = [];
 
     /**
      * @var Bmbyhood\BmbyhoodClient
      */
     protected $client;
 
-    public function __construct($status, $id = NULL, $errorMessage = '')
+    public function __construct($status, $response = NULL, $errorMessage = '', $idField = 'id')
     {
         $this->status = $status == self::Success ? self::Success : self::Error;
         $this->errorMessage = $errorMessage;
-        $this->id = $id;
+        $this->id = isset($response[$idField]) ? $response[$idField] : '';
+        $this->response = $response ? $response : [];
     }
 
     public function getStatus()
@@ -32,6 +34,11 @@ class RestResponse
     public function getId()
     {
         return $this->id;
+    }
+
+    public function getResponse()
+    {
+        return $this->response;
     }
 
     public function getErrorMessage()

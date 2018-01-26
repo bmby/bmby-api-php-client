@@ -10,7 +10,7 @@ abstract class EntityRest
      */
     protected $client;
 
-    protected function response(\Psr\Http\Message\ResponseInterface $response, $idField = 'id')
+    protected function response(\Psr\Http\Message\ResponseInterface $response)
     {
         $statusCode = $response->getStatusCode();
         $requestContent = $response->getBody()->getContents();
@@ -18,9 +18,7 @@ abstract class EntityRest
 
         if ($statusCode == 200 || $statusCode == 201)
         {
-            $id = isset($responseData[$idField]) ? $responseData[$idField] : NULL;
-
-            return new RestResponse(RestResponse::Success, $id);
+            return new RestResponse(RestResponse::Success, $responseData);
         }
 
         if ($statusCode == 500 || $statusCode == 401)
