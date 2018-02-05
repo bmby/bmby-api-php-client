@@ -5,7 +5,6 @@ namespace Bmbyhood;
 use GuzzleHttp;
 use GuzzleHttp\ClientInterface;
 use Firebase\JWT;
-use Mbeat\Sms\Exception\Exception;
 
 class BmbyhoodClient
 {
@@ -13,12 +12,18 @@ class BmbyhoodClient
     const REVOKE_URI = '/connect/revoke';
     const TOKEN_URI = '/connect/token';
     const AUTH_URI = '/connect/auth';
-    const API_BASE_PATH = 'https://bmbyhoodapi.bmby.com/';
+    const AUTH_BASE_PATH = 'https://identity.bmby.com/';
+    const API_BASE_PATH = 'https://api.bmby.com/';
 
     /**
      * @var ClientInterface $http
      */
-    private $http;
+    private $apiHttp;
+
+    /**
+     * @var ClientInterface $http
+     */
+    private $authHttp;
 
     /**
      * @var string access token
@@ -72,7 +77,7 @@ class BmbyhoodClient
 
     private function getToken()
     {
-        $response = $this->http->request('POST', self::TOKEN_URI, [
+        $response = $this->authHttp->request('POST', self::TOKEN_URI, [
             'form_params' => $this->config
         ]);
 
@@ -102,19 +107,25 @@ class BmbyhoodClient
                 'client_id' => '',
                 'client_secret' => '',
                 'grant_type' => 'client_credentials',
-                'scope' => 'portalAPI.users.read',
+                'scope' => 'bmbyAPI.users.read',
             ],
             $config
         );
 
-        $this->http = new GuzzleHttp\Client([
+        $this->apiHttp = new GuzzleHttp\Client([
             'base_uri' => self::API_BASE_PATH,
+            'verify' => false,
+            'http_errors' => false
+        ]);
+
+        $this->authHttp = new GuzzleHttp\Client([
+            'base_uri' => self::AUTH_BASE_PATH,
             'verify' => false,
             'http_errors' => false
         ]);
     }
 
-    private function request($method, $uri, $data)
+    private function request($method, $uri, $data, $files = [])
     {
         $this->checkToken();
 
@@ -122,33 +133,63 @@ class BmbyhoodClient
             'headers' => $this->getHeaders()
         ];
 
-        if ($data) {
+        if ($files) {
+            $params['multipart'] = [
+                [
+                    'name' => 'metaData',
+                    'contents' => GuzzleHttp\json_encode($data)
+                ]
+            ];
+
+            foreach ($files as $field => $fileList) {
+                if (count($fileList) == 1) {
+                    $params['multipart'][] = [
+                        'name' => $field,
+                        'contents' => \fopen($fileList[0], 'r')
+                    ];
+                } else {
+                    $i = 0;
+
+                    foreach ($fileList as $filePath) {
+                        $params['multipart'][] = [
+                            'name' => $field.'['.$i.']',
+                            'contents' => \fopen($filePath, 'r')
+                        ];
+
+                        $i++;
+                    }
+                }
+            }
+        }
+        elseif ($data) {
             $params['json'] = $data;
         }
 
-        return $this->http->request($method, $uri, $params);
+        return $this->apiHttp->request($method, $uri, $params);
     }
 
     /**
      * @param string $uri
      * @param array $data
+     * @param array $files
      *
      * @return mixed|\Psr\Http\Message\ResponseInterface
      */
-    public function post($uri, $data)
+    public function post($uri, $data, $files = [])
     {
-        return $this->request('POST', $uri, $data);
+        return $this->request('POST', $uri, $data, $files);
     }
 
     /**
      * @param string $uri
      * @param array $data
+     * @param array $files
      *
      * @return mixed|\Psr\Http\Message\ResponseInterface
      */
-    public function put($uri, $data)
+    public function put($uri, $data, $files = [])
     {
-        return $this->request('PUT', $uri, $data);
+        return $this->request('PUT', $uri, $data, $files);
     }
 
     /**

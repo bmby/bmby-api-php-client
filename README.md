@@ -1,2 +1,2 @@
-# PHP Client for BMBYhood API
+# PHP Client for BMBY API
 

@@ -8,6 +8,7 @@ class User extends BmbyhoodEntity
     public function __construct()
     {
         $this->fields = [
+            'user_name' => '',
             'email' => '',
             'password' => '',
             'is_active' => false,
@@ -37,6 +38,21 @@ class User extends BmbyhoodEntity
         }
 
         return $data;
+    }
+
+    /**
+     * @param string $value
+     */
+    public function setUserName($value)
+    {
+        $this->fields['user_name'] = (string)$value;
+    }
+    /**
+     * @return string
+     */
+    public function getUserName()
+    {
+        return $this->fields['user_name'];
     }
 
     /**
