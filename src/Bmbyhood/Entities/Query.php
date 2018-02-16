@@ -31,11 +31,11 @@ class Query extends BmbyhoodEntity
             'has_furniture' => NULL,
             'has_access_to_disabled' => NULL,
             'is_active' => NULL,
-            'deal_types' => array(),
-            'zones' => array(),
-            'cities' => array(),
-            'neighbourhoods' => array(),
-            'streets' => array()
+            'deal_types' => [],
+            'zones' => [],
+            'cities' => [],
+            'neighbourhoods' => [],
+            'streets' => []
         ];
     }
 
