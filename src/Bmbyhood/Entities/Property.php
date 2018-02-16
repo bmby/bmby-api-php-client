@@ -209,6 +209,21 @@ class Property extends BmbyhoodEntity
     }
 
     /**
+     * @param Enumerations\PropertyCatalog $value
+     */
+    public function setCatalog(Enumerations\PropertyCatalog $value)
+    {
+        $this->fields['catalog'] = $value ? $value->getValue() : Enumerations\PropertyCatalog::Unknown;
+    }
+    /**
+     * @return Enumerations\PropertyCatalog
+     */
+    public function getCatalog()
+    {
+        return new Enumerations\PropertyCatalog($this->fields['catalog']);
+    }
+
+    /**
      * @param Enumerations\RealEstateMedia $value
      */
     public function setMedia(Enumerations\RealEstateMedia $value)
