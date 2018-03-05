@@ -11,6 +11,7 @@ class Property extends BmbyhoodEntity
             'property_id' => 0,
             'agency_id' => NULL,
             'bmby_project_id' => NULL,
+            'contact_id' => '',
             'catalog' => Enumerations\PropertyCatalog::Unknown,
             'title' => '',
             'description' => '',
@@ -45,13 +46,6 @@ class Property extends BmbyhoodEntity
             'rent_price' => 0.0,
             'sale_price' => 0.0,
             'unit_price' => 0.0,
-            'contact_name' => '',
-            'contact_phone1' => '',
-            'contact_phone2' => '',
-            'contact_fax' => '',
-            'contact_mobile1' => '',
-            'contact_mobile2' => '',
-            'contact_email' => '',
             'entry_date' => '',
             'comments' => '',
             'has_air_conditioner' => false,
@@ -649,106 +643,16 @@ class Property extends BmbyhoodEntity
     /**
      * @param string $value
      */
-    public function setContactName($value)
+    public function setContactId($value)
     {
-        $this->fields['contact_name'] = (string)$value;
+        $this->fields['contact_id'] = (string)$value;
     }
     /**
      * @return string
      */
-    public function getContactName()
+    public function getContactId()
     {
-        return $this->fields['contact_name'];
-    }
-
-    /**
-     * @param string $value
-     */
-    public function setContactPhone1($value)
-    {
-        $this->fields['contact_phone1'] = (string)$value;
-    }
-    /**
-     * @return string
-     */
-    public function getContactPhone1()
-    {
-        return $this->fields['contact_phone1'];
-    }
-
-    /**
-     * @param string $value
-     */
-    public function setContactPhone2($value)
-    {
-        $this->fields['contact_phone2'] = (string)$value;
-    }
-    /**
-     * @return string
-     */
-    public function getContactPhone2()
-    {
-        return $this->fields['contact_phone2'];
-    }
-
-    /**
-     * @param string $value
-     */
-    public function setContactFax($value)
-    {
-        $this->fields['contact_fax'] = (string)$value;
-    }
-    /**
-     * @return string
-     */
-    public function getContactFax()
-    {
-        return $this->fields['contact_fax'];
-    }
-
-    /**
-     * @param string $value
-     */
-    public function setContactMobile1($value)
-    {
-        $this->fields['contact_mobile1'] = (string)$value;
-    }
-    /**
-     * @return string
-     */
-    public function getContactMobile1()
-    {
-        return $this->fields['contact_mobile1'];
-    }
-
-    /**
-     * @param string $value
-     */
-    public function setContactMobile2($value)
-    {
-        $this->fields['contact_mobile2'] = (string)$value;
-    }
-    /**
-     * @return string
-     */
-    public function getContactMobile2()
-    {
-        return $this->fields['contact_mobile2'];
-    }
-
-    /**
-     * @param string $value
-     */
-    public function setContactEmail($value)
-    {
-        $this->fields['contact_email'] = (string)$value;
-    }
-    /**
-     * @return string
-     */
-    public function getContactEmail()
-    {
-        return $this->fields['contact_email'];
+        return $this->fields['contact_id'];
     }
 
     /**

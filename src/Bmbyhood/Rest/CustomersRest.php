@@ -54,15 +54,15 @@ class CustomersRest  extends EntityRest
 
     /**
      * Update Customer
-     *
+     * @param string $customerId
      * @param array $data
      *
      * @return RestResponse
      *
      */
-    public function updateCustomer($data =[])
+    public function updateCustomer($customerId, $data =[])
     {
-        $response = $this->client->patch('customers', $data);
+        $response = $this->client->patch('customers/'.$customerId, $data);
 
         return $this->response($response);
     }
@@ -70,7 +70,7 @@ class CustomersRest  extends EntityRest
     /**
      * Delete Customer
      *
-     * @param int $customerId
+     * @param string $customerId
      * @return RestResponse
      *
      */
