@@ -31,11 +31,12 @@ class Query extends BmbyhoodEntity
             'has_furniture' => NULL,
             'has_access_to_disabled' => NULL,
             'is_active' => NULL,
-            'deal_types' => [],
-            'zones' => [],
-            'cities' => [],
-            'neighbourhoods' => [],
-            'streets' => []
+            'deal_types' => array(),
+            'zones' => array(),
+            'cities' => array(),
+            'neighbourhoods' => array(),
+            'streets' => array(),
+            'property_types' => array()
         ];
     }
 
@@ -507,6 +508,34 @@ class Query extends BmbyhoodEntity
     public function getStreets()
     {
         return $this->fields['streets'];
+    }
+
+    /**
+     * @param Enumerations\PropertyType $value
+     */
+    public function addPropertyType(Enumerations\PropertyType $value)
+    {
+        if (!$value->getValue() || in_array($value->getValue(), $this->fields['property_types'])) {
+            return;
+        }
+
+        $this->fields['property_types'][] = $value->getValue();
+    }
+    /**
+     * @param Enumerations\PropertyType $value
+     */
+    public function removePropertyType(Enumerations\PropertyType $value)
+    {
+        if (($key = array_search($value->getValue(), $this->fields['property_types'])) !== false) {
+            unset($this->fields['property_types'][$key]);
+        }
+    }
+    /**
+     * @return array
+     */
+    public function getPropertyTypes()
+    {
+        return $this->fields['property_types'];
     }
 }
 

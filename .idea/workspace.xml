@@ -2,7 +2,33 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="218105e4-3300-4ec4-a803-a959195b0a25" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Bmbyhood/Entities/City.php" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Bmbyhood/Entities/Country.php" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Bmbyhood/Entities/CrmTask.php" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Bmbyhood/Entities/Customer.php" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Bmbyhood/Entities/DataDictionary.php" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Bmbyhood/Entities/DataDictionaryTranslation.php" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Bmbyhood/Entities/MetaDictionary.php" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Bmbyhood/Entities/MetaDictionaryTranslation.php" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Bmbyhood/Entities/PropertyOwner.php" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Bmbyhood/Entities/Region.php" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Bmbyhood/Entities/Street.php" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Bmbyhood/Enumerations/CrmTaskPriority.php" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Bmbyhood/Enumerations/CrmTaskStatus.php" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Bmbyhood/Enumerations/CrmTaskSubType.php" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Bmbyhood/Enumerations/CrmTaskType.php" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Bmbyhood/Enumerations/PropertyCatalog.php" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Bmbyhood/Rest/CrmTasksRest.php" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Bmbyhood/Rest/CustomersRest.php" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Bmbyhood/Rest/LocalizationsRest.php" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Bmbyhood/Rest/PropertyOwnersRest.php" />
       <change beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change beforePath="$PROJECT_DIR$/.idea/bmbyhood-api-client-php.iml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/Bmbyhood/BmbyhoodClient.php" afterPath="$PROJECT_DIR$/src/Bmbyhood/BmbyhoodClient.php" />
       <change beforePath="$PROJECT_DIR$/src/Bmbyhood/Entities/Property.php" afterPath="$PROJECT_DIR$/src/Bmbyhood/Entities/Property.php" />
       <change beforePath="$PROJECT_DIR$/src/Bmbyhood/Entities/Query.php" afterPath="$PROJECT_DIR$/src/Bmbyhood/Entities/Query.php" />
     </list>
@@ -18,11 +44,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Property.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Property.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Bmbyhood/Entities/Property.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="557">
-              <caret line="971" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="971" selection-end-column="0" />
+            <state relative-caret-position="9818">
+              <caret line="658" column="36" lean-forward="false" selection-start-line="658" selection-start-column="36" selection-end-line="658" selection-end-column="36" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="2" column="5" lean-forward="true" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -31,9 +67,71 @@
       <file leaf-file-name="Query.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Bmbyhood/Entities/Query.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="502">
-              <caret line="454" column="0" lean-forward="false" selection-start-line="426" selection-start-column="0" selection-end-line="454" selection-end-column="0" />
+            <state relative-caret-position="6825">
+              <caret line="455" column="0" lean-forward="false" selection-start-line="455" selection-start-column="0" selection-end-line="455" selection-end-column="0" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Enumeration.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Bmbyhood/Enumerations/Enumeration.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="540">
+              <caret line="36" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DealType.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Bmbyhood/Enumerations/DealType.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="465">
+              <caret line="31" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RestResponse.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Bmbyhood/Rest/RestResponse.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="600">
+              <caret line="40" column="31" lean-forward="false" selection-start-line="40" selection-start-column="31" selection-end-line="40" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PropertiesRest.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Bmbyhood/Rest/PropertiesRest.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="17" column="37" lean-forward="false" selection-start-line="17" selection-start-column="37" selection-end-line="17" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BmbyhoodClient.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Bmbyhood/BmbyhoodClient.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="675">
+              <caret line="47" column="21" lean-forward="false" selection-start-line="47" selection-start-column="21" selection-end-line="47" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="copyusers.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/local/copyusers.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="420">
+              <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+              <folding>
+                <marker date="1516048426461" expanded="true" signature="411:606" ph="SELECT UserI... Users" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -46,6 +144,9 @@
       <find>AUTH_BASE_PATH</find>
       <find>$this-&gt;authHttp</find>
       <find>metaData</find>
+      <find>description</find>
+      <find>'sale_price'</find>
+      <find>unit_price</find>
     </findStrings>
     <replaceStrings>
       <replace>$this-&gt;apiHttp</replace>
@@ -72,9 +173,9 @@
         <option value="$PROJECT_DIR$/src/Bmbyhood/Rest/EntityRest.php" />
         <option value="$PROJECT_DIR$/src/Bmbyhood/Rest/RestResponse.php" />
         <option value="$PROJECT_DIR$/upload.php" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/Bmbyhood/Entities/Query.php" />
         <option value="$PROJECT_DIR$/src/Bmbyhood/Entities/Property.php" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -148,34 +249,7 @@
             <path>
               <item name="bmbyhood-api-client-php" type="b2602c69:ProjectViewProjectNode" />
               <item name="bmbyhood-api-client-php" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="bmbyhood-api-client-php" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bmbyhood-api-client-php" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Bmbyhood" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="bmbyhood-api-client-php" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bmbyhood-api-client-php" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Bmbyhood" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Entities" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="bmbyhood-api-client-php" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bmbyhood-api-client-php" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Bmbyhood" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Enumerations" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="bmbyhood-api-client-php" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bmbyhood-api-client-php" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Bmbyhood" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Rest" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="local" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
           </expand>
           <select />
@@ -189,6 +263,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/local" />
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
@@ -225,7 +300,11 @@
       <workItem from="1515351065896" duration="3047000" />
       <workItem from="1516048026833" duration="2000000" />
       <workItem from="1516609771298" duration="23758000" />
-      <workItem from="1518593716568" duration="3939000" />
+      <workItem from="1518593716568" duration="7052000" />
+      <workItem from="1519401370245" duration="953000" />
+      <workItem from="1519631079243" duration="2147000" />
+      <workItem from="1519909410521" duration="1075000" />
+      <workItem from="1520249820936" duration="498000" />
     </task>
     <task id="LOCAL-00001" summary="v1.0.0">
       <created>1516795624352</created>
@@ -245,7 +324,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="45209000" />
+    <option name="totallyTimeSpent" value="52995000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1680" y="23" width="1920" height="1057" extended-state="6" />
@@ -278,22 +357,86 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="v1.0.0" />
     <MESSAGE value="File and image upload" />
-    <option name="LAST_COMMIT_MESSAGE" value="File and image upload" />
+    <MESSAGE value="Merge branch 'master' of https://github.com/bmby/bmby-api-php-client&#10;&#10;# Conflicts:&#10;#&#9;src/Bmbyhood/Entities/Property.php&#10;#&#9;src/Bmbyhood/Entities/Query.php" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'master' of https://github.com/bmby/bmby-api-php-client&#10;&#10;# Conflicts:&#10;#&#9;src/Bmbyhood/Entities/Property.php&#10;#&#9;src/Bmbyhood/Entities/Query.php" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/Bmbyhood/Entities/Query.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6825">
+          <caret line="455" column="0" lean-forward="false" selection-start-line="455" selection-start-column="0" selection-end-line="455" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Bmbyhood/Enumerations/Enumeration.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="36" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Bmbyhood/Enumerations/DealType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="31" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Bmbyhood/Rest/RestResponse.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="40" column="31" lean-forward="false" selection-start-line="40" selection-start-column="31" selection-end-line="40" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Bmbyhood/Rest/PropertiesRest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="37" lean-forward="false" selection-start-line="17" selection-start-column="37" selection-end-line="17" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Bmbyhood/BmbyhoodClient.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="675">
+          <caret line="47" column="21" lean-forward="false" selection-start-line="47" selection-start-column="21" selection-end-line="47" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Bmbyhood/Entities/Property.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Bmbyhood/Entities/Query.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6825">
+          <caret line="455" column="0" lean-forward="false" selection-start-line="455" selection-start-column="0" selection-end-line="455" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Bmbyhood/BmbyhoodClient.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2400">
           <caret line="162" column="9" lean-forward="true" selection-start-line="162" selection-start-column="9" selection-end-line="162" selection-end-column="9" />
-          <folding>
-            <element signature="e#28#43#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -301,7 +444,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="13" column="23" lean-forward="false" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -313,13 +455,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/upload.php">
+    <entry file="file://$PROJECT_DIR$/local/upload.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
           <caret line="26" column="31" lean-forward="false" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="31" />
-          <folding>
-            <element signature="e#38#63#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -327,7 +466,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
           <caret line="22" column="17" lean-forward="true" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -335,7 +473,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
           <caret line="30" column="2" lean-forward="true" selection-start-line="30" selection-start-column="2" selection-end-line="30" selection-end-column="2" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -343,7 +480,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
           <caret line="26" column="26" lean-forward="true" selection-start-line="26" selection-start-column="26" selection-end-line="26" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -351,7 +487,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
           <caret line="20" column="32" lean-forward="false" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -359,7 +494,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="600">
           <caret line="40" column="31" lean-forward="true" selection-start-line="40" selection-start-column="31" selection-end-line="40" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -367,7 +501,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="1" column="6" lean-forward="true" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -375,9 +508,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="15" column="50" lean-forward="false" selection-start-line="15" selection-start-column="50" selection-end-line="15" selection-end-column="50" />
-          <folding>
-            <element signature="e#28#43#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -392,18 +522,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="750">
           <caret line="50" column="21" lean-forward="false" selection-start-line="50" selection-start-column="21" selection-end-line="50" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/copyusers.php">
+    <entry file="file://$PROJECT_DIR$/local/copyusers.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="525">
           <caret line="35" column="41" lean-forward="false" selection-start-line="35" selection-start-column="41" selection-end-line="35" selection-end-column="41" />
-          <folding>
-            <element signature="e#38#63#0#PHP" expanded="false" />
-            <marker date="1516048426461" expanded="true" signature="411:606" ph="SELECT UserI... Users" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -411,9 +536,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="17" column="7" lean-forward="true" selection-start-line="17" selection-start-column="7" selection-end-line="17" selection-end-column="7" />
-          <folding>
-            <element signature="e#28#43#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -428,29 +550,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="750">
           <caret line="50" column="21" lean-forward="false" selection-start-line="50" selection-start-column="21" selection-end-line="50" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/copyusers.php">
+    <entry file="file://$PROJECT_DIR$/local/copyusers.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding>
-            <element signature="e#38#63#0#PHP" expanded="false" />
-            <marker date="1516048426461" expanded="true" signature="411:606" ph="SELECT UserI... Users" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/copyusers.php">
+    <entry file="file://$PROJECT_DIR$/local/copyusers.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding>
-            <element signature="e#38#63#0#PHP" expanded="false" />
-            <marker date="1516048426461" expanded="true" signature="411:606" ph="SELECT UserI... Users" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -458,9 +571,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1650">
           <caret line="112" column="10" lean-forward="true" selection-start-line="112" selection-start-column="10" selection-end-line="112" selection-end-column="10" />
-          <folding>
-            <element signature="e#28#43#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -475,7 +585,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="750">
           <caret line="50" column="21" lean-forward="true" selection-start-line="50" selection-start-column="21" selection-end-line="50" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -483,16 +592,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#28#43#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Bmbyhood/Enumerations/DealType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="26" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="31" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -510,18 +609,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Bmbyhood/Rest/PropertiesRest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Bmbyhood/Entities/User.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="359">
           <caret line="41" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -529,18 +620,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
           <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/copyusers.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="436">
-          <caret line="34" column="47" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="43" selection-end-column="2" />
-          <folding>
-            <element signature="e#38#63#0#PHP" expanded="false" />
-            <marker date="1516048426461" expanded="true" signature="411:606" ph="SELECT UserI... Users" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -548,25 +627,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="4" column="31" lean-forward="false" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Bmbyhood/Enumerations/Enumeration.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="15" lean-forward="false" selection-start-line="5" selection-start-column="15" selection-end-line="5" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Bmbyhood/BmbyhoodClient.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2400">
-          <caret line="162" column="9" lean-forward="false" selection-start-line="162" selection-start-column="9" selection-end-line="162" selection-end-column="9" />
-          <folding>
-            <element signature="e#28#43#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -574,7 +634,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
           <caret line="26" column="26" lean-forward="false" selection-start-line="26" selection-start-column="26" selection-end-line="26" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -582,6 +641,57 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
           <caret line="20" column="32" lean-forward="false" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Bmbyhood/Entities/FileMeta.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="23" lean-forward="false" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/composer.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="17" lean-forward="false" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Bmbyhood/Rest/ImagesRest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="30" column="2" lean-forward="false" selection-start-line="30" selection-start-column="2" selection-end-line="30" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/local/upload.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="269">
+          <caret line="32" column="37" lean-forward="false" selection-start-line="32" selection-start-column="37" selection-end-line="32" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Bmbyhood/Entities/Query.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6825">
+          <caret line="455" column="0" lean-forward="false" selection-start-line="455" selection-start-column="0" selection-end-line="455" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Bmbyhood/Enumerations/Enumeration.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="36" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Bmbyhood/Enumerations/DealType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="31" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -594,60 +704,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Bmbyhood/Entities/FileMeta.php">
+    <entry file="file://$PROJECT_DIR$/src/Bmbyhood/Rest/PropertiesRest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="23" lean-forward="false" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="23" />
+        <state relative-caret-position="255">
+          <caret line="17" column="37" lean-forward="false" selection-start-line="17" selection-start-column="37" selection-end-line="17" selection-end-column="37" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/composer.json">
+    <entry file="file://$PROJECT_DIR$/src/Bmbyhood/BmbyhoodClient.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="17" lean-forward="false" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
+        <state relative-caret-position="675">
+          <caret line="47" column="21" lean-forward="false" selection-start-line="47" selection-start-column="21" selection-end-line="47" selection-end-column="21" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Bmbyhood/Rest/ImagesRest.php">
+    <entry file="file://$PROJECT_DIR$/local/copyusers.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" column="2" lean-forward="false" selection-start-line="30" selection-start-column="2" selection-end-line="30" selection-end-column="2" />
+        <state relative-caret-position="420">
+          <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <folding>
+            <marker date="1516048426461" expanded="true" signature="411:606" ph="SELECT UserI... Users" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Bmbyhood/Entities/Property.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9818">
+          <caret line="658" column="36" lean-forward="false" selection-start-line="658" selection-start-column="36" selection-end-line="658" selection-end-column="36" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="6" lean-forward="false" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/upload.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="32" column="37" lean-forward="false" selection-start-line="32" selection-start-column="37" selection-end-line="32" selection-end-column="37" />
-          <folding>
-            <element signature="e#38#63#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Bmbyhood/Entities/Query.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="502">
-          <caret line="454" column="0" lean-forward="false" selection-start-line="426" selection-start-column="0" selection-end-line="454" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Bmbyhood/Entities/Property.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="557">
-          <caret line="971" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="971" selection-end-column="0" />
+        <state relative-caret-position="30">
+          <caret line="2" column="5" lean-forward="true" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
           <folding />
         </state>
       </provider>

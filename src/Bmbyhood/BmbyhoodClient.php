@@ -100,7 +100,7 @@ class BmbyhoodClient
         }
     }
 
-    public function __construct(array $config = [])
+    public function __construct(array $config = [], $apiEndpoint = '')
     {
         $this->config = array_merge(
             [
@@ -112,8 +112,10 @@ class BmbyhoodClient
             $config
         );
 
+        $endPoint = $apiEndpoint ? $apiEndpoint : self::API_BASE_PATH;
+
         $this->apiHttp = new GuzzleHttp\Client([
-            'base_uri' => self::API_BASE_PATH,
+            'base_uri' => $endPoint,
             'verify' => false,
             'http_errors' => false
         ]);
@@ -133,7 +135,10 @@ class BmbyhoodClient
             'headers' => $this->getHeaders()
         ];
 
-        if ($files) {
+        if ($method == "GET") {
+            $params['query'] = $data;
+        }
+        elseif ($files) {
             $params['multipart'] = [
                 [
                     'name' => 'metaData',
@@ -166,6 +171,18 @@ class BmbyhoodClient
         }
 
         return $this->apiHttp->request($method, $uri, $params);
+    }
+
+    /**
+     * @param string $uri
+     * @param $params
+     * @return mixed|\Psr\Http\Message\ResponseInterface
+     * @internal param array $data
+     *
+     */
+    public function get($uri, $params)
+    {
+        return $this->request('GET', $uri, $params);
     }
 
     /**

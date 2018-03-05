@@ -11,10 +11,14 @@ class Property extends BmbyhoodEntity
             'property_id' => 0,
             'agency_id' => NULL,
             'bmby_project_id' => NULL,
+            'catalog' => Enumerations\PropertyCatalog::Unknown,
+            'title' => '',
+            'description' => '',
+            'limited_description' => '',
+            'address' => '',
             'bmby_property_id' => 0,
             'bmby_owners_property_id' => 0,
             'bmby_company_id' => 0,
-            'bmby_project_id' => 0,
             'bmby_broker_id' => 0,
             'is_published' => false,
             'parser_record_id' => 0,
@@ -40,6 +44,7 @@ class Property extends BmbyhoodEntity
             'plot_area' => 0.0,
             'rent_price' => 0.0,
             'sale_price' => 0.0,
+            'unit_price' => 0.0,
             'contact_name' => '',
             'contact_phone1' => '',
             'contact_phone2' => '',
@@ -54,10 +59,25 @@ class Property extends BmbyhoodEntity
             'has_parking' => false,
             'has_furniture' => false,
             'furniture_description' => '',
+            'has_religion_facility' => false,
+            'can_be_extended' => false,
+            'has_swimming_pool' => false,
+            'has_jacuzzi' => false,
+            'has_pandoor' => false,
+            'has_gym' => false,
+            'has_yard' => false,
+            'has_parent_bedroom' => false,
+            'has_event_room' => false,
             'has_storage' => false,
+            'has_cellar' => false,
             'has_elevator' => false,
+            'has_shabat_elevator' => false,
             'has_secure_room' => false,
+            'has_guard' => false,
+            'has_separate_entrance' => false,
+            'is_unit' => false,
             'has_balcony' => false,
+            'has_teracce' => false,
             'has_access_for_disabled' => false,
             'has_garden' => false,
             'garden_area' => 0.0,
@@ -207,6 +227,21 @@ class Property extends BmbyhoodEntity
     }
 
     /**
+     * @param Enumerations\PropertyCatalog $value
+     */
+    public function setCatalog(Enumerations\PropertyCatalog $value)
+    {
+        $this->fields['catalog'] = $value ? $value->getValue() : Enumerations\PropertyCatalog::Unknown;
+    }
+    /**
+     * @return Enumerations\PropertyCatalog
+     */
+    public function getCatalog()
+    {
+        return new Enumerations\PropertyCatalog($this->fields['catalog']);
+    }
+
+    /**
      * @param Enumerations\RealEstateMedia $value
      */
     public function setMedia(Enumerations\RealEstateMedia $value)
@@ -249,6 +284,66 @@ class Property extends BmbyhoodEntity
     public function getPageLink()
     {
         return $this->fields['page_link'];
+    }
+
+    /**
+     * @param string $value
+     */
+    public function setTitle($value)
+    {
+        $this->fields['title'] = (string)$value;
+    }
+    /**
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->fields['title'];
+    }
+
+    /**
+     * @param string $value
+     */
+    public function setDescription($value)
+    {
+        $this->fields['description'] = (string)$value;
+    }
+    /**
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->fields['description'];
+    }
+
+    /**
+     * @param string $value
+     */
+    public function setLimitedDescription($value)
+    {
+        $this->fields['limited_description'] = (string)$value;
+    }
+    /**
+     * @return string
+     */
+    public function getLimitedDescription()
+    {
+        return $this->fields['limited_description'];
+    }
+
+    /**
+     * @param string $value
+     */
+    public function setAddress($value)
+    {
+        $this->fields['address'] = (string)$value;
+    }
+    /**
+     * @return string
+     */
+    public function getAddress()
+    {
+        return $this->fields['address'];
     }
 
     /**
@@ -537,6 +632,21 @@ class Property extends BmbyhoodEntity
     }
 
     /**
+     * @param float $value
+     */
+    public function setUnitPrice($value)
+    {
+        $this->fields['unit_price'] = (float)$value;
+    }
+    /**
+     * @return float
+     */
+    public function getUnitPrice()
+    {
+        return $this->fields['unit_price'];
+    }
+
+    /**
      * @param string $value
      */
     public function setContactName($value)
@@ -764,6 +874,156 @@ class Property extends BmbyhoodEntity
     /**
      * @param bool $value
      */
+    public function setHasCellar($value)
+    {
+        $this->fields['has_cellar'] = (bool)$value;
+    }
+    /**
+     * @return bool
+     */
+    public function getHasCellar()
+    {
+        return $this->fields['has_cellar'];
+    }
+
+    /**
+     * @param bool $value
+     */
+    public function setHasReligionFacility($value)
+    {
+        $this->fields['has_religion_facility'] = (bool)$value;
+    }
+    /**
+     * @return bool
+     */
+    public function getHasReligionFacility()
+    {
+        return $this->fields['has_religion_facility'];
+    }
+
+    /**
+     * @param bool $value
+     */
+    public function setCanBeExtended($value)
+    {
+        $this->fields['can_be_extended'] = (bool)$value;
+    }
+    /**
+     * @return bool
+     */
+    public function getCanBeExtended()
+    {
+        return $this->fields['can_be_extended'];
+    }
+
+    /**
+     * @param bool $value
+     */
+    public function setHasSwimmingPool($value)
+    {
+        $this->fields['has_swimming_pool'] = (bool)$value;
+    }
+    /**
+     * @return bool
+     */
+    public function getHasSwimmingPool()
+    {
+        return $this->fields['has_swimming_pool'];
+    }
+
+    /**
+     * @param bool $value
+     */
+    public function setHasJacuzzi($value)
+    {
+        $this->fields['has_jacuzzi'] = (bool)$value;
+    }
+    /**
+     * @return bool
+     */
+    public function getHasJacuzzi()
+    {
+        return $this->fields['has_jacuzzi'];
+    }
+
+    /**
+     * @param bool $value
+     */
+    public function setHasPandoor($value)
+    {
+        $this->fields['has_pandoor'] = (bool)$value;
+    }
+    /**
+     * @return bool
+     */
+    public function getHasPandoor()
+    {
+        return $this->fields['has_pandoor'];
+    }
+
+    /**
+     * @param bool $value
+     */
+    public function setHasGym($value)
+    {
+        $this->fields['has_gym'] = (bool)$value;
+    }
+    /**
+     * @return bool
+     */
+    public function getHasGym()
+    {
+        return $this->fields['has_gym'];
+    }
+
+    /**
+     * @param bool $value
+     */
+    public function setHasYard($value)
+    {
+        $this->fields['has_yard'] = (bool)$value;
+    }
+    /**
+     * @return bool
+     */
+    public function getHasYard()
+    {
+        return $this->fields['has_yard'];
+    }
+
+    /**
+     * @param bool $value
+     */
+    public function setHasParentBedroom($value)
+    {
+        $this->fields['has_parent_bedroom'] = (bool)$value;
+    }
+    /**
+     * @return bool
+     */
+    public function getHasParentBedroom()
+    {
+        return $this->fields['has_parent_bedroom'];
+    }
+
+    /**
+     * @param bool $value
+     */
+    public function setHasEventRoom($value)
+    {
+        $this->fields['has_event_room'] = (bool)$value;
+    }
+    /**
+     * @return bool
+     */
+    public function getHasEventRoom()
+    {
+        return $this->fields['has_event_room'];
+    }
+
+    /**
+     * @param bool $value
+     */
     public function setHasElevator($value)
     {
         $this->fields['has_elevator'] = (bool)$value;
@@ -774,6 +1034,21 @@ class Property extends BmbyhoodEntity
     public function getHasElevator()
     {
         return $this->fields['has_elevator'];
+    }
+
+    /**
+     * @param bool $value
+     */
+    public function setHasShabatElevator($value)
+    {
+        $this->fields['has_shabat_elevator'] = (bool)$value;
+    }
+    /**
+     * @return bool
+     */
+    public function getHasShabatElevator()
+    {
+        return $this->fields['has_shabat_elevator'];
     }
 
     /**
@@ -794,6 +1069,51 @@ class Property extends BmbyhoodEntity
     /**
      * @param bool $value
      */
+    public function setHasGuard($value)
+    {
+        $this->fields['has_guard'] = (bool)$value;
+    }
+    /**
+     * @return bool
+     */
+    public function getHasGuard()
+    {
+        return $this->fields['has_guard'];
+    }
+
+    /**
+     * @param bool $value
+     */
+    public function setHasSeparateEntrance($value)
+    {
+        $this->fields['has_separate_entrance'] = (bool)$value;
+    }
+    /**
+     * @return bool
+     */
+    public function getHasSeparateEntrance()
+    {
+        return $this->fields['has_separate_entrance'];
+    }
+
+    /**
+     * @param bool $value
+     */
+    public function setIsUnit($value)
+    {
+        $this->fields['is_unit'] = (bool)$value;
+    }
+    /**
+     * @return bool
+     */
+    public function getIsUnit()
+    {
+        return $this->fields['is_unit'];
+    }
+
+    /**
+     * @param bool $value
+     */
     public function setHasBalcony($value)
     {
         $this->fields['has_balcony'] = (bool)$value;
@@ -804,6 +1124,21 @@ class Property extends BmbyhoodEntity
     public function getHasBalcony()
     {
         return $this->fields['has_balcony'];
+    }
+
+    /**
+     * @param bool $value
+     */
+    public function setHasTeracce($value)
+    {
+        $this->fields['has_teracce'] = (bool)$value;
+    }
+    /**
+     * @return bool
+     */
+    public function getHasTeracce()
+    {
+        return $this->fields['has_teracce'];
     }
 
     /**
