@@ -8,27 +8,23 @@ class Customer extends BmbyhoodEntity
     public function __construct()
     {
         $this->fields = [
-            'customer_id' => 0,
+            'customer_id' => '',
             'customer_bmby_id' => 0,
-            'first_name' => '',
-            'last_name' => '',
-            'email' => '',
-            'mobile' => '',
-            'creation_time' => '',
-            'last_update_time' => '',
-            'attributes' => []
+            'agency_id' => '',
+            'contact_id' => '',
+            'attributes' => null
         ];
     }
 
     /**
-     * @param int $value
+     * @param string $value
      */
     public function setCustomerId($value)
     {
-        $this->fields['customer_id'] = (int)$value;
+        $this->fields['customer_id'] = (string)$value;
     }
     /**
-     * @return int
+     * @return string
      */
     public function getCustomerId()
     {
@@ -53,61 +49,31 @@ class Customer extends BmbyhoodEntity
     /**
      * @param string $value
      */
-    public function setLastName($value)
+    public function setAgencyId($value)
     {
-        $this->fields['first_name'] = (string)$value;
+        $this->fields['agency_id'] = (string)$value;
     }
     /**
      * @return string
      */
-    public function getLastName()
+    public function getAgencyId()
     {
-        return $this->fields['first_name'];
+        return $this->fields['agency_id'];
     }
 
     /**
      * @param string $value
      */
-    public function setFirstName($value)
+    public function setContactId($value)
     {
-        $this->fields['last_name'] = (string)$value;
+        $this->fields['contact_id'] = (string)$value;
     }
     /**
      * @return string
      */
-    public function getFirstName()
+    public function getContactId()
     {
-        return $this->fields['last_name'];
-    }
-
-    /**
-     * @param string $value
-     */
-    public function setEmail($value)
-    {
-        $this->fields['email'] = (string)$value;
-    }
-    /**
-     * @return string
-     */
-    public function getEmail()
-    {
-        return $this->fields['email'];
-    }
-
-    /**
-     * @param string $value
-     */
-    public function setMobile($value)
-    {
-        $this->fields['mobile'] = (string)$value;
-    }
-    /**
-     * @return string
-     */
-    public function getMobile()
-    {
-        return $this->fields['mobile'];
+        return $this->fields['contact_id'];
     }
 
     /**

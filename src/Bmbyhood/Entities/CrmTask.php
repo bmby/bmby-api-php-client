@@ -9,7 +9,7 @@ class CrmTask extends BmbyhoodEntity
     public function __construct()
     {
         $this->fields = [
-            'crm_task_id' => 0,
+            'crm_task_id' => '',
             'crm_task_bmby_id' => 0,
             'task_type' => Enumerations\CrmTaskType::Unknown,
             'task_sub_type' => Enumerations\CrmTaskSubType::Unknown,
@@ -21,9 +21,7 @@ class CrmTask extends BmbyhoodEntity
             'status' => Enumerations\CrmTaskStatus::Unknown,
             'priority' => Enumerations\CrmTaskPriority::Unknown,
             'appointment_start_date' => 0,
-            'appointment_end_date' => 0,
-            'last_update_time' => 0,
-            'last_update_user_id' => 0
+            'appointment_end_date' => 0
         ];
     }
 
