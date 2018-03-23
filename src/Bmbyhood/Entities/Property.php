@@ -9,16 +9,17 @@ class Property extends BmbyhoodEntity
     {
         $this->fields = [
             'property_id' => 0,
-            'agency_id' => 0,
+            'agency_id' => NULL,
+            'bmby_project_id' => NULL,
             'contact_id' => '',
             'catalog' => Enumerations\PropertyCatalog::Unknown,
             'title' => '',
             'description' => '',
+            'limited_description' => '',
             'address' => '',
             'bmby_property_id' => 0,
             'bmby_owners_property_id' => 0,
             'bmby_company_id' => 0,
-            'bmby_project_id' => 0,
             'bmby_broker_id' => 0,
             'is_published' => false,
             'parser_record_id' => 0,
@@ -44,6 +45,7 @@ class Property extends BmbyhoodEntity
             'plot_area' => 0.0,
             'rent_price' => 0.0,
             'sale_price' => 0.0,
+            'unit_price' => 0.0,
             'entry_date' => '',
             'comments' => '',
             'has_air_conditioner' => false,
@@ -76,7 +78,10 @@ class Property extends BmbyhoodEntity
             'has_panorama' => false,
             'on_columns' => false,
             'published_by_agency' => false,
-            'wind_direction' => Enumerations\WindDirection::Unknown
+            'wind_direction' => Enumerations\WindDirection::Unknown,
+            'creation_time' => 0,
+            'last_update_time' => 0,
+            'external_images' => []
         ];
     }
 
@@ -96,18 +101,33 @@ class Property extends BmbyhoodEntity
     }
 
     /**
-     * @param int $value
+     * @param string $value
      */
     public function setAgencyId($value)
     {
-        $this->fields['agency_id'] = (int)$value;
+        $this->fields['agency_id'] = $value;
     }
     /**
-     * @return int
+     * @return string
      */
     public function getAgencyId()
     {
         return $this->fields['agency_id'];
+    }
+
+    /**
+     * @param int $value
+     */
+    public function setBmbyProjectId($value)
+    {
+        $this->fields['bmby_project_id'] = (int)$value;
+    }
+    /**
+     * @return int
+     */
+    public function getBmbyProjectId()
+    {
+        return $this->fields['bmby_project_id'];
     }
 
     /**
@@ -288,6 +308,21 @@ class Property extends BmbyhoodEntity
     public function getDescription()
     {
         return $this->fields['description'];
+    }
+
+    /**
+     * @param string $value
+     */
+    public function setLimitedDescription($value)
+    {
+        $this->fields['limited_description'] = (string)$value;
+    }
+    /**
+     * @return string
+     */
+    public function getLimitedDescription()
+    {
+        return $this->fields['limited_description'];
     }
 
     /**
@@ -588,6 +623,21 @@ class Property extends BmbyhoodEntity
     public function getSalePrice()
     {
         return $this->fields['sale_price'];
+    }
+
+    /**
+     * @param float $value
+     */
+    public function setUnitPrice($value)
+    {
+        $this->fields['unit_price'] = (float)$value;
+    }
+    /**
+     * @return float
+     */
+    public function getUnitPrice()
+    {
+        return $this->fields['unit_price'];
     }
 
     /**
@@ -1130,6 +1180,34 @@ class Property extends BmbyhoodEntity
         return $this->fields['last_update_time'];
     }
 
+
+    /**
+     * @param string $value
+     */
+    public function addExternalImage($value)
+    {
+        if (!$value || in_array($value, $this->fields['external_images'])) {
+            return;
+        }
+
+        $this->fields['external_images'][] = $value;
+    }
+    /**
+     * @param string $value
+     */
+    public function removeExternalImage($value)
+    {
+        if (($key = array_search((int)$value, $this->fields['external_images'])) !== false) {
+            unset($this->fields['external_images'][$key]);
+        }
+    }
+    /**
+     * @return array
+     */
+    public function getExternalImages()
+    {
+        return $this->fields['external_images'];
+    }
 }
 
 ?>
