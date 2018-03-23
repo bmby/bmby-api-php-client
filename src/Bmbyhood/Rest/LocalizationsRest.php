@@ -620,4 +620,81 @@ class LocalizationsRest  extends EntityRest
 
         return $this->response($response);
     }
+
+    /*Neighbourhood*/
+    /**
+     * List Neighbourhood
+     *
+     * @param array $params Array containing the necessary params.
+     *    $params = [
+     *      'Page'     => (int) page number. Default: 1.
+     *      'PageSize' => (int) page size. Default: 10.     *
+     *    ]
+     *
+     * @return RestResponse
+     *
+     */
+    public function listNeighbourhood($params = [])
+    {
+        $response = $this->client->get('neighbourhoods', $params);
+
+        return $this->response($response);
+    }
+
+    /**
+     * Get Neighbourhood
+     *
+     * @param int  $neighbourhoodsId
+     * @return RestResponse
+     *
+     */
+    public function getNeighbourhood($neighbourhoodsId)
+    {
+        $response = $this->client->get('neighbourhoods/'.$neighbourhoodsId, []);
+
+        return $this->response($response);
+    }
+
+    /**
+     * Update or insert Neighbourhood
+     *
+     * @param Entities\Neighbourhood $neighbourhoodsId
+     * @return RestResponse
+     *
+     */
+    public function upsertNeighbourhood(Entities\Neighbourhood $neighbourhoodsId)
+    {
+        $response = $this->client->post('neighbourhoods', $neighbourhoodsId->ToArray());
+
+        return $this->response($response);
+    }
+
+    /**
+     * Update Neighbourhood
+     *
+     * @param array $data
+     *
+     * @return RestResponse
+     *
+     */
+    public function updateNeighbourhood($data =[])
+    {
+        $response = $this->client->patch('neighbourhoods', $data);
+
+        return $this->response($response);
+    }
+
+    /**
+     * Delete Neighbourhood
+     *
+     * @param int $neighbourhoodsId
+     * @return RestResponse
+     *
+     */
+    public function deleteNeighbourhood($neighbourhoodsId)
+    {
+        $response = $this->client->delete('neighbourhoods/'.$neighbourhoodsId);
+
+        return $this->response($response);
+    }
 }
