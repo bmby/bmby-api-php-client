@@ -8,7 +8,7 @@ class MetaDictionaryTranslation extends BmbyhoodEntity
     public function __construct()
     {
         $this->fields = [
-            'key' => 0,
+            'key' => BmbyhoodEntity::EmptyGuid,
             'language_code' => '',
             'content' => ''
         ];

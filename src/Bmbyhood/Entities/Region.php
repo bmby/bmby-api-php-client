@@ -8,11 +8,17 @@ class Region extends BmbyhoodEntity
     public function __construct()
     {
         $this->fields = [
-            'region_id' => 0,
+            'region_id' => '',
             'country_code' => '',
-            'dectionary_key' => 0,
+            'dictionary_key' => BmbyhoodEntity::EmptyGuid,
+            'dictionary' => null,
             'region_bmby_id' => 0
         ];
+    }
+
+    public function setDictionary(MetaDictionary $dictionary)
+    {
+        $this->fields['dictionary'] = $dictionary->toArray();
     }
 
     /**
@@ -48,16 +54,16 @@ class Region extends BmbyhoodEntity
     /**
      * @param int $value
      */
-    public function setDectionaryKey($value)
+    public function setDictionaryKey($value)
     {
-        $this->fields['dectionary_key'] = (int)$value;
+        $this->fields['dictionary_key'] = (int)$value;
     }
     /**
      * @return int
      */
-    public function getDectionaryKey()
+    public function getDictionaryKey()
     {
-        return $this->fields['dectionary_key'];
+        return $this->fields['dictionary_key'];
     }
 
     /**

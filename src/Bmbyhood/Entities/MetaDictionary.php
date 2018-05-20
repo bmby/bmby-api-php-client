@@ -8,9 +8,24 @@ class MetaDictionary extends BmbyhoodEntity
     public function __construct()
     {
         $this->fields = [
-            'key' => 0,
-            'context' => ''
+            'key' => BmbyhoodEntity::EmptyGuid,
+            'context' => '',
+            'name' => '',
+            'translations' => []
         ];
+    }
+
+    /**
+     * @param MetaDictionaryTranslation $translation
+     */
+    public function addTranslation(MetaDictionaryTranslation $translation)
+    {
+        if (!isset($this->fields) || !is_array($this->fields))
+        {
+            $this->fields = [];
+        }
+
+        $this->fields['translations'][] = $translation->toArray();
     }
 
     /**
@@ -41,6 +56,21 @@ class MetaDictionary extends BmbyhoodEntity
     public function getContext()
     {
         return $this->fields['context'];
+    }
+
+    /**
+     * @param string $value
+     */
+    public function setName($value)
+    {
+        $this->fields['name'] = (string)$value;
+    }
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->fields['name'];
     }
 
 }

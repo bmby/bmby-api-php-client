@@ -9,6 +9,20 @@ class PropertiesRest extends EntityRest
     /**
      * Update or insert property
      *
+     * @param Entities\PropertyType $propertyType
+     * @return RestResponse
+     *
+     */
+    public function upsertPropertyType(Entities\PropertyType $propertyType)
+    {
+        $response = $this->client->post('propertytypes', $propertyType->ToArray());
+
+        return $this->response($response);
+    }
+
+    /**
+     * Update or insert property
+     *
      * @param Entities\Property $property
      * @return RestResponse
      *

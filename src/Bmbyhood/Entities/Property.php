@@ -11,6 +11,7 @@ class Property extends BmbyhoodEntity
             'property_id' => 0,
             'agency_id' => NULL,
             'bmby_project_id' => NULL,
+            'bedrooms' => 0,
             'contact_id' => '',
             'catalog' => Enumerations\PropertyCatalog::Unknown,
             'title' => '',
@@ -78,7 +79,7 @@ class Property extends BmbyhoodEntity
             'has_panorama' => false,
             'on_columns' => false,
             'published_by_agency' => false,
-            'wind_direction' => Enumerations\WindDirection::Unknown,
+            'wind_directions' => [],
             'creation_time' => 0,
             'last_update_time' => 0,
             'external_images' => []
@@ -131,18 +132,18 @@ class Property extends BmbyhoodEntity
     }
 
     /**
-     * @param int $value
+     * @param float $value
      */
-    public function setBmbyPropertyId($value)
+    public function setBedrooms($value)
     {
-        $this->fields['bmby_property_id'] = (int)$value;
+        $this->fields['bedrooms'] = (float)$value;
     }
     /**
-     * @return int
+     * @return float
      */
-    public function getBmbyPropertyId()
+    public function getBedrooms()
     {
-        return $this->fields['bmby_property_id'];
+        return $this->fields['bedrooms'];
     }
 
     /**
@@ -1138,16 +1139,29 @@ class Property extends BmbyhoodEntity
     /**
      * @param Enumerations\WindDirection $value
      */
-    public function setWindDirection(Enumerations\WindDirection $value)
+    public function addWindDirection(Enumerations\WindDirection $value)
     {
-        $this->fields['wind_direction'] = $value ? $value->getValue() : Enumerations\WindDirection::Unknown;
+        if (!$value->getValue() || in_array($value->getValue(), $this->fields['wind_directions'])) {
+            return;
+        }
+
+        $this->fields['wind_directions'][] = $value->getValue();
     }
     /**
-     * @return Enumerations\WindDirection
+     * @param Enumerations\WindDirection $value
      */
-    public function getWindDirection()
+    public function removeWindDirection(Enumerations\WindDirection $value)
     {
-        return new Enumerations\WindDirection($this->fields['wind_direction']);
+        if (($key = array_search($value->getValue(), $this->fields['wind_directions'])) !== false) {
+            unset($this->fields['wind_directions'][$key]);
+        }
+    }
+    /**
+     * @return array
+     */
+    public function getWindDirectiones()
+    {
+        return $this->fields['wind_directions'];
     }
 
     /**

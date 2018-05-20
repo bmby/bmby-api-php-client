@@ -8,11 +8,17 @@ class Street extends BmbyhoodEntity
     public function __construct()
     {
         $this->fields = [
-            'street_id' => 0,
-            'city_id' => 0,
-            'dectionary_key' => 0,
+            'street_id' => '',
+            'city_id' => '',
+            'dictionary_key' => BmbyhoodEntity::EmptyGuid,
+            'dictionary' => null,
             'street_bmby_id' => 0
         ];
+    }
+
+    public function setDictionary(MetaDictionary $dictionary)
+    {
+        $this->fields['dictionary'] = $dictionary->toArray();
     }
 
     /**
@@ -20,7 +26,7 @@ class Street extends BmbyhoodEntity
      */
     public function setStreetId($value)
     {
-        $this->fields['street_id'] = (int)$value;
+        $this->fields['street_id'] = $value;
     }
     /**
      * @return int
@@ -35,7 +41,7 @@ class Street extends BmbyhoodEntity
      */
     public function setCityId($value)
     {
-        $this->fields['city_id'] = (int)$value;
+        $this->fields['city_id'] = $value;
     }
     /**
      * @return int
@@ -48,16 +54,16 @@ class Street extends BmbyhoodEntity
      /**
      * @param int $value
      */
-    public function setDectionaryKey($value)
+    public function setDictionaryKey($value)
     {
-        $this->fields['dectionary_key'] = (int)$value;
+        $this->fields['dictionary_key'] = (int)$value;
     }
     /**
      * @return int
      */
-    public function getDectionaryKey()
+    public function getDictionaryKey()
     {
-        return $this->fields['dectionary_key'];
+        return $this->fields['dictionary_key'];
     }
 
     /**

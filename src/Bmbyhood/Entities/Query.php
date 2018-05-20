@@ -10,7 +10,7 @@ class Query extends BmbyhoodEntity
         $this->fields = [
             'query_id' => '',
             'user_id' => 0,
-            'agency_id' => 0,
+            'agency_id' => '',
             'min_rooms' => NULL,
             'max_rooms' => NULL,
             'min_floor' => NULL,
@@ -31,12 +31,12 @@ class Query extends BmbyhoodEntity
             'has_furniture' => NULL,
             'has_access_to_disabled' => NULL,
             'is_active' => NULL,
-            'deal_types' => array(),
-            'zones' => array(),
-            'cities' => array(),
-            'neighbourhoods' => array(),
-            'streets' => array(),
-            'property_types' => array()
+            'deal_types' => [],
+            'regions' => [],
+            'cities' => [],
+            'neighbourhoods' => [],
+            'streets' => [],
+            'property_types' => []
         ];
     }
 
@@ -403,19 +403,19 @@ class Query extends BmbyhoodEntity
      */
     public function addZone($value)
     {
-        if (!(int)$value || in_array((int)$value, $this->fields['zones'])) {
+        if (!(int)$value || in_array((int)$value, $this->fields['regions'])) {
             return;
         }
 
-        $this->fields['zones'][] = (int)$value;
+        $this->fields['regions'][] = (int)$value;
     }
     /**
      * @param int $value
      */
     public function removeZone($value)
     {
-        if (($key = array_search((int)$value, $this->fields['zones'])) !== false) {
-            unset($this->fields['zones'][$key]);
+        if (($key = array_search((int)$value, $this->fields['regions'])) !== false) {
+            unset($this->fields['regions'][$key]);
         }
     }
     /**
@@ -423,7 +423,7 @@ class Query extends BmbyhoodEntity
      */
     public function getZones()
     {
-        return $this->fields['zones'];
+        return $this->fields['regions'];
     }
 
     /**
