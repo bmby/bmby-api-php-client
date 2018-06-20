@@ -9,16 +9,23 @@ class Property extends BmbyhoodEntity
     {
         $this->fields = [
             'property_id' => 0,
+            'sku' => '',
+            'lat' => NULL,
+            'lon' => NULL,
             'agency_id' => NULL,
+            'property_type_id' => NULL,
             'bmby_project_id' => NULL,
             'bedrooms' => 0,
             'contact_id' => '',
+            'contact' => NULL,
             'catalog' => Enumerations\PropertyCatalog::Unknown,
             'title' => '',
+            'display_title' => '',
             'description' => '',
             'limited_description' => '',
             'address' => '',
             'bmby_property_id' => 0,
+            'bmby_property_type_id' => 0,
             'bmby_owners_property_id' => 0,
             'bmby_company_id' => 0,
             'bmby_broker_id' => 0,
@@ -33,17 +40,29 @@ class Property extends BmbyhoodEntity
             'can_be_rented_with_roommate' => false,
             'roommate_gender' => Enumerations\RoommateGender::Unknown,
             'rommate_can_smoke' => false,
-            'zone_id' => 0,
-            'city_id' => 0,
-            'neighbourhood_id' => 0,
-            'street_id' => 0,
+            'region_id' => '',
+            'city_id' => '',
+            'neighbourhood_id' => '',
+            'street_id' => '',
+            'bmby_region_id' => 0,
+            'bmby_city_id' => 0,
+            'bmby_neighbourhood_id' => 0,
+            'bmby_street_id' => 0,
             'house_number' => '',
             'property_type' => 0,
+            'bathrooms' => NULL,
+            'toilets' => NULL,
+            'parkings' => NULL,
+            'parking_type' => 0,
+            'condition' => 0,
+            'number_of_steps' => 0,
             'floor' => 0,
             'floors' => 0,
             'rooms' => 0.0,
             'area' => 0.0,
             'plot_area' => 0.0,
+            'balcony_area' => 0.0,
+            'cellar_area' => 0.0,
             'rent_price' => 0.0,
             'sale_price' => 0.0,
             'unit_price' => 0.0,
@@ -284,6 +303,36 @@ class Property extends BmbyhoodEntity
     /**
      * @param string $value
      */
+    public function setSku($value)
+    {
+        $this->fields['sku'] = (string)$value;
+    }
+    /**
+     * @return string
+     */
+    public function getSku()
+    {
+        return $this->fields['sku'];
+    }
+
+    /**
+     * @param string $value
+     */
+    public function setPropertyTypeId($value)
+    {
+        $this->fields['property_type_id'] = (string)$value;
+    }
+    /**
+     * @return string
+     */
+    public function getPropertyTypeId()
+    {
+        return $this->fields['property_type_id'];
+    }
+
+    /**
+     * @param string $value
+     */
     public function setTitle($value)
     {
         $this->fields['title'] = (string)$value;
@@ -294,6 +343,31 @@ class Property extends BmbyhoodEntity
     public function getTitle()
     {
         return $this->fields['title'];
+    }
+
+    /**
+     * @param Contact $value
+     */
+    public function setContact(Contact $value)
+    {
+        $this->fields['contact'] = $value->toArray();
+    }
+    /**
+     * @return Contact
+     */
+    public function geContact()
+    {
+        $contact = new Contact();
+        $contact->setData($this->fields);
+        return $contact;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDisplayTitle()
+    {
+        return $this->fields['display_title'];
     }
 
     /**
@@ -432,29 +506,44 @@ class Property extends BmbyhoodEntity
     }
 
     /**
-     * @param int $value
+     * @param string $value
      */
-    public function setZoneId($value)
+    public function setRegionId($value)
     {
-        $this->fields['zone_id'] = (int)$value;
+        $this->fields['region_id'] = $value;
     }
     /**
-     * @return int
+     * @return string
      */
-    public function getZoneId()
+    public function getRegionId()
     {
-        return $this->fields['zone_id'];
+        return $this->fields['region_id'];
     }
 
     /**
      * @param int $value
      */
-    public function setCityId($value)
+    public function setBmbyRegionId($value)
     {
-        $this->fields['city_id'] = (int)$value;
+        $this->fields['bmby_region_id'] = (int)$value;
     }
     /**
      * @return int
+     */
+    public function getBmbyRegionId()
+    {
+        return $this->fields['bmby_region_id'];
+    }
+
+    /**
+     * @param string $value
+     */
+    public function setCityId($value)
+    {
+        $this->fields['city_id'] = $value;
+    }
+    /**
+     * @return string
      */
     public function getCityId()
     {
@@ -464,12 +553,27 @@ class Property extends BmbyhoodEntity
     /**
      * @param int $value
      */
-    public function setNeighbourhoodId($value)
+    public function setBmbyCityId($value)
     {
-        $this->fields['neighbourhood_id'] = (int)$value;
+        $this->fields['bmby_city_id'] = (int)$value;
     }
     /**
      * @return int
+     */
+    public function getBmbyCityId()
+    {
+        return $this->fields['bmby_city_id'];
+    }
+
+    /**
+     * @param string $value
+     */
+    public function setNeighbourhoodId($value)
+    {
+        $this->fields['neighbourhood_id'] = $value;
+    }
+    /**
+     * @return string
      */
     public function getNeighbourhoodId()
     {
@@ -479,16 +583,61 @@ class Property extends BmbyhoodEntity
     /**
      * @param int $value
      */
-    public function setStreetId($value)
+    public function setBmbyNeighbourhoodId($value)
     {
-        $this->fields['street_id'] = (int)$value;
+        $this->fields['bmby_neighbourhood_id'] = (int)$value;
     }
     /**
      * @return int
      */
+    public function getBmbyNeighbourhoodId()
+    {
+        return $this->fields['bmby_neighbourhood_id'];
+    }
+
+    /**
+     * @param string $value
+     */
+    public function setStreetId($value)
+    {
+        $this->fields['street_id'] = $value;
+    }
+    /**
+     * @return string
+     */
     public function getStreetId()
     {
         return $this->fields['street_id'];
+    }
+
+    /**
+     * @param int $value
+     */
+    public function setBmbyStreetId($value)
+    {
+        $this->fields['bmby_street_id'] = (int)$value;
+    }
+    /**
+     * @return int
+     */
+    public function getBmbyStreetId()
+    {
+        return $this->fields['bmby_street_id'];
+    }
+
+    /**
+     * @param int $value
+     */
+    public function setBmbyPropertyTypeId($value)
+    {
+        $this->fields['bmby_property_type_id'] = (int)$value;
+    }
+    /**
+     * @return int
+     */
+    public function getBmbyPropertyTypeId()
+    {
+        return $this->fields['bmby_property_type_id'];
     }
 
     /**

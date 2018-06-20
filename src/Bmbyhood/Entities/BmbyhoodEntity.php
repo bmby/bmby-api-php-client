@@ -16,6 +16,19 @@ abstract class BmbyhoodEntity
         return $this->fields;
     }
 
+    public function setData($data)
+    {
+        if (!is_array($data)) {
+            return;
+        }
+
+        foreach ($data as $key => $value) {
+            if (array_key_exists($key, $this->fields)) {
+                $this->fields[$key] = $value;
+            }
+        }
+    }
+
     protected $fields = [];
 
     const EmptyGuid = '00000000-0000-0000-0000-000000000000';
