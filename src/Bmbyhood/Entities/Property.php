@@ -8,8 +8,8 @@ class Property extends BmbyhoodEntity
     public function __construct()
     {
         $this->fields = [
-            'property_id' => 0,
-            'sku' => '',
+            'property_id' => '',
+            'sku' => 0,
             'lat' => NULL,
             'lon' => NULL,
             'agency_id' => NULL,
@@ -22,6 +22,7 @@ class Property extends BmbyhoodEntity
             'title' => '',
             'display_title' => '',
             'description' => '',
+            'publish_date' => '',
             'limited_description' => '',
             'address' => '',
             'bmby_property_id' => 0,
@@ -49,7 +50,7 @@ class Property extends BmbyhoodEntity
             'bmby_neighbourhood_id' => 0,
             'bmby_street_id' => 0,
             'house_number' => '',
-            'property_type' => 0,
+            'property_type' => NULL,
             'bathrooms' => NULL,
             'toilets' => NULL,
             'parkings' => NULL,
@@ -63,10 +64,9 @@ class Property extends BmbyhoodEntity
             'plot_area' => 0.0,
             'balcony_area' => 0.0,
             'cellar_area' => 0.0,
-            'rent_price' => 0.0,
-            'sale_price' => 0.0,
+            'price' => 0.0,
             'unit_price' => 0.0,
-            'entry_date' => '',
+            'entry_date' => NULL,
             'comments' => '',
             'has_air_conditioner' => false,
             'has_window_bars' => false,
@@ -99,8 +99,8 @@ class Property extends BmbyhoodEntity
             'on_columns' => false,
             'published_by_agency' => false,
             'wind_directions' => [],
-            'creation_time' => 0,
-            'last_update_time' => 0,
+            'creation_time' => NULL,
+            'last_update_time' => NULL,
             'external_images' => []
         ];
     }
@@ -260,14 +260,14 @@ class Property extends BmbyhoodEntity
      */
     public function setMedia(Enumerations\RealEstateMedia $value)
     {
-        $this->fields['parser_record_id'] = $value ? $value->getValue() : Enumerations\RealEstateMedia::Unknown;
+        $this->fields['media'] = $value ? $value->getValue() : Enumerations\RealEstateMedia::Unknown;
     }
     /**
      * @return Enumerations\RealEstateMedia
      */
     public function getMedia()
     {
-        return new Enumerations\RealEstateMedia($this->fields['parser_record_id']);
+        return new Enumerations\RealEstateMedia($this->fields['media']);
     }
 
     /**
@@ -748,31 +748,16 @@ class Property extends BmbyhoodEntity
     /**
      * @param float $value
      */
-    public function setRentPrice($value)
+    public function setPrice($value)
     {
-        $this->fields['rent_price'] = (float)$value;
+        $this->fields['price'] = (float)$value;
     }
     /**
      * @return float
      */
-    public function getRentPrice()
+    public function getPrice()
     {
-        return $this->fields['rent_price'];
-    }
-
-    /**
-     * @param float $value
-     */
-    public function setSalePrice($value)
-    {
-        $this->fields['sale_price'] = (float)$value;
-    }
-    /**
-     * @return float
-     */
-    public function getSalePrice()
-    {
-        return $this->fields['sale_price'];
+        return $this->fields['price'];
     }
 
     /**
@@ -818,6 +803,21 @@ class Property extends BmbyhoodEntity
     public function getEntryDate()
     {
         return $this->fields['entry_date'];
+    }
+
+    /**
+     * @param string $value format: yyyy-mm-dd hh:mm:ss
+     */
+    public function setPublishDate($value)
+    {
+        $this->fields['publish_date'] = (string)$value;
+    }
+    /**
+     * @return string
+     */
+    public function getPublishDate()
+    {
+        return $this->fields['publish_date'];
     }
 
     /**

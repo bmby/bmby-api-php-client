@@ -127,7 +127,7 @@ class BmbyhoodClient
         ]);
     }
 
-    private function request($method, $uri, $data, $files = [])
+    private function request($method, $uri, $data, $files = [], $dataField = 'metaData')
     {
         $this->checkToken();
 
@@ -141,13 +141,22 @@ class BmbyhoodClient
         elseif ($files) {
             $params['multipart'] = [
                 [
-                    'name' => 'metaData',
+                    'name' => $dataField,
                     'contents' => GuzzleHttp\json_encode($data)
                 ]
             ];
 
             foreach ($files as $field => $fileList) {
-                if (count($fileList) == 1) {
+                if (!is_array($fileList)) {
+                    if (!$fileList) {
+                        continue;
+                    }
+
+                    $params['multipart'][] = [
+                        'name' => $field,
+                        'contents' => \fopen($fileList, 'r')
+                    ];
+                } elseif (count($fileList) == 1) {
                     $params['multipart'][] = [
                         'name' => $field,
                         'contents' => \fopen($fileList[0], 'r')

@@ -16,6 +16,16 @@ abstract class BmbyhoodEntity
         return $this->fields;
     }
 
+    public function getFiles()
+    {
+        return $this->files;
+    }
+
+    public function hasFiles()
+    {
+        return !empty($this->files);
+    }
+
     public function setData($data)
     {
         if (!is_array($data)) {
@@ -30,6 +40,8 @@ abstract class BmbyhoodEntity
     }
 
     protected $fields = [];
+    protected $files = [];
+    protected $dataField = 'data';
 
     const EmptyGuid = '00000000-0000-0000-0000-000000000000';
 }
