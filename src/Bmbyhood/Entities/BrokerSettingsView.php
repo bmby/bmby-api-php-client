@@ -1,7 +1,7 @@
 <?php
 namespace Bmbyhood\Entities;
 
-class BmbyBrokerSettingsView extends BmbyhoodEntity
+class BrokerSettingsView extends BmbyhoodEntity
 {
     public function __construct()
     {

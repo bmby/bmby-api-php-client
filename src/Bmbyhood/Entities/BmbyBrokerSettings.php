@@ -10,6 +10,10 @@ class BmbyBrokerSettings extends BmbyhoodEntity
             'user_id' => 0,
             'first_name' => '',
             'last_name' => '',
+            'description' => '',
+            'facebook_page' => '',
+            'linkedln_page' => '',
+            'googleplus_page' => '',
             'email' => '',
             'mobile' => '',
             'website' => '',
@@ -62,6 +66,66 @@ class BmbyBrokerSettings extends BmbyhoodEntity
     }
 
     /**
+     * @param string $value
+     */
+    public function setFacebookPage($value)
+    {
+        $this->fields['facebook_page'] = (string)$value;
+    }
+    /**
+     * @return string
+     */
+    public function getFacebookPage()
+    {
+        return $this->fields['facebook_page'];
+    }
+
+    /**
+     * @param string $value
+     */
+    public function setLinkedInPage($value)
+    {
+        $this->fields['linkedln_page'] = (string)$value;
+    }
+    /**
+     * @return string
+     */
+    public function getLinkedInPage()
+    {
+        return $this->fields['linkedln_page'];
+    }
+
+    /**
+     * @param string $value
+     */
+    public function setGooglePlusPage($value)
+    {
+        $this->fields['googleplus_page'] = (string)$value;
+    }
+    /**
+     * @return string
+     */
+    public function getGooglePlusPage()
+    {
+        return $this->fields['googleplus_page'];
+    }
+
+    /**
+     * @param string $value
+     */
+    public function setDescription($value)
+    {
+        $this->fields['description'] = (string)$value;
+    }
+    /**
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->fields['description'];
+    }
+
+    /**
      * @param int $value
      */
     public function setNumberOfAutomatedOffers($value)
@@ -77,14 +141,14 @@ class BmbyBrokerSettings extends BmbyhoodEntity
     }
 
     /**
-     * @param string $value
+     * @param int $value
      */
     public function setLocalizationId($value)
     {
-        $this->fields['localization_id'] = (string)$value;
+        $this->fields['localization_id'] = (int)$value;
     }
     /**
-     * @return string
+     * @return int
      */
     public function getLocalizationId()
     {
