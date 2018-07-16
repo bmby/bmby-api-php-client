@@ -14,6 +14,9 @@ class BmbyBrokerSettings extends BmbyhoodEntity
             'facebook_page' => '',
             'linkedln_page' => '',
             'googleplus_page' => '',
+            'youtube_channel' => '',
+            'instagram_page' => '',
+            'address' => '',
             'email' => '',
             'mobile' => '',
             'website' => '',
@@ -63,6 +66,51 @@ class BmbyBrokerSettings extends BmbyhoodEntity
     public function getUserId()
     {
         return $this->fields['user_id'];
+    }
+
+    /**
+     * @param string $value
+     */
+    public function setAddress($value)
+    {
+        $this->fields['address'] = (string)$value;
+    }
+    /**
+     * @return string
+     */
+    public function getAddress()
+    {
+        return $this->fields['address'];
+    }
+
+    /**
+     * @param string $value
+     */
+    public function setInstagramPage($value)
+    {
+        $this->fields['instagram_page'] = (string)$value;
+    }
+    /**
+     * @return string
+     */
+    public function getInstagramPage()
+    {
+        return $this->fields['instagram_page'];
+    }
+
+    /**
+     * @param string $value
+     */
+    public function setYoutubeChannel($value)
+    {
+        $this->fields['youtube_channel'] = (string)$value;
+    }
+    /**
+     * @return string
+     */
+    public function getYoutubeChannel()
+    {
+        return $this->fields['youtube_channel'];
     }
 
     /**
