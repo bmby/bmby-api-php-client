@@ -19,11 +19,16 @@ class BmbyBrokerSettings extends BmbyhoodEntity
             'address' => '',
             'email' => '',
             'mobile' => '',
+            'phone' => '',
+            'delete_logo_image' => false,
+            'delete_banner_image' => false,
+            'delete_avatar_image' => false,
+            'delete_cover_image' => false,
             'website' => '',
             'broker_license' => '',
             'color' => '',
             'banner_url' => '',
-            'number_of_automated_offers' => '',
+            'number_of_automated_offers' => 0,
             'logo_image_url' => NULL,
             'banner_image_url' => NULL,
             'avatar_image_url' => NULL,
@@ -36,6 +41,66 @@ class BmbyBrokerSettings extends BmbyhoodEntity
             'avatar' => NULL,
             'cover' => NULL
         ];
+    }
+
+    /**
+     * @param bool $value
+     */
+    public function setDeleteCoverImage($value)
+    {
+        $this->fields['delete_cover_image'] = (bool)$value;
+    }
+    /**
+     * @return bool
+     */
+    public function getDeleteCoverImage()
+    {
+        return $this->fields['delete_cover_image'];
+    }
+
+    /**
+     * @param bool $value
+     */
+    public function setDeleteAvatarImage($value)
+    {
+        $this->fields['delete_avatar_image'] = (bool)$value;
+    }
+    /**
+     * @return bool
+     */
+    public function getDeleteAvatarImage()
+    {
+        return $this->fields['delete_avatar_image'];
+    }
+
+    /**
+     * @param bool $value
+     */
+    public function setDeleteBannerImage($value)
+    {
+        $this->fields['delete_avatar_image'] = (bool)$value;
+    }
+    /**
+     * @return bool
+     */
+    public function getDeleteBannerImage()
+    {
+        return $this->fields['delete_avatar_image'];
+    }
+
+    /**
+     * @param bool $value
+     */
+    public function setDeleteLogoImage($value)
+    {
+        $this->fields['delete_logo_image'] = (bool)$value;
+    }
+    /**
+     * @return bool
+     */
+    public function getDeleteLogoImage()
+    {
+        return $this->fields['delete_logo_image'];
     }
 
     /**
@@ -276,6 +341,21 @@ class BmbyBrokerSettings extends BmbyhoodEntity
     public function getMobile()
     {
         return $this->fields['mobile'];
+    }
+
+    /**
+     * @param string $value
+     */
+    public function setPhone($value)
+    {
+        $this->fields['phone'] = (string)$value;
+    }
+    /**
+     * @return string
+     */
+    public function getPhone()
+    {
+        return $this->fields['phone'];
     }
 
     /**
