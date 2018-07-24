@@ -8,13 +8,37 @@ class BmbySyncRest extends EntityRest
     /**
      * Update or insert repository property
      *
+     * @param Entities\Property[] $properties
+     * @return RestResponse
+     * @throws \Exception
+     */
+    public function postRepositoryProperties($properties)
+    {
+        if (!is_array($properties)) {
+            throw new \Exception('The argument should be array of Entities\Property');
+        }
+
+        $data = [];
+
+        foreach ($properties as $property) {
+            $data[] = $property->toArray();
+        }
+
+        $response = $this->client->post('bmbysync/repositoryproperty', $data);
+
+        return $this->response($response);
+    }
+
+    /**
+     * Update or insert repository property
+     *
      * @param Entities\Property $property
      * @return RestResponse
      *
      */
     public function postRepositoryProperty(Entities\Property $property)
     {
-        $response = $this->client->post('bmbysync/repositoryproperty', $property->ToArray());
+        $response = $this->client->post('bmbysync/repositoryproperties', $property->ToArray());
 
         return $this->response($response);
     }
