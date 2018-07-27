@@ -1,8 +1,6 @@
 <?php
 namespace Bmbyhood\Entities;
 
-use Bmbyhood\Enumerations as Enumerations;
-
 class Customer extends BmbyhoodEntity
 {
     public function __construct()
@@ -10,8 +8,10 @@ class Customer extends BmbyhoodEntity
         $this->fields = [
             'customer_id' => '',
             'customer_bmby_id' => 0,
+            'bmby_project_id' => 0,
             'agency_id' => '',
             'contact_id' => '',
+            'contact' => '',
             'attributes' => null
         ];
     }
@@ -44,6 +44,21 @@ class Customer extends BmbyhoodEntity
     public function getCustomerBmbyId()
     {
         return $this->fields['customer_bmby_id'];
+    }
+
+    /**
+     * @param int $value
+     */
+    public function setBmbyProjectId($value)
+    {
+        $this->fields['bmby_project_id'] = (int)$value;
+    }
+    /**
+     * @return int
+     */
+    public function getBmbyProjectId()
+    {
+        return $this->fields['bmby_project_id'];
     }
 
     /**
@@ -106,4 +121,20 @@ class Customer extends BmbyhoodEntity
         return $this->fields['last_update_time'];
     }
 
+    /**
+     * @param Contact $value
+     */
+    public function setContact(Contact $value)
+    {
+        $this->fields['contact'] = $value->toArray();
+    }
+    /**
+     * @return Contact
+     */
+    public function geContact()
+    {
+        $contact = new Contact();
+        $contact->setData($this->fields);
+        return $contact;
+    }
 }

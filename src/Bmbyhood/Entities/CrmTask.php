@@ -11,6 +11,7 @@ class CrmTask extends BmbyhoodEntity
         $this->fields = [
             'crm_task_id' => '',
             'crm_task_bmby_id' => 0,
+            'bmby_project_id' => NULL,
             'task_type' => Enumerations\CrmTaskType::Unknown,
             'task_sub_type' => Enumerations\CrmTaskSubType::Unknown,
             'agency_id' => 0,
@@ -53,6 +54,21 @@ class CrmTask extends BmbyhoodEntity
     public function getCrmTaskBmbyId()
     {
         return $this->fields['crm_task_bmby_id'];
+    }
+
+    /**
+     * @param int $value
+     */
+    public function setBmbyProjectId($value)
+    {
+        $this->fields['bmby_project_id'] = (int)$value;
+    }
+    /**
+     * @return int
+     */
+    public function getBmbyProjectId()
+    {
+        return $this->fields['bmby_project_id'];
     }
 
     /**
