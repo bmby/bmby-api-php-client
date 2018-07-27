@@ -58,6 +58,32 @@ class BmbySyncRest extends EntityRest
     }
 
     /**
+     * Update or insert customer
+     *
+     * @param Entities\Customer $customer
+     * @return RestResponse
+     */
+    public function postCustomer(Entities\Customer $customer)
+    {
+        $response = $this->client->post('bmbysync/customer', $customer->ToArray());
+
+        return $this->response($response);
+    }
+
+    /**
+     * Update or insert CRM Task
+     *
+     * @param Entities\CrmTask $crmTask
+     * @return RestResponse
+     */
+    public function postCrmTask(Entities\CrmTask $crmTask)
+    {
+        $response = $this->client->post('bmbysync/crmtask', $crmTask->ToArray());
+
+        return $this->response($response);
+    }
+
+    /**
      * Update or insert agency broker from bmby
      *
      * @param Entities\BmbyBroker $broker
