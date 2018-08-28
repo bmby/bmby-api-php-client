@@ -3,7 +3,6 @@ namespace Bmbyhood\Entities;
 
 use Bmbyhood\Enumerations as Enumerations;
 
-
 class CrmTask extends BmbyhoodEntity
 {
     public function __construct()
@@ -11,18 +10,22 @@ class CrmTask extends BmbyhoodEntity
         $this->fields = [
             'crm_task_id' => '',
             'crm_task_bmby_id' => 0,
+            'client_bmby_id' => 0,
+            'owner_bmby_id' => 0,
             'bmby_project_id' => NULL,
             'task_type' => Enumerations\CrmTaskType::Unknown,
             'task_sub_type' => Enumerations\CrmTaskSubType::Unknown,
-            'agency_id' => 0,
+            'agency_id' => '',
+            'user_id' => 0,
             'is_private' => false,
             'subject' => '',
             'message' => '',
             'location' => '',
             'status' => Enumerations\CrmTaskStatus::Unknown,
             'priority' => Enumerations\CrmTaskPriority::Unknown,
-            'appointment_start_date' => 0,
-            'appointment_end_date' => 0
+            'task_date' => NULL,
+            'meeting_start_date' => NULL,
+            'meeting_end_date' => NULL
         ];
     }
 
@@ -44,6 +47,21 @@ class CrmTask extends BmbyhoodEntity
     /**
      * @param int $value
      */
+    public function setUserId($value)
+    {
+        $this->fields['user_id'] = (int)$value;
+    }
+    /**
+     * @return int
+     */
+    public function getUserId()
+    {
+        return $this->fields['user_id'];
+    }
+
+    /**
+     * @param int $value
+     */
     public function setCrmTaskBmbyId($value)
     {
         $this->fields['crm_task_bmby_id'] = (int)$value;
@@ -54,6 +72,36 @@ class CrmTask extends BmbyhoodEntity
     public function getCrmTaskBmbyId()
     {
         return $this->fields['crm_task_bmby_id'];
+    }
+
+    /**
+     * @param int $value
+     */
+    public function setClientBmbyId($value)
+    {
+        $this->fields['client_bmby_id'] = (int)$value;
+    }
+    /**
+     * @return int
+     */
+    public function getClientBmbyId()
+    {
+        return $this->fields['client_bmby_id'];
+    }
+
+    /**
+     * @param int $value
+     */
+    public function setOwnerBmbyId($value)
+    {
+        $this->fields['owner_bmby_id'] = (int)$value;
+    }
+    /**
+     * @return int
+     */
+    public function getOwnerBmbyId()
+    {
+        return $this->fields['owner_bmby_id'];
     }
 
     /**
@@ -87,6 +135,21 @@ class CrmTask extends BmbyhoodEntity
     }
 
     /**
+     * @param Enumerations\CrmTaskPriority $value
+     */
+    public function setPriority(Enumerations\CrmTaskPriority $value)
+    {
+        $this->fields['priority'] = $value ? $value->getValue() : Enumerations\CrmTaskPriority::Unknown;
+    }
+    /**
+     * @return Enumerations\CrmTaskPriority
+     */
+    public function getPriority()
+    {
+        return new Enumerations\CrmTaskPriority($this->fields['priority']);
+    }
+
+    /**
      * @param Enumerations\CrmTaskSubType $value
      */
     public function setTaskSubType(Enumerations\CrmTaskSubType $value)
@@ -102,11 +165,11 @@ class CrmTask extends BmbyhoodEntity
     }
 
     /**
-     * @param int $value
+     * @param string $value
      */
     public function setAgencyId($value)
     {
-        $this->fields['agency_id'] = (int)$value;
+        $this->fields['agency_id'] = (string)$value;
     }
     /**
      * @return int
@@ -191,6 +254,48 @@ class CrmTask extends BmbyhoodEntity
         return new Enumerations\CrmTaskStatus($this->fields['status']);
     }
 
+    /**
+     * @param string $value
+     */
+    public function setTaskDate($value)
+    {
+        $this->fields['task_date'] = (string)$value;
+    }
+    /**
+     * @return string
+     */
+    public function getTaskDate()
+    {
+        return $this->fields['task_date'];
+    }
 
+    /**
+     * @param string $value
+     */
+    public function setMeetingStartDate($value)
+    {
+        $this->fields['meeting_start_date'] = (string)$value;
+    }
+    /**
+     * @return string
+     */
+    public function getMeetingStartDate()
+    {
+        return $this->fields['meeting_start_date'];
+    }
 
+    /**
+     * @param string $value
+     */
+    public function setMeetingEndDate($value)
+    {
+        $this->fields['meeting_end_date'] = (string)$value;
+    }
+    /**
+     * @return string
+     */
+    public function getMeetingEndDate()
+    {
+        return $this->fields['meeting_end_date'];
+    }
 }

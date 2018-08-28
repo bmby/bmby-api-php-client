@@ -47,24 +47,6 @@ class PropertiesRest extends EntityRest
 
         return $this->response($response);
     }
-
-    /**
-     * Sync parser record properties (only for BMBY internal use)
-     */
-    public function syncParserRecordProperties()
-    {
-        $this->client->post('syncproperties', []);
-    }
-
-    /**
-     * Sync agency properties (only for BMBY internal use)
-     *
-     * @param string $agencyId
-     */
-    public function syncAgencyProperties($agencyId)
-    {
-        $this->client->post('syncproperties', [ 'agencyId' => $agencyId ]);
-    }
 }
 
 ?>

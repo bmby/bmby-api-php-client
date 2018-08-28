@@ -6,7 +6,7 @@ use Bmbyhood\Entities;
 class BmbySyncRest extends EntityRest
 {
     /**
-     * Update or insert repository property
+     * Update or insert repository properties
      *
      * @param Entities\Property[] $properties
      * @return RestResponse
@@ -24,7 +24,7 @@ class BmbySyncRest extends EntityRest
             $data[] = $property->toArray();
         }
 
-        $response = $this->client->post('bmbysync/repositoryproperty', $data);
+        $response = $this->client->post('bmbysync/repositoryproperties', $data);
 
         return $this->response($response);
     }
@@ -38,7 +38,7 @@ class BmbySyncRest extends EntityRest
      */
     public function postRepositoryProperty(Entities\Property $property)
     {
-        $response = $this->client->post('bmbysync/repositoryproperties', $property->ToArray());
+        $response = $this->client->post('bmbysync/repositoryproperty', $property->ToArray());
 
         return $this->response($response);
     }
