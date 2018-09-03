@@ -11,7 +11,8 @@ class FileMeta extends BmbyhoodEntity
             'meta_data' => [
                 'file_access' => 0,
                 'entity_id' => '',
-                'folder' => ''
+                'folder' => '',
+                'file_name' => ''
             ],
             'file' => ''
         ];
@@ -80,5 +81,20 @@ class FileMeta extends BmbyhoodEntity
     public function getFilePath()
     {
         return $this->fields['file'];
+    }
+
+    /**
+     * @param string $value
+     */
+    public function setFileName($value)
+    {
+        $this->fields['meta_data']['file_name'] = $value;
+    }
+    /**
+     * @return string
+     */
+    public function getFileName()
+    {
+        return $this->fields['meta_data']['file_name'];
     }
 }

@@ -14,7 +14,8 @@ class ImageMeta extends BmbyhoodEntity
                 'small_image_size' => [ 'width' => 0, 'height' => 0],
                 'file_access' => 0,
                 'entity_id' => '',
-                'folder' => ''
+                'folder' => '',
+                'file_name' => ''
             ],
             'file' => ''
         ];
@@ -173,5 +174,20 @@ class ImageMeta extends BmbyhoodEntity
     public function getFilePath()
     {
         return $this->fields['file'];
+    }
+
+    /**
+     * @param string $value
+     */
+    public function setFileName($value)
+    {
+        $this->fields['meta_data']['file_name'] = $value;
+    }
+    /**
+     * @return string
+     */
+    public function getFileName()
+    {
+        return $this->fields['meta_data']['file_name'];
     }
 }
