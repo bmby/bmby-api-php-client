@@ -14,7 +14,12 @@ abstract class EntityRest
     {
         $statusCode = $response->getStatusCode();
         $requestContent = $response->getBody()->getContents();
-        $responseData = $requestContent ? \GuzzleHttp\json_decode($requestContent, true) : '';
+
+        $responseData = \json_decode($requestContent, true);
+
+        if (!$responseData) {
+            $responseData = $requestContent;
+        }
 
         if ($statusCode == 200 || $statusCode == 201)
         {

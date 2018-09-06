@@ -26,6 +26,17 @@ class FilesRest extends EntityRest
 
         return $this->response($response);
     }
+
+    /**
+     * @param string $fileId
+     * @return RestResponse
+     */
+    public function get($fileId)
+    {
+        $response = $this->client->get('files/'.$fileId, []);
+
+        return $this->response($response);
+    }
 }
 
 ?>
