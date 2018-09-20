@@ -41,7 +41,7 @@ class FilesRest extends EntityRest
     }
 
     /**
-     * Writes a blob content to output stream
+     * Writes blob content to output stream
      *
      * @param $connectionString, connection string formatted as 'DefaultEndpointsProtocol=[http|https];AccountName=myAccountName;AccountKey=myAccountKey'
      * @param $containerName, the name of a blob container
@@ -52,6 +52,22 @@ class FilesRest extends EntityRest
         $blobClient = BlobRestProxy::createBlobService($connectionString);
         $blob = $blobClient->getBlob($containerName, $fileName);
         fpassthru($blob->getContentStream());
+    }
+
+    /**
+     * Returns blob content as string
+     *
+     * @param $connectionString , connection string formatted as 'DefaultEndpointsProtocol=[http|https];AccountName=myAccountName;AccountKey=myAccountKey'
+     * @param $containerName , the name of a blob container
+     * @param $fileName , the file name
+     *
+     * @return bool|string
+     */
+    public function getFromAzure($connectionString, $containerName, $fileName)
+    {
+        $blobClient = BlobRestProxy::createBlobService($connectionString);
+        $blob = $blobClient->getBlob($containerName, $fileName);
+        return stream_get_contents($blob->getContentStream());
     }
 }
 
