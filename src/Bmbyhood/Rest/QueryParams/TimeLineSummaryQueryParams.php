@@ -13,6 +13,22 @@ class TimeLineSummaryQueryParams extends QueryParams
         $this->params['fromDate'] = NULL;
         $this->params['toDate'] = NULL;
         $this->params['type'] = NULL;
+        $this->params['bmbyClientId'] = 0;
+    }
+
+    /**
+     * @return int
+     */
+    public function getBmbyClientId()
+    {
+        return $this->params['bmbyClientId'];
+    }
+    /**
+     * @param int $bmbyClientId
+     */
+    public function setBmbyClientId($bmbyClientId)
+    {
+        $this->params['bmbyClientId'] = (int)$bmbyClientId;
     }
 
     /**
