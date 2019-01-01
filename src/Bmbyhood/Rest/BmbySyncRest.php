@@ -2,6 +2,8 @@
 namespace Bmbyhood\Rest;
 
 use Bmbyhood\Entities;
+use Bmbyhood\Rest\QueryParams\TimeLineSummaryQueryParams;
+use Bmbyhood\Rest\Response\TimeLineResponse;
 
 class BmbySyncRest extends EntityRest
 {
@@ -145,6 +147,46 @@ class BmbySyncRest extends EntityRest
     public function listLocalizations()
     {
         $response = $this->client->get('bmbysync/localizations', []);
+
+        return $this->response($response);
+    }
+
+    /**
+     * @param TimeLineSummaryQueryParams $queryParams
+     * @return TimeLineResponse
+     */
+    public function listTimeLineSummary(TimeLineSummaryQueryParams $queryParams)
+    {
+        $params = (string)$queryParams;
+        $params = $params ? '?'.$params : '';
+
+        $response = $this->client->get('bmbysync/time-line-summary'.$params, []);
+
+        return $this->response($response, TimeLineResponse::class);
+    }
+
+    /**
+     * @param TimeLineSummaryQueryParams $queryParams
+     * @return TimeLineResponse
+     */
+    public function listTimeLine(TimeLineSummaryQueryParams $queryParams)
+    {
+        $params = (string)$queryParams;
+        $params = $params ? '?'.$params : '';
+
+        $response = $this->client->get('bmbysync/time-line'.$params, []);
+
+        return $this->response($response, TimeLineResponse::class);
+    }
+
+    /**
+     * @param string $eventIdß
+     *
+     * @return RestResponse
+     */
+    public function setTimeLineEventAsDone($eventId)
+    {
+        $response = $this->client->put('bmbysync/set-event-as-done/'.$eventId, []);
 
         return $this->response($response);
     }

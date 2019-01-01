@@ -8,10 +8,10 @@ class RestResponse
     const Success = 'success';
     const Error = 'error';
 
-    private $status = '';
-    private $errorMessage = '';
-    private $id = NULL;
-    private $response = [];
+    protected $status = '';
+    protected $errorMessage = '';
+    protected $id = NULL;
+    protected $response = [];
 
     /**
      * @var Bmbyhood\BmbyhoodClient

@@ -10,7 +10,7 @@ abstract class EntityRest
      */
     protected $client;
 
-    protected function response(\Psr\Http\Message\ResponseInterface $response)
+    protected function response(\Psr\Http\Message\ResponseInterface $response, $responseType = '')
     {
         $statusCode = $response->getStatusCode();
         $requestContent = $response->getBody()->getContents();
@@ -33,7 +33,11 @@ abstract class EntityRest
 
         $error = isset($responseData['error']) ? $responseData['error'] : 'Unspecified error';
 
-        return new RestResponse(RestResponse::Error, NULL, $error);
+        $response = $responseType ?
+                    new $responseType(RestResponse::Error, NULL, $error) :
+                    new RestResponse(RestResponse::Error, NULL, $error);
+
+        return $response;
     }
 
     public function __construct(Bmbyhood\BmbyhoodClient $client)
