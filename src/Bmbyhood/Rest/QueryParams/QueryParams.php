@@ -7,7 +7,10 @@ class QueryParams
 {
     protected $params = [
         'page' => 1,
-        'pageSize' => 10
+        'pageSize' => 10,
+        'sortBy' => '',
+        'sortDirection' => '',
+        'keywords' => ''
     ];
 
     /**
@@ -38,6 +41,11 @@ class QueryParams
     public function setPageSize($pageSize)
     {
         $this->params['pageSize'] = (int)$pageSize;
+    }
+
+    public function toArray()
+    {
+        return $this->params;
     }
 
     public function __toString()

@@ -23,7 +23,9 @@ abstract class EntityRest
 
         if ($statusCode == 200 || $statusCode == 201)
         {
-            return new RestResponse(RestResponse::Success, $responseData);
+            return $responseType ?
+                   new $responseType(RestResponse::Success, $responseData) :
+                   new RestResponse(RestResponse::Success, $responseData);
         }
 
         if ($statusCode == 500 || $statusCode == 401)
