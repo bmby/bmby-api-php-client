@@ -107,7 +107,7 @@ class BmbySyncRest extends EntityRest
      */
     public function postBmbyBrokerSettings(Entities\BmbyBrokerSettings $brokerSettings)
     {
-        $response = $this->client->put('bmbysync/brokerportalsettings', $brokerSettings->ToArray(), $brokerSettings->getFiles());
+        $response = $this->client->put('bmbysync/brokerportalsettings', $brokerSettings->ToArray(), $brokerSettings->getFiles(), true);
 
         return $this->response($response);
     }
@@ -133,9 +133,9 @@ class BmbySyncRest extends EntityRest
      *
      * @return RestResponse
      */
-    public function getBrokerSettings($projectId, $userId)
+    public function getBrokerSettings($projectId, $userId, $bmbyInstanceId = '')
     {
-        $response = $this->client->get("bmbysync/brokersettings/$projectId/$userId", []);
+        $response = $this->client->get("bmbysync/brokersettings/$projectId/$userId", ['bmbyInstanceId' => $bmbyInstanceId]);
 
         return $this->response($response);
     }

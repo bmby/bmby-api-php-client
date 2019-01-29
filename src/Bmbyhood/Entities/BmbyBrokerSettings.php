@@ -32,7 +32,8 @@ class BmbyBrokerSettings extends BmbyhoodEntity
             'logo_image_url' => NULL,
             'banner_image_url' => NULL,
             'avatar_image_url' => NULL,
-            'cover_image_url' => NULL
+            'cover_image_url' => NULL,
+            'localization_id' => 0
         ];
 
         $this->files = [

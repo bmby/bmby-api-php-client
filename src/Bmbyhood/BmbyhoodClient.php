@@ -127,7 +127,7 @@ class BmbyhoodClient
         ]);
     }
 
-    private function request($method, $uri, $data, $files = [], $dataField = 'metaData')
+    private function request($method, $uri, $data, $files = [], $isMultipart = false, $dataField = 'metaData')
     {
         $this->checkToken();
 
@@ -138,7 +138,7 @@ class BmbyhoodClient
         if ($method == "GET") {
             $params['query'] = $data;
         }
-        elseif ($files) {
+        elseif ($files || $isMultipart) {
             $params['multipart'] = [
                 [
                     'name' => $dataField,
@@ -146,31 +146,33 @@ class BmbyhoodClient
                 ]
             ];
 
-            foreach ($files as $field => $fileList) {
-                if (!is_array($fileList)) {
-                    if (!$fileList) {
-                        continue;
-                    }
+            if (is_array($files)) {
+                foreach ($files as $field => $fileList) {
+                    if (!is_array($fileList)) {
+                        if (!$fileList) {
+                            continue;
+                        }
 
-                    $params['multipart'][] = [
-                        'name' => $field,
-                        'contents' => \fopen($fileList, 'r')
-                    ];
-                } elseif (count($fileList) == 1) {
-                    $params['multipart'][] = [
-                        'name' => $field,
-                        'contents' => \fopen($fileList[0], 'r')
-                    ];
-                } else {
-                    $i = 0;
-
-                    foreach ($fileList as $filePath) {
                         $params['multipart'][] = [
-                            'name' => $field.'['.$i.']',
-                            'contents' => \fopen($filePath, 'r')
+                            'name' => $field,
+                            'contents' => \fopen($fileList, 'r')
                         ];
+                    } elseif (count($fileList) == 1) {
+                        $params['multipart'][] = [
+                            'name' => $field,
+                            'contents' => \fopen($fileList[0], 'r')
+                        ];
+                    } else {
+                        $i = 0;
 
-                        $i++;
+                        foreach ($fileList as $filePath) {
+                            $params['multipart'][] = [
+                                'name' => $field.'['.$i.']',
+                                'contents' => \fopen($filePath, 'r')
+                            ];
+
+                            $i++;
+                        }
                     }
                 }
             }
@@ -198,24 +200,26 @@ class BmbyhoodClient
      * @param string $uri
      * @param array $data
      * @param array $files
+     * @param bool $isMultipart
      *
      * @return mixed|\Psr\Http\Message\ResponseInterface
      */
-    public function post($uri, $data, $files = [])
+    public function post($uri, $data, $files = [], $isMultipart = false)
     {
-        return $this->request('POST', $uri, $data, $files);
+        return $this->request('POST', $uri, $data, $files, $isMultipart);
     }
 
     /**
      * @param string $uri
      * @param array $data
      * @param array $files
+     * @param bool $isMultipart
      *
      * @return mixed|\Psr\Http\Message\ResponseInterface
      */
-    public function put($uri, $data, $files = [])
+    public function put($uri, $data, $files = [], $isMultipart = false)
     {
-        return $this->request('PUT', $uri, $data, $files);
+        return $this->request('PUT', $uri, $data, $files, $isMultipart);
     }
 
     /**

@@ -30,4 +30,9 @@ class TimeLineStats extends RestResponse
     {
         return isset($this->response['markedAsDone']) ? $this->response['markedAsDone'] : 0;
     }
+
+    public function notDone()
+    {
+        return isset($this->response['notDone']) ? $this->response['notDone'] : 0;
+    }
 }
