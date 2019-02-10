@@ -7,8 +7,9 @@ class Customer extends BmbyhoodEntity
     {
         $this->fields = [
             'customer_id' => '',
-            'customer_bmby_id' => 0,
-            'bmby_project_id' => 0,
+            'bmby_project_id' => null,
+            'bmby_client_id' => 0,
+            'bmby_instance_id' => '',
             'agency_id' => '',
             'contact_id' => '',
             'contact' => '',
@@ -32,18 +33,33 @@ class Customer extends BmbyhoodEntity
     }
 
     /**
+     * @param string $value
+     */
+    public function setBmbyInstanceId($value)
+    {
+        $this->fields['bmby_instance_id'] = $value;
+    }
+    /**
+     * @return string
+     */
+    public function getBmbyInstanceId()
+    {
+        return $this->fields['bmby_instance_id'];
+    }
+
+    /**
      * @param int $value
      */
-    public function setCustomerBmbyId($value)
+    public function setBmbyClientId($value)
     {
-        $this->fields['customer_bmby_id'] = (int)$value;
+        $this->fields['bmby_client_id'] = (int)$value;
     }
     /**
      * @return int
      */
-    public function getCustomerBmbyId()
+    public function getBmbyClientId()
     {
-        return $this->fields['customer_bmby_id'];
+        return $this->fields['bmby_client_id'];
     }
 
     /**
