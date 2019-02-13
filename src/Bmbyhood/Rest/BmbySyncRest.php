@@ -74,6 +74,32 @@ class BmbySyncRest extends EntityRest
     }
 
     /**
+     * Update or insert property match
+     *
+     * @param Entities\PropertyMatchFromBmby $propertMatch
+     * @return RestResponse
+     */
+    public function postPropertyMatch(Entities\PropertyMatchFromBmby $propertMatch)
+    {
+        $response = $this->client->post('bmbysync/match', $propertMatch->ToArray());
+
+        return $this->response($response);
+    }
+
+    /**
+     * Update or insert agency
+     *
+     * @param Entities\Agency $agency
+     * @return RestResponse
+     */
+    public function postAgency(Entities\Agency $agency)
+    {
+        $response = $this->client->post('bmbysync/agency', $agency->ToArray());
+
+        return $this->response($response);
+    }
+
+    /**
      * Update or insert CRM Task
      *
      * @param Entities\CrmTask $crmTask
