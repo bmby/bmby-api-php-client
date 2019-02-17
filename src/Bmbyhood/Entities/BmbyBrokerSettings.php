@@ -1,6 +1,8 @@
 <?php
 namespace Bmbyhood\Entities;
 
+use Bmbyhood\Enumerations\PropertySkipStatus;
+
 class BmbyBrokerSettings extends BmbyhoodEntity
 {
     public function __construct()
@@ -33,7 +35,11 @@ class BmbyBrokerSettings extends BmbyhoodEntity
             'banner_image_url' => NULL,
             'avatar_image_url' => NULL,
             'cover_image_url' => NULL,
-            'localization_id' => 0
+            'localization_id' => 0,
+            'property_skip_status' => PropertySkipStatus::Unknown,
+            'property_relevant_from_date' => NULL,
+            'display_properties_without_image' => true,
+            'display_properties_without_price' => true
         ];
 
         $this->files = [
@@ -42,6 +48,66 @@ class BmbyBrokerSettings extends BmbyhoodEntity
             'avatar' => NULL,
             'cover' => NULL
         ];
+    }
+
+    /**
+     * @param PropertySkipStatus $value
+     */
+    public function setCategory(PropertySkipStatus $value)
+    {
+        $this->fields['property_skip_status'] = $value ? $value->getValue() : PropertySkipStatus::Unknown;
+    }
+    /**
+     * @return PropertySkipStatus
+     */
+    public function getCategory()
+    {
+        return new PropertySkipStatus($this->fields['property_skip_status']);
+    }
+
+    /**
+     * @param string $value
+     */
+    public function setPropertyRelevantFromDate($value)
+    {
+        $this->fields['property_relevant_from_date'] = (string)$value;
+    }
+    /**
+     * @return string
+     */
+    public function getPropertyRelevantFromDate()
+    {
+        return $this->fields['property_relevant_from_date'];
+    }
+
+    /**
+     * @param bool $value
+     */
+    public function setDisplayPropertiesWithoutImage($value)
+    {
+        $this->fields['display_properties_without_image'] = (bool)$value;
+    }
+    /**
+     * @return bool
+     */
+    public function getDisplayPropertiesWithoutImage()
+    {
+        return $this->fields['display_properties_without_image'];
+    }
+
+    /**
+     * @param bool $value
+     */
+    public function setDisplayPropertiesWithoutPrice($value)
+    {
+        $this->fields['display_properties_without_price'] = (bool)$value;
+    }
+    /**
+     * @return bool
+     */
+    public function getDisplayPropertiesWithoutPrice()
+    {
+        return $this->fields['display_properties_without_price'];
     }
 
     /**

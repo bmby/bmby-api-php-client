@@ -26,13 +26,8 @@ class TimeLineStats extends RestResponse
         return isset($this->response['dislikes']) ? $this->response['dislikes'] : 0;
     }
 
-    public function markedAsDone()
+    public function notSure()
     {
-        return isset($this->response['markedAsDone']) ? $this->response['markedAsDone'] : 0;
-    }
-
-    public function notDone()
-    {
-        return isset($this->response['notDone']) ? $this->response['notDone'] : 0;
+        return isset($this->response['not_sure']) ? $this->response['not_sure'] : 0;
     }
 }
