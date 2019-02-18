@@ -37,9 +37,10 @@ class BmbyBrokerSettings extends BmbyhoodEntity
             'cover_image_url' => NULL,
             'localization_id' => 0,
             'property_skip_status' => PropertySkipStatus::Unknown,
-            'property_relevant_from_date' => NULL,
+            'property_relevancy_period' => 0,
             'display_properties_without_image' => true,
-            'display_properties_without_price' => true
+            'display_properties_without_price' => true,
+            'notification_delay_period' => 0
         ];
 
         $this->files = [
@@ -93,6 +94,21 @@ class BmbyBrokerSettings extends BmbyhoodEntity
     public function getDisplayPropertiesWithoutImage()
     {
         return $this->fields['display_properties_without_image'];
+    }
+
+    /**
+     * @param int $value
+     */
+    public function setNotificationDelayPeriod($value)
+    {
+        $this->fields['notification_delay_period'] = (int)$value;
+    }
+    /**
+     * @return int
+     */
+    public function getNotificationDelayPeriod()
+    {
+        return $this->fields['notification_delay_period'];
     }
 
     /**
