@@ -53,31 +53,31 @@ class BmbyBrokerSettings extends BmbyhoodEntity
     /**
      * @param PropertySkipStatus $value
      */
-    public function setCategory(PropertySkipStatus $value)
+    public function setPropertySkipStatus(PropertySkipStatus $value)
     {
         $this->fields['property_skip_status'] = $value ? $value->getValue() : PropertySkipStatus::Unknown;
     }
     /**
      * @return PropertySkipStatus
      */
-    public function getCategory()
+    public function getPropertySkipStatus()
     {
         return new PropertySkipStatus($this->fields['property_skip_status']);
     }
 
     /**
-     * @param string $value
+     * @param string $value number of months
      */
-    public function setPropertyRelevantFromDate($value)
+    public function setPropertyRelevancyPeriod($value)
     {
-        $this->fields['property_relevant_from_date'] = (string)$value;
+        $this->fields['property_relevancy_period'] = (string)$value;
     }
     /**
-     * @return string
+     * @return string number of months
      */
-    public function getPropertyRelevantFromDate()
+    public function getPropertyRelevancyPeriod()
     {
-        return $this->fields['property_relevant_from_date'];
+        return $this->fields['property_relevancy_period'];
     }
 
     /**
