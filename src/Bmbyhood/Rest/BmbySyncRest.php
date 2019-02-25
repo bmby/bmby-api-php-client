@@ -74,6 +74,32 @@ class BmbySyncRest extends EntityRest
     }
 
     /**
+     * Update or insert push token
+     *
+     * @param Entities\UserPushToken $pushToken
+     * @return RestResponse
+     */
+    public function postPushToken(Entities\UserPushToken $pushToken)
+    {
+        $response = $this->client->post('bmbysync/storepushtoken', $pushToken->ToArray());
+
+        return $this->response($response);
+    }
+
+    /**
+     * Update or insert customer query
+     *
+     * @param Entities\Query $query
+     * @return RestResponse
+     */
+    public function postQuery(Entities\Query $query)
+    {
+        $response = $this->client->post('bmbysync/query', $query->ToArray());
+
+        return $this->response($response);
+    }
+
+    /**
      * Update or insert property match
      *
      * @param Entities\PropertyMatchFromBmby $propertMatch

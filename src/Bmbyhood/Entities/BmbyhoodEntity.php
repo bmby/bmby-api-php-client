@@ -6,6 +6,44 @@ use GuzzleHttp;
 
 abstract class BmbyhoodEntity
 {
+    protected $fields = [];
+    protected $files = [];
+    protected $dataField = 'data';
+
+    const EmptyGuid = '00000000-0000-0000-0000-000000000000';
+
+    protected function setListField($values, $fieldName)
+    {
+        if (!is_array($values)) {
+            return;
+        }
+
+        foreach ($values as $value) {
+            if (!is_a($value, 'ListItem')) {
+                continue;
+            }
+
+            $this->fields[$fieldName][] = $value->toArray();
+        }
+    }
+
+    protected function getListField($fieldName)
+    {
+        $values = [];
+
+        if (!$this->fields[$fieldName] || !is_array($this->fields[$fieldName])) {
+            return $values;
+        }
+
+        foreach ($this->fields[$fieldName] as $data) {
+            $value = new ListItem();
+            $value->setData($data);
+            $values[] = $value;
+        }
+
+        return $values;
+    }
+
     public function toJson()
     {
         return json_encode($this->fields);
@@ -38,12 +76,6 @@ abstract class BmbyhoodEntity
             }
         }
     }
-
-    protected $fields = [];
-    protected $files = [];
-    protected $dataField = 'data';
-
-    const EmptyGuid = '00000000-0000-0000-0000-000000000000';
 }
 
 ?>

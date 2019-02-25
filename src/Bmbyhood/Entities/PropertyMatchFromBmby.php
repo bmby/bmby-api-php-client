@@ -11,6 +11,7 @@ class PropertyMatchFromBmby extends BmbyhoodEntity
             'bmby_user_id' => 0,
             'bmby_owner_id' => 0,
             'bmby_client_id' => 0,
+            'is_signed' => false
         ];
     }
 
@@ -87,6 +88,21 @@ class PropertyMatchFromBmby extends BmbyhoodEntity
     public function getBmbyClientId()
     {
         return $this->fields['bmby_client_id'];
+    }
+
+    /**
+     * @param bool $value
+     */
+    public function setIsSigned($value)
+    {
+        $this->fields['is_signed'] = (bool)$value;
+    }
+    /**
+     * @return bool
+     */
+    public function getIsSigned()
+    {
+        return $this->fields['is_signed'];
     }
 }
 

@@ -2,6 +2,7 @@
 namespace Bmbyhood\Entities;
 
 use Bmbyhood\Enumerations as Enumerations;
+use Bmbyhood\Entities\ListItem;
 
 class Query extends BmbyhoodEntity
 {
@@ -9,8 +10,13 @@ class Query extends BmbyhoodEntity
     {
         $this->fields = [
             'query_id' => '',
+            'title' => '',
             'user_id' => 0,
+            'bmby_project_id' => 0,
+            'bmby_instance_id' => '',
+            'bmby_client_id' => 0,
             'agency_id' => '',
+            'customer_id' => '',
             'min_rooms' => NULL,
             'max_rooms' => NULL,
             'min_floor' => NULL,
@@ -20,13 +26,33 @@ class Query extends BmbyhoodEntity
             'min_area' => NULL,
             'max_area' => NULL,
             'wind_direction' => Enumerations\WindDirection::Unknown,
+            'has_religion_facility' => NULL,
+            'can_be_extended' => NULL,
+            'has_swimming_pool' => NULL,
+            'has_jacuzzi' => NULL,
+            'has_pandoor' => NULL,
+            'has_gym' => NULL,
+            'has_yard' => NULL,
+            'has_parent_bedroom' => NULL,
+            'has_event_room' => NULL,
+            'has_window_bars' => NULL,
+            'has_shabat_elevator' => NULL,
             'has_balcony' => NULL,
-            'has_security_room' => NULL,
+            'has_teracce' => NULL,
+            'has_secure_room' => NULL,
+            'has_cellar' => NULL,
+            'has_access_for_disabled' => NULL,
+            'has_guard' => NULL,
+            'has_separate_entrance' => NULL,
             'has_parking' => NULL,
             'has_air_conditioner' => NULL,
             'has_storage' => NULL,
             'is_new_building' => NULL,
             'has_garden' => NULL,
+            'is_unit' => NULL,
+            'has_panorama' => NULL,
+            'on_columns' => NULL,
+            'filled_by_customer' => NULL,
             'has_elevator' => NULL,
             'has_furniture' => NULL,
             'has_access_to_disabled' => NULL,
@@ -56,6 +82,81 @@ class Query extends BmbyhoodEntity
     }
 
     /**
+     * @param string $value
+     */
+    public function setCustomerId($value)
+    {
+        $this->fields['customer_id'] = (string)$value;
+    }
+    /**
+     * @return string
+     */
+    public function getCustomerId()
+    {
+        return $this->fields['customer_id'];
+    }
+
+    /**
+     * @param string $value
+     */
+    public function setTitle($value)
+    {
+        $this->fields['title'] = (string)$value;
+    }
+    /**
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->fields['title'];
+    }
+
+    /**
+     * @param string $value
+     */
+    public function setBmbyInstanceId($value)
+    {
+        $this->fields['bmby_instance_id'] = (string)$value;
+    }
+    /**
+     * @return string
+     */
+    public function getBmbyInstanceId()
+    {
+        return $this->fields['bmby_instance_id'];
+    }
+
+    /**
+     * @param int $value
+     */
+    public function setBmbyProjectId($value)
+    {
+        $this->fields['bmby_project_id'] = (int)$value;
+    }
+    /**
+     * @return int
+     */
+    public function getBmbyProjectId()
+    {
+        return $this->fields['bmby_project_id'];
+    }
+
+    /**
+     * @param int $value
+     */
+    public function setBmbyClientId($value)
+    {
+        $this->fields['bmby_client_id'] = (int)$value;
+    }
+    /**
+     * @return int
+     */
+    public function getBmbyClientId()
+    {
+        return $this->fields['bmby_client_id'];
+    }
+
+    /**
      * @param int $value
      */
     public function setUserId($value)
@@ -71,14 +172,14 @@ class Query extends BmbyhoodEntity
     }
 
     /**
-     * @param int $value
+     * @param string $value
      */
     public function setAgencyId($value)
     {
-        $this->fields['agency_id'] = (int)$value;
+        $this->fields['agency_id'] = (string)$value;
     }
     /**
-     * @return int
+     * @return string
      */
     public function getAgencyId()
     {
@@ -223,6 +324,36 @@ class Query extends BmbyhoodEntity
     /**
      * @param bool $value
      */
+    public function setHasReligionFacility($value)
+    {
+        $this->fields['has_religion_facility'] = $value != NULL ? (bool)$value : NULL;
+    }
+    /**
+     * @return bool|NULL
+     */
+    public function getHasReligionFacility()
+    {
+        return $this->fields['has_religion_facility'];
+    }
+
+    /**
+     * @param bool $value
+     */
+    public function setCanBeExtended($value)
+    {
+        $this->fields['can_be_extended'] = $value != NULL ? (bool)$value : NULL;
+    }
+    /**
+     * @return bool|NULL
+     */
+    public function getCanBeExtended()
+    {
+        return $this->fields['can_be_extended'];
+    }
+
+    /**
+     * @param bool $value
+     */
     public function setHasBalcony($value)
     {
         $this->fields['has_balcony'] = $value != NULL ? (bool)$value : NULL;
@@ -233,6 +364,36 @@ class Query extends BmbyhoodEntity
     public function getHasBalcony()
     {
         return $this->fields['has_balcony'];
+    }
+
+    /**
+     * @param bool $value
+     */
+    public function setHasYard($value)
+    {
+        $this->fields['has_yard'] = $value != NULL ? (bool)$value : NULL;
+    }
+    /**
+     * @return bool|NULL
+     */
+    public function getHasYard()
+    {
+        return $this->fields['has_yard'];
+    }
+
+    /**
+     * @param bool $value
+     */
+    public function setHasSwimmingPool($value)
+    {
+        $this->fields['has_swimming_pool'] = $value != NULL ? (bool)$value : NULL;
+    }
+    /**
+     * @return bool|NULL
+     */
+    public function getHasSwimmingPool()
+    {
+        return $this->fields['has_swimming_pool'];
     }
 
     /**
@@ -253,16 +414,16 @@ class Query extends BmbyhoodEntity
     /**
      * @param bool $value
      */
-    public function setHasSecurityRoom($value)
+    public function setHasSecureRoom($value)
     {
-        $this->fields['has_security_room'] = $value != NULL ? (bool)$value : NULL;
+        $this->fields['has_secure_room'] = $value != NULL ? (bool)$value : NULL;
     }
     /**
      * @return bool|NULL
      */
-    public function getHasSecurityRoom()
+    public function getHasSecureRoom()
     {
-        return $this->fields['has_security_room'];
+        return $this->fields['has_secure_room'];
     }
 
     /**
@@ -343,6 +504,96 @@ class Query extends BmbyhoodEntity
     /**
      * @param bool $value
      */
+    public function setHasWindowBars($value)
+    {
+        $this->fields['has_window_bars'] = $value != NULL ? (bool)$value : NULL;
+    }
+    /**
+     * @return bool|NULL
+     */
+    public function getHasWindowBars()
+    {
+        return $this->fields['has_window_bars'];
+    }
+
+    /**
+     * @param bool $value
+     */
+    public function setHasAccessForDisabled($value)
+    {
+        $this->fields['has_access_for_disabled'] = $value != NULL ? (bool)$value : NULL;
+    }
+    /**
+     * @return bool|NULL
+     */
+    public function getHasAccessForDisabled()
+    {
+        return $this->fields['has_access_for_disabled'];
+    }
+
+    /**
+     * @param bool $value
+     */
+    public function setHasShabatElevator($value)
+    {
+        $this->fields['has_shabat_elevator'] = $value != NULL ? (bool)$value : NULL;
+    }
+    /**
+     * @return bool|NULL
+     */
+    public function getHasShabatElevator()
+    {
+        return $this->fields['has_shabat_elevator'];
+    }
+
+    /**
+     * @param bool $value
+     */
+    public function setHasPandoor($value)
+    {
+        $this->fields['has_pandoor'] = $value != NULL ? (bool)$value : NULL;
+    }
+    /**
+     * @return bool|NULL
+     */
+    public function getHasPandoor()
+    {
+        return $this->fields['has_pandoor'];
+    }
+
+    /**
+     * @param bool $value
+     */
+    public function setHasParentBedroom($value)
+    {
+        $this->fields['has_parent_bedroom'] = $value != NULL ? (bool)$value : NULL;
+    }
+    /**
+     * @return bool|NULL
+     */
+    public function getHasParentBedroom()
+    {
+        return $this->fields['has_parent_bedroom'];
+    }
+
+    /**
+     * @param bool $value
+     */
+    public function setHasEventRoom($value)
+    {
+        $this->fields['has_event_room'] = $value != NULL ? (bool)$value : NULL;
+    }
+    /**
+     * @return bool|NULL
+     */
+    public function getHasEventRoom()
+    {
+        return $this->fields['has_event_room'];
+    }
+
+    /**
+     * @param bool $value
+     */
     public function setHasElevator($value)
     {
         $this->fields['has_elevator'] = $value != NULL ? (bool)$value : NULL;
@@ -353,6 +604,156 @@ class Query extends BmbyhoodEntity
     public function getHasElevator()
     {
         return $this->fields['has_elevator'];
+    }
+
+    /**
+     * @param bool $value
+     */
+    public function setHasTeracce($value)
+    {
+        $this->fields['has_teracce'] = $value != NULL ? (bool)$value : NULL;
+    }
+    /**
+     * @return bool|NULL
+     */
+    public function getHasTeracce()
+    {
+        return $this->fields['has_teracce'];
+    }
+
+    /**
+     * @param bool $value
+     */
+    public function setHasSeparateEntrance($value)
+    {
+        $this->fields['has_separate_entrance'] = $value != NULL ? (bool)$value : NULL;
+    }
+    /**
+     * @return bool|NULL
+     */
+    public function getHasSeparateEntrance()
+    {
+        return $this->fields['has_separate_entrance'];
+    }
+
+    /**
+     * @param bool $value
+     */
+    public function setHasCellar($value)
+    {
+        $this->fields['has_cellar'] = $value != NULL ? (bool)$value : NULL;
+    }
+    /**
+     * @return bool|NULL
+     */
+    public function getHasCellar()
+    {
+        return $this->fields['has_cellar'];
+    }
+
+    /**
+     * @param bool $value
+     */
+    public function setHasPanorama($value)
+    {
+        $this->fields['has_panorama'] = $value != NULL ? (bool)$value : NULL;
+    }
+    /**
+     * @return bool|NULL
+     */
+    public function getHasPanorama()
+    {
+        return $this->fields['has_panorama'];
+    }
+
+    /**
+     * @param bool $value
+     */
+    public function setHasJacuzzi($value)
+    {
+        $this->fields['has_jacuzzi'] = $value != NULL ? (bool)$value : NULL;
+    }
+    /**
+     * @return bool|NULL
+     */
+    public function getHasJacuzzi()
+    {
+        return $this->fields['has_jacuzzi'];
+    }
+
+    /**
+     * @param bool $value
+     */
+    public function setIsActive($value)
+    {
+        $this->fields['is_active'] = $value != NULL ? (bool)$value : NULL;
+    }
+    /**
+     * @return bool|NULL
+     */
+    public function getIsActive()
+    {
+        return $this->fields['is_active'];
+    }
+
+    /**
+     * @param bool $value
+     */
+    public function setHasGym($value)
+    {
+        $this->fields['has_gym'] = $value != NULL ? (bool)$value : NULL;
+    }
+    /**
+     * @return bool|NULL
+     */
+    public function getHasGym()
+    {
+        return $this->fields['has_gym'];
+    }
+
+    /**
+     * @param bool $value
+     */
+    public function setHasGuard($value)
+    {
+        $this->fields['has_guard'] = $value != NULL ? (bool)$value : NULL;
+    }
+    /**
+     * @return bool|NULL
+     */
+    public function getHasGuard()
+    {
+        return $this->fields['has_guard'];
+    }
+
+    /**
+     * @param bool $value
+     */
+    public function setIsUnit($value)
+    {
+        $this->fields['is_unit'] = $value != NULL ? (bool)$value : NULL;
+    }
+    /**
+     * @return bool|NULL
+     */
+    public function getIsUnit()
+    {
+        return $this->fields['is_unit'];
+    }
+
+    /**
+     * @param bool $value
+     */
+    public function setOnColumns($value)
+    {
+        $this->fields['on_columns'] = $value != NULL ? (bool)$value : NULL;
+    }
+    /**
+     * @return bool|NULL
+     */
+    public function getOnColumns()
+    {
+        return $this->fields['on_columns'];
     }
 
     /**
@@ -371,173 +772,109 @@ class Query extends BmbyhoodEntity
     }
 
     /**
-     * @param Enumerations\DealType $value
+     * @param bool $value
      */
-    public function addDealType(Enumerations\DealType $value)
+    public function setFilledByCustomer($value)
     {
-        if (!$value || in_array($value->getValue(), $this->fields['deal_types'])) {
-            return;
-        }
+        $this->fields['filled_by_customer'] = $value != NULL ? (bool)$value : NULL;
+    }
+    /**
+     * @return bool|NULL
+     */
+    public function getFilledByCustomer()
+    {
+        return $this->fields['filled_by_customer'];
+    }
 
-        $this->fields['deal_types'][] = $value->getValue();
-    }
     /**
-     * @param Enumerations\DealType $value
+     * @param ListItem[] $values
      */
-    public function removeDealType(Enumerations\DealType $value)
+    public function setDealTypes($values)
     {
-        if (($key = array_search($value->getValue(), $this->fields['deal_types'])) !== false) {
-            unset($this->fields['deal_types'][$key]);
-        }
+        $this->setListField($values, 'deal_types');
     }
     /**
-     * @return array
+     * @return ListItem[]
      */
     public function getDealTypes()
     {
-        return $this->fields['deal_types'];
+        return $this->getListField('deal_types');
     }
 
     /**
-     * @param int $value
+     * @param ListItem[] $values
      */
-    public function addZone($value)
+    public function setZones($values)
     {
-        if (!(int)$value || in_array((int)$value, $this->fields['regions'])) {
-            return;
-        }
-
-        $this->fields['regions'][] = (int)$value;
+        $this->setListField($values, 'regions');
     }
     /**
-     * @param int $value
-     */
-    public function removeZone($value)
-    {
-        if (($key = array_search((int)$value, $this->fields['regions'])) !== false) {
-            unset($this->fields['regions'][$key]);
-        }
-    }
-    /**
-     * @return array
+     * @return ListItem[]
      */
     public function getZones()
     {
-        return $this->fields['regions'];
+        return $this->getListField('regions');
     }
 
     /**
-     * @param int $value
+     * @param ListItem[] $values
      */
-    public function addCity($value)
+    public function setCities($values)
     {
-        if (!(int)$value || in_array((int)$value, $this->fields['cities'])) {
-            return;
-        }
-
-        $this->fields['cities'][] = (int)$value;
+        $this->setListField($values, 'cities');
     }
     /**
-     * @param int $value
-     */
-    public function removeCity($value)
-    {
-        if (($key = array_search((int)$value, $this->fields['cities'])) !== false) {
-            unset($this->fields['cities'][$key]);
-        }
-    }
-    /**
-     * @return array
+     * @return ListItem[]
      */
     public function getCities()
     {
-        return $this->fields['cities'];
+        return $this->getListField('cities');
     }
 
     /**
-     * @param int $value
+     * @param ListItem[] $values
      */
-    public function addNeighbourhood($value)
+    public function setNeighbourhoods($values)
     {
-        if (!(int)$value || in_array((int)$value, $this->fields['neighbourhoods'])) {
-            return;
-        }
-
-        $this->fields['neighbourhoods'][] = (int)$value;
+        $this->setListField($values, 'neighbourhoods');
     }
     /**
-     * @param int $value
-     */
-    public function removeNeighbourhood($value)
-    {
-        if (($key = array_search((int)$value, $this->fields['neighbourhoods'])) !== false) {
-            unset($this->fields['neighbourhoods'][$key]);
-        }
-    }
-    /**
-     * @return array
+     * @return ListItem[]
      */
     public function getNeighbourhoods()
     {
-        return $this->fields['neighbourhoods'];
+        return $this->getListField('neighbourhoods');
     }
 
     /**
-     * @param int $value
+     * @param ListItem[] $values
      */
-    public function addStreet($value)
+    public function setStreets($values)
     {
-        if (!(int)$value || in_array((int)$value, $this->fields['streets'])) {
-            return;
-        }
-
-        $this->fields['streets'][] = (int)$value;
+        $this->setListField($values, 'streets');
     }
     /**
-     * @param int $value
-     */
-    public function removeStreet($value)
-    {
-        if (($key = array_search((int)$value, $this->fields['streets'])) !== false) {
-            unset($this->fields['streets'][$key]);
-        }
-    }
-    /**
-     * @return array
+     * @return ListItem[]
      */
     public function getStreets()
     {
-        return $this->fields['streets'];
+        return $this->getListField('streets');
     }
 
     /**
-     * @param Enumerations\PropertyType $value
+     * @param ListItem[] $values
      */
-    public function addPropertyType(Enumerations\PropertyType $value)
+    public function setPropertyTypes($values)
     {
-        if (!$value->getValue() || in_array($value->getValue(), $this->fields['property_types'])) {
-            return;
-        }
-
-        $this->fields['property_types'][] = $value->getValue();
+        $this->setListField($values, 'property_types');
     }
     /**
-     * @param Enumerations\PropertyType $value
-     */
-    public function removePropertyType(Enumerations\PropertyType $value)
-    {
-        if (($key = array_search($value->getValue(), $this->fields['property_types'])) !== false) {
-            unset($this->fields['property_types'][$key]);
-        }
-    }
-    /**
-     * @return array
+     * @return ListItem[]
      */
     public function getPropertyTypes()
     {
-        return $this->fields['property_types'];
+        return $this->getListField('property_types');
     }
 }
-
 
 ?>

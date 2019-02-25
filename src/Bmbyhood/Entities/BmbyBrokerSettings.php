@@ -2,6 +2,7 @@
 namespace Bmbyhood\Entities;
 
 use Bmbyhood\Enumerations\PropertySkipStatus;
+use Bmbyhood\Enumerations\AutomatedAgentStopStatus;
 
 class BmbyBrokerSettings extends BmbyhoodEntity
 {
@@ -40,7 +41,8 @@ class BmbyBrokerSettings extends BmbyhoodEntity
             'property_relevancy_period' => 0,
             'display_properties_without_image' => true,
             'display_properties_without_price' => true,
-            'notification_delay_period' => 0
+            'notification_delay_period' => 0,
+            'automated_agent_stop_statuses' => []
         ];
 
         $this->files = [
@@ -49,6 +51,44 @@ class BmbyBrokerSettings extends BmbyhoodEntity
             'avatar' => NULL,
             'cover' => NULL
         ];
+    }
+
+    /**
+     * @param AutomatedAgentStopStatus[] $values
+     * @throws \Exception
+     */
+    public function setAutomatedAgentStopStatuses($values)
+    {
+        if (!is_array($values)) {
+            throw new \Exception('$values argument should be an array of AutomatedAgentStopStatus');
+        }
+
+        $this->fields['automated_agent_stop_statuses'] = [];
+
+        foreach ($values as $value) {
+            if (!is_a($value, 'AutomatedAgentStopStatus')) {
+                throw new \Exception('$values argument should be an array of AutomatedAgentStopStatus');
+            }
+
+            $this->fields['automated_agent_stop_statuses'][] = $value->getValue();
+        }
+    }
+    /**
+     * @return AutomatedAgentStopStatus[]
+     */
+    public function getAutomatedAgentStopStatuses()
+    {
+        if (!is_array($this->fields['automated_agent_stop_statuses'])) {
+            return [];
+        }
+
+        $values = [];
+
+        foreach ($this->fields['automated_agent_stop_statuses'] as $value) {
+            $values[] = new AutomatedAgentStopStatus($value);
+        }
+
+        return $values;
     }
 
     /**
@@ -67,14 +107,14 @@ class BmbyBrokerSettings extends BmbyhoodEntity
     }
 
     /**
-     * @param string $value number of months
+     * @param int $value number of months
      */
     public function setPropertyRelevancyPeriod($value)
     {
         $this->fields['property_relevancy_period'] = (string)$value;
     }
     /**
-     * @return string number of months
+     * @return int number of months
      */
     public function getPropertyRelevancyPeriod()
     {

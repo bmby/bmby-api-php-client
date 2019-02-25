@@ -12,6 +12,8 @@ class Customer extends BmbyhoodEntity
             'bmby_instance_id' => '',
             'agency_id' => '',
             'contact_id' => '',
+            'brokerage_agreement_url' => '',
+            'brokerage_agreement_signed' => false,
             'contact' => '',
             'attributes' => null
         ];
@@ -90,6 +92,36 @@ class Customer extends BmbyhoodEntity
     public function getAgencyId()
     {
         return $this->fields['agency_id'];
+    }
+
+    /**
+     * @param string $value
+     */
+    public function setBrokerageAgreementUrl($value)
+    {
+        $this->fields['brokerage_agreement_url'] = (string)$value;
+    }
+    /**
+     * @return string
+     */
+    public function getBrokerageAgreementUrl()
+    {
+        return $this->fields['brokerage_agreement_url'];
+    }
+
+    /**
+     * @param bool $value
+     */
+    public function setBrokerageAgreementSigned($value)
+    {
+        $this->fields['brokerage_agreement_signed'] = (string)$value;
+    }
+    /**
+     * @return bool
+     */
+    public function getBrokerageAgreementSigned()
+    {
+        return $this->fields['brokerage_agreement_signed'];
     }
 
     /**
