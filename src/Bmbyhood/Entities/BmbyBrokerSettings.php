@@ -3,6 +3,7 @@ namespace Bmbyhood\Entities;
 
 use Bmbyhood\Enumerations\PropertySkipStatus;
 use Bmbyhood\Enumerations\AutomatedAgentStopStatus;
+use Bmbyhood\Enumerations\BmbyhoodPropertyPickMode;
 
 class BmbyBrokerSettings extends BmbyhoodEntity
 {
@@ -42,7 +43,8 @@ class BmbyBrokerSettings extends BmbyhoodEntity
             'display_properties_without_image' => true,
             'display_properties_without_price' => true,
             'notification_delay_period' => 0,
-            'automated_agent_stop_statuses' => []
+            'automated_agent_stop_statuses' => [],
+            'bmbyhood_property_pick_mode' => BmbyhoodPropertyPickMode::Unknown
         ];
 
         $this->files = [
@@ -104,6 +106,21 @@ class BmbyBrokerSettings extends BmbyhoodEntity
     public function getPropertySkipStatus()
     {
         return new PropertySkipStatus($this->fields['property_skip_status']);
+    }
+
+    /**
+     * @param BmbyhoodPropertyPickMode $value
+     */
+    public function setBmbyhoodPropertyPickMode(BmbyhoodPropertyPickMode $value)
+    {
+        $this->fields['bmbyhood_property_pick_mode'] = $value ? $value->getValue() : BmbyhoodPropertyPickMode::Unknown;
+    }
+    /**
+     * @return BmbyhoodPropertyPickMode
+     */
+    public function getBmbyhoodPropertyPickMode()
+    {
+        return new BmbyhoodPropertyPickMode($this->fields['bmbyhood_property_pick_mode']);
     }
 
     /**
