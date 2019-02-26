@@ -68,7 +68,7 @@ class BmbyBrokerSettings extends BmbyhoodEntity
         $this->fields['automated_agent_stop_statuses'] = [];
 
         foreach ($values as $value) {
-            if (!is_a($value, 'AutomatedAgentStopStatus')) {
+            if (!is_a($value, 'Bmbyhood\Enumerations\AutomatedAgentStopStatus')) {
                 throw new \Exception('$values argument should be an array of AutomatedAgentStopStatus');
             }
 
