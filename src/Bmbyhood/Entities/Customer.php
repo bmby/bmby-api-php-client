@@ -114,7 +114,7 @@ class Customer extends BmbyhoodEntity
      */
     public function setBrokerageAgreementSigned($value)
     {
-        $this->fields['brokerage_agreement_signed'] = (string)$value;
+        $this->fields['brokerage_agreement_signed'] = (bool)$value;
     }
     /**
      * @return bool
