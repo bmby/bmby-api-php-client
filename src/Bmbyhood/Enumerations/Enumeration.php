@@ -17,14 +17,33 @@ abstract class Enumeration
         return (string)$this->value;
     }
 
+    public function getValues()
+    {
+        $reflectionClass = new \ReflectionClass($this);
+        return $reflectionClass->getConstants();
+    }
+
     public function getValue()
     {
+        if (!is_numeric($this->value)) {
+            $values = $this->getValues();
+
+            return isset($values[$this->value]) ? $values[$this->value] : self::Unknown;
+        }
+
         return $this->value;
     }
 
     public function setValue($value)
     {
-        throw new \Exception('SetValue method is not implemented');
+        $values = $this->getValues();
+
+        if (!is_numeric($value)) {
+            $this->value = isset($values[$value]) ? $values[$value] : self::Unknown;
+            return;
+        }
+
+        $this->value = in_array((int)$value, $values) ? (int)$value : self::Unknown;
     }
 
     public function isUnknown()

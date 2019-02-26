@@ -22,42 +22,4 @@ class CrmTaskType extends Enumeration
     const PhoneCopy = 16;
     const EmailCopy = 17;
     const CommentCopy = 18;
-
-    /**
-     * Converts integer value to CrmTaskPriority
-     *
-     * @param int $value
-     * @return void
-     */
-    public function setValue($value)
-    {
-        $intValue = (int)$value;
-
-        switch ($intValue)
-        {
-            case self::Task:
-            case self::Appointment:
-            case self::Comment:
-            case self::Sms:
-            case self::Phone:
-            case self::Email:
-            case self::DirectMailing:
-            case self::ServiceRequest:
-            case self::MultiTask:
-            case self::Lead:
-            case self::ErrorRequest:
-            case self::LeadCopy:
-            case self::AppointmentCopy:
-            case self::TaskCopy:
-            case self::SmsCopy:
-            case self::PhoneCopy:
-            case self::EmailCopy:
-            case self::CommentCopy:
-                $this->value = $intValue;
-                break;
-            default:
-                $this->value = self::Unknown;
-                break;
-        }
-    }
 }
