@@ -19,7 +19,7 @@ abstract class BmbyhoodEntity
         }
 
         foreach ($values as $value) {
-            if (!is_a($value, 'ListItem')) {
+            if (!is_a($value, 'Bmbyhood\Entities\ListItem')) {
                 continue;
             }
 

@@ -15,6 +15,7 @@ class Property extends BmbyhoodEntity
             'agency_id' => NULL,
             'property_type_id' => NULL,
             'bmby_project_id' => NULL,
+            'bmby_instance_id' => '',
             'bedrooms' => 0,
             'contact_id' => '',
             'contact' => NULL,
@@ -97,6 +98,7 @@ class Property extends BmbyhoodEntity
             'garden_area' => 0.0,
             'has_panorama' => false,
             'on_columns' => false,
+            'closed' => false,
             'published_by_agency' => false,
             'wind_directions' => [],
             'creation_time' => NULL,
@@ -106,14 +108,14 @@ class Property extends BmbyhoodEntity
     }
 
     /**
-     * @param int $value
+     * @param string $value
      */
     public function setPropertyId($value)
     {
-        $this->fields['property_id'] = (int)$value;
+        $this->fields['property_id'] = (string)$value;
     }
     /**
-     * @return int
+     * @return string
      */
     public function getPropertyId()
     {
@@ -133,6 +135,21 @@ class Property extends BmbyhoodEntity
     public function getAgencyId()
     {
         return $this->fields['agency_id'];
+    }
+
+    /**
+     * @param string $value
+     */
+    public function setBmbyInstanceId($value)
+    {
+        $this->fields['bmby_instance_id'] = $value;
+    }
+    /**
+     * @return string
+     */
+    public function getBmbyInstanceId()
+    {
+        return $this->fields['bmby_instance_id'];
     }
 
     /**
@@ -1283,6 +1300,21 @@ class Property extends BmbyhoodEntity
     public function getPublishedByAgency()
     {
         return $this->fields['published_by_agency'];
+    }
+
+    /**
+     * @param bool $value
+     */
+    public function setClosed($value)
+    {
+        $this->fields['closed'] = (bool)$value;
+    }
+    /**
+     * @return bool
+     */
+    public function getClosed()
+    {
+        return $this->fields['closed'];
     }
 
     /**

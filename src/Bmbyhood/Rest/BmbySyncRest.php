@@ -2,6 +2,7 @@
 namespace Bmbyhood\Rest;
 
 use Bmbyhood\Entities;
+use Bmbyhood\Rest\QueryParams\ClientQueryParams;
 use Bmbyhood\Rest\QueryParams\TimeLineSummaryQueryParams;
 use Bmbyhood\Rest\Response\TimeLineStats;
 use Bmbyhood\Rest\Response\TimeLineResponse;
@@ -232,16 +233,24 @@ class BmbySyncRest extends EntityRest
      */
     public function listTimeLine(TimeLineSummaryQueryParams $queryParams)
     {
-        $params = (string)$queryParams;
-        $params = $params ? '?'.$params : '';
-
-        $response = $this->client->get('bmbysync/time-line'.$params, []);
+        $response = $this->client->get('bmbysync/time-line', $queryParams->toArray());
 
         return $this->response($response, TimeLineResponse::class);
     }
 
     /**
-     * @param string $eventIdß
+     * @param ClientQueryParams $queryParams
+     * @return RestResponse
+     */
+    public function getPortalDetails(ClientQueryParams $queryParams)
+    {
+        $response = $this->client->get('bmbysync/portal-details', $queryParams->toArray());
+
+        return $this->response($response);
+    }
+
+    /**
+     * @param string $eventId
      *
      * @return RestResponse
      */
