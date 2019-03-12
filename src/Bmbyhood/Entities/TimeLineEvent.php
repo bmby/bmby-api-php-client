@@ -19,7 +19,39 @@ class TimeLineEvent extends BmbyhoodEntity
             'customer_id' => '',
             'agency_id' => '',
             'user_id' => '',
+            'related_entity_id' => '',
+            'related_entity_bmby_id' => 0,
         ];
+    }
+
+    /**
+     * @param int $value
+     */
+    public function setRelatedEntityBmbyId($value)
+    {
+        $this->fields['related_entity_bmby_id'] = (int)$value;
+    }
+    /**
+     * @return int
+     */
+    public function getRelatedEntityBmbyId()
+    {
+        return $this->fields['related_entity_bmby_id'];
+    }
+
+    /**
+     * @param string $value
+     */
+    public function setRelatedEntityId($value)
+    {
+        $this->fields['related_entity_id'] = (string)$value;
+    }
+    /**
+     * @return string
+     */
+    public function getRelatedEntityId()
+    {
+        return $this->fields['related_entity_id'];
     }
 
     /**
