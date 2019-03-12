@@ -153,6 +153,19 @@ class BmbySyncRest extends EntityRest
     }
 
     /**
+     * Invite customer to portal.
+     *
+     * @param string $portalId
+     * @return RestResponse
+     */
+    public function inviteToPortal($portalId)
+    {
+        $response = $this->client->post('bmbyhood/invite-to-portal', ['portal_id' => $portalId]);
+
+        return $this->response($response);
+    }
+
+    /**
      * Update agency broker settings from bmby
      *
      * @param Entities\BmbyBrokerSettings $brokerSettings

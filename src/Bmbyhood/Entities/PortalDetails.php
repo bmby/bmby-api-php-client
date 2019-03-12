@@ -43,4 +43,18 @@ class PortalDetails extends BmbyhoodEntity
         return $this->fields['last_visit_date'];
     }
 
+    /**
+     * @param string $value
+     */
+    public function setPortalId($value)
+    {
+        $this->fields['portal_id'] = (int)$value;
+    }
+    /**
+     * @return string
+     */
+    public function getPortalId()
+    {
+        return $this->fields['portal_id'];
+    }
 }
