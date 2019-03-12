@@ -10,8 +10,24 @@ class BmbyBroker extends BmbyhoodEntity
             'user_id' => 0,
             'enable_client_service' => false,
             'enable_broker_service' => false,
-            'is_external_broker' => false
+            'is_external_broker' => false,
+            'bmby_instance_id' => ''
         ];
+    }
+
+    /**
+     * @param string $value
+     */
+    public function setBmbyInstanceId($value)
+    {
+        $this->fields['bmby_instance_id'] = (string)$value;
+    }
+    /**
+     * @return string
+     */
+    public function getBmbyInstanceId()
+    {
+        return $this->fields['bmby_instance_id'];
     }
 
     /**
