@@ -10,6 +10,7 @@ class PortalDetails extends BmbyhoodEntity
         $this->fields = [
             'portal_url_for_broker' => '',
             'last_visit_date' => '',
+            'portal_id' => ''
         ];
     }
 
