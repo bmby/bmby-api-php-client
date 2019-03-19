@@ -48,6 +48,20 @@ class BmbySyncRest extends EntityRest
     }
 
     /**
+     * Post brokerage agreements
+     *
+     * @param Entities\ClientAgreements $agreements
+     * @return RestResponse
+     *
+     */
+    public function postClientAgreements(Entities\ClientAgreements $agreements)
+    {
+        $response = $this->client->post('bmbysync/clientagreements', $agreements->ToArray());
+
+        return $this->response($response);
+    }
+
+    /**
      * Update or insert agency property
      *
      * @param Entities\Property $property
