@@ -10,7 +10,7 @@ class ClientAgreements extends BmbyhoodEntity
             'bmby_project_id' => 0,
             'bmby_instance_id' => '',
             'bmby_client_id' => 0,
-            'bmby_project_ids' => []
+            'bmby_property_ids' => []
         ];
     }
 
@@ -77,16 +77,16 @@ class ClientAgreements extends BmbyhoodEntity
     /**
      * @param int[] $value
      */
-    public function setBmbyProjectIds($value)
+    public function setBmbyPropertyIds($value)
     {
-        $this->fields['bmby_project_ids'] = (int)$value;
+        $this->fields['bmby_property_ids'] = (int)$value;
     }
     /**
      * @return int[]
      */
-    public function getBmbyProjectIds()
+    public function getBmbyPropertyIds()
     {
-        return $this->fields['bmby_project_ids'];
+        return $this->fields['bmby_property_ids'];
     }
 
 }
