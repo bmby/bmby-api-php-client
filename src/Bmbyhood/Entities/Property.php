@@ -103,6 +103,9 @@ class Property extends BmbyhoodEntity
             'wind_directions' => [],
             'creation_time' => NULL,
             'last_update_time' => NULL,
+            'exclusivity_date' => '',
+            'is_exclusive' => false,
+            'brokerage_status' => Enumerations\BrokerageStatus::Unknown,
             'external_images' => []
         ];
     }
@@ -121,6 +124,23 @@ class Property extends BmbyhoodEntity
     {
         return $this->fields['property_id'];
     }
+
+
+    /**
+     * @param string $value format: yyyy-mm-dd hh:mm:ss
+     */
+    public function setEntryDate($value)
+    {
+        $this->fields['entry_date'] = (string)$value;
+    }
+    /**
+     * @return string
+     */
+    public function getEntryDate()
+    {
+        return $this->fields['entry_date'];
+    }
+
 
     /**
      * @param string $value
@@ -243,6 +263,21 @@ class Property extends BmbyhoodEntity
     }
 
     /**
+     * @param bool $value
+     */
+    public function setIsExclusive($value)
+    {
+        $this->fields['is_exclusive'] = (bool)$value;
+    }
+    /**
+     * @return bool
+     */
+    public function getIsExclusive()
+    {
+        return $this->fields['is_exclusive'];
+    }
+
+    /**
      * @param int $value
      */
     public function setParserRecordId($value)
@@ -270,6 +305,21 @@ class Property extends BmbyhoodEntity
     public function getCatalog()
     {
         return new Enumerations\PropertyCatalog($this->fields['catalog']);
+    }
+
+    /**
+     * @param Enumerations\BrokerageStatus $value
+     */
+    public function setBrokerageStatus(Enumerations\BrokerageStatus $value)
+    {
+        $this->fields['brokerage_status'] = $value ? $value->getValue() : Enumerations\BrokerageStatus::Unknown;
+    }
+    /**
+     * @return Enumerations\BrokerageStatus
+     */
+    public function getBrokerageStatus()
+    {
+        return new Enumerations\BrokerageStatus($this->fields['brokerage_status']);
     }
 
     /**
@@ -810,16 +860,16 @@ class Property extends BmbyhoodEntity
     /**
      * @param string $value format: yyyy-mm-dd hh:mm:ss
      */
-    public function setEntryDate($value)
+    public function setExclusivityDate($value)
     {
-        $this->fields['entry_date'] = (string)$value;
+        $this->fields['exclusivity_date'] = (string)$value;
     }
     /**
      * @return string
      */
-    public function getEntryDate()
+    public function getExclusivityDate()
     {
-        return $this->fields['entry_date'];
+        return $this->fields['exclusivity_date'];
     }
 
     /**
