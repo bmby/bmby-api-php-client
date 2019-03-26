@@ -1,6 +1,7 @@
 <?php
 namespace Bmbyhood\Entities;
 
+use Bmbyhood\Enumerations\BrokerageStatus;
 use Bmbyhood\Enumerations\PropertySkipStatus;
 use Bmbyhood\Enumerations\AutomatedAgentStopStatus;
 use Bmbyhood\Enumerations\BmbyhoodPropertyPickMode;
@@ -44,6 +45,7 @@ class BmbyBrokerSettings extends BmbyhoodEntity
             'display_properties_without_price' => true,
             'notification_delay_period' => 0,
             'automated_agent_stop_statuses' => [],
+            'relevant_brokerage_statuses' => [],
             'bmbyhood_property_pick_mode' => BmbyhoodPropertyPickMode::Unknown
         ];
 
@@ -88,6 +90,44 @@ class BmbyBrokerSettings extends BmbyhoodEntity
 
         foreach ($this->fields['automated_agent_stop_statuses'] as $value) {
             $values[] = new AutomatedAgentStopStatus($value);
+        }
+
+        return $values;
+    }
+
+    /**
+     * @param BrokerageStatus[] $values
+     * @throws \Exception
+     */
+    public function setRelevantBrokerageStatuses($values)
+    {
+        if (!is_array($values)) {
+            throw new \Exception('$values argument should be an array of BrokerageStatus');
+        }
+
+        $this->fields['relevant_brokerage_statuses'] = [];
+
+        foreach ($values as $value) {
+            if (!is_a($value, 'Bmbyhood\Enumerations\BrokerageStatus')) {
+                throw new \Exception('$values argument should be an array of BrokerageStatus');
+            }
+
+            $this->fields['relevant_brokerage_statuses'][] = $value->getValue();
+        }
+    }
+    /**
+     * @return BrokerageStatus[]
+     */
+    public function getRelevantBrokerageStatuses()
+    {
+        if (!is_array($this->fields['relevant_brokerage_statuses'])) {
+            return [];
+        }
+
+        $values = [];
+
+        foreach ($this->fields['relevant_brokerage_statuses'] as $value) {
+            $values[] = new BrokerageStatus($value);
         }
 
         return $values;
