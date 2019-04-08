@@ -1,6 +1,8 @@
 <?php
 namespace Bmbyhood\Entities;
 
+use Bmbyhood\Enumerations\PropertyMatchStatus;
+
 class PropertyMatchFromBmby extends BmbyhoodEntity
 {
     public function __construct()
@@ -11,7 +13,8 @@ class PropertyMatchFromBmby extends BmbyhoodEntity
             'bmby_user_id' => 0,
             'bmby_owner_id' => 0,
             'bmby_client_id' => 0,
-            'is_signed' => false
+            'is_signed' => false,
+            'status' => PropertyMatchStatus::Unknown
         ];
     }
 
@@ -104,6 +107,22 @@ class PropertyMatchFromBmby extends BmbyhoodEntity
     {
         return $this->fields['is_signed'];
     }
+
+    /**
+     * @param PropertyMatchStatus $value
+     */
+    public function setStatus(PropertyMatchStatus $value)
+    {
+        $this->fields['status'] = $value ? $value->getValue() : PropertyMatchStatus::Unknown;
+    }
+    /**
+     * @return PropertyMatchStatus
+     */
+    public function getStatus()
+    {
+        return new PropertyMatchStatus($this->fields['status']);
+    }
+
 }
 
 

@@ -231,10 +231,10 @@ class BmbySyncRest extends EntityRest
     public function setQueryStatus($bmbyInstanceId, $bmbyProjectId, $bmbyClientId, $isActive)
     {
         $response = $this->client->post('bmbysync/setquerystatus', [
-            'bmbyInstanceId' => $bmbyInstanceId,
-            'bmbyProjectId' => $bmbyProjectId,
-            'bmbyClientId' => $bmbyClientId,
-            'isActive' => $isActive
+            'bmby_instance_id' => $bmbyInstanceId,
+            'bmby_project_id' => $bmbyProjectId,
+            'bmby_client_id' => $bmbyClientId,
+            'is_active' => $isActive
         ]);
 
         return $this->response($response);

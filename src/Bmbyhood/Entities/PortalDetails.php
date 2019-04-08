@@ -10,6 +10,7 @@ class PortalDetails extends BmbyhoodEntity
         $this->fields = [
             'portal_url_for_broker' => '',
             'last_visit_date' => '',
+            'query_is_active' => false,
             'portal_id' => ''
         ];
     }
@@ -34,7 +35,7 @@ class PortalDetails extends BmbyhoodEntity
      */
     public function setLastVisitDate($value)
     {
-        $this->fields['last_visit_date'] = (int)$value;
+        $this->fields['last_visit_date'] = (string)$value;
     }
     /**
      * @return string
@@ -49,7 +50,7 @@ class PortalDetails extends BmbyhoodEntity
      */
     public function setPortalId($value)
     {
-        $this->fields['portal_id'] = (int)$value;
+        $this->fields['portal_id'] = (string)$value;
     }
     /**
      * @return string
@@ -57,5 +58,20 @@ class PortalDetails extends BmbyhoodEntity
     public function getPortalId()
     {
         return $this->fields['portal_id'];
+    }
+
+    /**
+     * @param bool $value
+     */
+    public function setQueryIsActive($value)
+    {
+        $this->fields['query_is_active'] = (bool)$value;
+    }
+    /**
+     * @return bool
+     */
+    public function getQueryIsActive()
+    {
+        return $this->fields['query_is_active'];
     }
 }
