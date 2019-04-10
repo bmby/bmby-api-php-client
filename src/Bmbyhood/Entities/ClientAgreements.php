@@ -79,7 +79,7 @@ class ClientAgreements extends BmbyhoodEntity
      */
     public function setBmbyPropertyIds($value)
     {
-        $this->fields['bmby_property_ids'] = (int)$value;
+        $this->fields['bmby_property_ids'] = $value;
     }
     /**
      * @return int[]
