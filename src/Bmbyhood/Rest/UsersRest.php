@@ -17,6 +17,17 @@ class UsersRest extends EntityRest
     }
 
     /**
+     * @param Entities\UserBmbyClient $userBmbyClient
+     * @return RestResponse
+     */
+    public function addBmbyClient(Entities\UserBmbyClient $userBmbyClient)
+    {
+        $response = $this->client->post('users/addbmbyclient', $userBmbyClient->ToArray());
+
+        return $this->response($response);
+    }
+
+    /**
      * @param Entities\User $user
      * @return RestResponse
      */
@@ -26,6 +37,23 @@ class UsersRest extends EntityRest
 
         return $this->response($response);
     }
+
+
+    /**
+     * Check if user exists
+     *
+     * @param $username
+     * @param $bmbyInstanceId
+     *
+     * @return RestResponse
+     */
+    public function userExists($username, $bmbyInstanceId)
+    {
+        $response = $this->client->get('users/userexists', ['username' => $username, 'bmbyInstanceId' => $bmbyInstanceId]);
+
+        return $this->response($response);
+    }
+
 }
 
 ?>
