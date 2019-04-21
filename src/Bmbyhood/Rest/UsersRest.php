@@ -38,22 +38,19 @@ class UsersRest extends EntityRest
         return $this->response($response);
     }
 
-
     /**
      * Check if user exists
      *
      * @param $username
-     * @param $bmbyInstanceId
      *
      * @return RestResponse
      */
-    public function userExists($username, $bmbyInstanceId)
+    public function userExists($username)
     {
-        $response = $this->client->get('users/userexists', ['username' => $username, 'bmbyInstanceId' => $bmbyInstanceId]);
+        $response = $this->client->get('users/userexists', ['username' => $username]);
 
         return $this->response($response);
     }
-
 }
 
 ?>
