@@ -51,6 +51,23 @@ class UsersRest extends EntityRest
 
         return $this->response($response);
     }
+
+
+    /**
+     * Check if client id is already linked to user
+     *
+     * @param int $bmbyClientId
+     * @param string $bmbyInstanceId
+     * @param int $bmbyProjectId
+     *
+     * @return RestResponse
+     */
+    public function clientExists($bmbyClientId, $bmbyInstanceId, $bmbyProjectId)
+    {
+        $response = $this->client->get('users/bmbyclientexists', ['bmbyClientId' => $bmbyClientId, 'bmbyInstanceId' => $bmbyInstanceId, 'bmbyProjectId' => $bmbyProjectId]);
+
+        return $this->response($response);
+    }
 }
 
 ?>
