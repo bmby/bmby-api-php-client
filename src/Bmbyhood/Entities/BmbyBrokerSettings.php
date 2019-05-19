@@ -5,6 +5,7 @@ use Bmbyhood\Enumerations\BrokerageStatus;
 use Bmbyhood\Enumerations\PropertySkipStatus;
 use Bmbyhood\Enumerations\AutomatedAgentStopStatus;
 use Bmbyhood\Enumerations\BmbyhoodPropertyPickMode;
+use Bmbyhood\Enumerations\PropertyFilter;
 
 class BmbyBrokerSettings extends BmbyhoodEntity
 {
@@ -46,6 +47,7 @@ class BmbyBrokerSettings extends BmbyhoodEntity
             'notification_delay_period' => 0,
             'automated_agent_stop_statuses' => [],
             'relevant_brokerage_statuses' => [],
+            'property_filters' => [],
             'bmbyhood_property_pick_mode' => BmbyhoodPropertyPickMode::Unknown
         ];
 
@@ -55,6 +57,44 @@ class BmbyBrokerSettings extends BmbyhoodEntity
             'avatar' => NULL,
             'cover' => NULL
         ];
+    }
+
+    /**
+     * @param PropertyFilter[] $values
+     * @throws \Exception
+     */
+    public function setPropertyFilters($values)
+    {
+        if (!is_array($values)) {
+            throw new \Exception('$values argument should be an array of PropertyFilter');
+        }
+
+        $this->fields['property_filters'] = [];
+
+        foreach ($values as $value) {
+            if (!is_a($value, 'Bmbyhood\Enumerations\PropertyFilter')) {
+                throw new \Exception('$values argument should be an array of PropertyFilter');
+            }
+
+            $this->fields['property_filters'][] = $value->getValue();
+        }
+    }
+    /**
+     * @return PropertyFilter[]
+     */
+    public function getPropertyFilters()
+    {
+        if (!is_array($this->fields['property_filters'])) {
+            return [];
+        }
+
+        $values = [];
+
+        foreach ($this->fields['property_filters'] as $value) {
+            $values[] = new PropertyFilter($value);
+        }
+
+        return $values;
     }
 
     /**
