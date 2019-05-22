@@ -68,6 +68,7 @@ class Property extends BmbyhoodEntity
             'price' => 0.0,
             'unit_price' => 0.0,
             'entry_date' => NULL,
+            'entry_date_mode' => Enumerations\EntryDateMode::Unknown,
             'comments' => '',
             'has_air_conditioner' => false,
             'has_window_bars' => false,
@@ -105,6 +106,7 @@ class Property extends BmbyhoodEntity
             'last_update_time' => NULL,
             'exclusivity_date' => '',
             'is_exclusive' => false,
+            'has_images' => false,
             'brokerage_status' => Enumerations\BrokerageStatus::Unknown,
             'external_images' => []
         ];
@@ -305,6 +307,22 @@ class Property extends BmbyhoodEntity
     public function getCatalog()
     {
         return new Enumerations\PropertyCatalog($this->fields['catalog']);
+    }
+
+    /**
+     * @param Enumerations\EntryDateMode $value
+     */
+    public function setEntryDateMode(Enumerations\EntryDateMode $value)
+    {
+        $this->fields['entry_date_mode'] = $value ? $value->getValue() : Enumerations\EntryDateMode::Unknown;
+    }
+
+    /**
+     * @return Enumerations\EntryDateMode
+     */
+    public function getEntryDateMode()
+    {
+        return new Enumerations\EntryDateMode($this->fields['entry_date_mode']);
     }
 
     /**
@@ -1245,6 +1263,21 @@ class Property extends BmbyhoodEntity
     public function getHasBalcony()
     {
         return $this->fields['has_balcony'];
+    }
+
+    /**
+     * @param bool $value
+     */
+    public function setHasImages($value)
+    {
+        $this->fields['has_images'] = (bool)$value;
+    }
+    /**
+     * @return bool
+     */
+    public function getHasImages()
+    {
+        return $this->fields['has_images'];
     }
 
     /**

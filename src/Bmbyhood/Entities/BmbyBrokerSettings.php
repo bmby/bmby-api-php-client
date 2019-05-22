@@ -30,6 +30,8 @@ class BmbyBrokerSettings extends BmbyhoodEntity
             'delete_banner_image' => false,
             'delete_avatar_image' => false,
             'delete_cover_image' => false,
+            'display_deals' => false,
+            'create_task_on_client_activity' => false,
             'website' => '',
             'broker_license' => '',
             'color' => '',
@@ -40,7 +42,6 @@ class BmbyBrokerSettings extends BmbyhoodEntity
             'avatar_image_url' => NULL,
             'cover_image_url' => NULL,
             'localization_id' => 0,
-            'property_skip_status' => PropertySkipStatus::Unknown,
             'property_relevancy_period' => 0,
             'display_properties_without_image' => true,
             'display_properties_without_price' => true,
@@ -174,21 +175,6 @@ class BmbyBrokerSettings extends BmbyhoodEntity
     }
 
     /**
-     * @param PropertySkipStatus $value
-     */
-    public function setPropertySkipStatus(PropertySkipStatus $value)
-    {
-        $this->fields['property_skip_status'] = $value ? $value->getValue() : PropertySkipStatus::Unknown;
-    }
-    /**
-     * @return PropertySkipStatus
-     */
-    public function getPropertySkipStatus()
-    {
-        return new PropertySkipStatus($this->fields['property_skip_status']);
-    }
-
-    /**
      * @param BmbyhoodPropertyPickMode $value
      */
     public function setBmbyhoodPropertyPickMode(BmbyhoodPropertyPickMode $value)
@@ -276,6 +262,36 @@ class BmbyBrokerSettings extends BmbyhoodEntity
     public function getDeleteCoverImage()
     {
         return $this->fields['delete_cover_image'];
+    }
+
+    /**
+     * @param bool $value
+     */
+    public function setDisplayDeals($value)
+    {
+        $this->fields['display_deals'] = (bool)$value;
+    }
+    /**
+     * @return bool
+     */
+    public function getDisplayDeals()
+    {
+        return $this->fields['display_deals'];
+    }
+
+    /**
+     * @param bool $value
+     */
+    public function setCreateTaskOnClientActivity($value)
+    {
+        $this->fields['create_task_on_client_activity'] = (bool)$value;
+    }
+    /**
+     * @return bool
+     */
+    public function getCreateTaskOnClientActivity()
+    {
+        return $this->fields['create_task_on_client_activity'];
     }
 
     /**
