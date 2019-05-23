@@ -3,7 +3,7 @@ namespace Bmbyhood\Entities;
 
 use Bmbyhood\Enumerations\BrokerageStatus;
 use Bmbyhood\Enumerations\PropertySkipStatus;
-use Bmbyhood\Enumerations\AutomatedAgentStopStatus;
+use Bmbyhood\Enumerations\PropertyMatchStatus;
 use Bmbyhood\Enumerations\BmbyhoodPropertyPickMode;
 use Bmbyhood\Enumerations\PropertyFilter;
 
@@ -99,27 +99,27 @@ class BmbyBrokerSettings extends BmbyhoodEntity
     }
 
     /**
-     * @param AutomatedAgentStopStatus[] $values
+     * @param PropertyMatchStatus[] $values
      * @throws \Exception
      */
     public function setAutomatedAgentStopStatuses($values)
     {
         if (!is_array($values)) {
-            throw new \Exception('$values argument should be an array of AutomatedAgentStopStatus');
+            throw new \Exception('$values argument should be an array of PropertyMatchStatus');
         }
 
         $this->fields['automated_agent_stop_statuses'] = [];
 
         foreach ($values as $value) {
-            if (!is_a($value, 'Bmbyhood\Enumerations\AutomatedAgentStopStatus')) {
-                throw new \Exception('$values argument should be an array of AutomatedAgentStopStatus');
+            if (!is_a($value, 'Bmbyhood\Enumerations\PropertyMatchStatus')) {
+                throw new \Exception('$values argument should be an array of PropertyMatchStatus');
             }
 
             $this->fields['automated_agent_stop_statuses'][] = $value->getValue();
         }
     }
     /**
-     * @return AutomatedAgentStopStatus[]
+     * @return PropertyMatchStatus[]
      */
     public function getAutomatedAgentStopStatuses()
     {
@@ -130,7 +130,7 @@ class BmbyBrokerSettings extends BmbyhoodEntity
         $values = [];
 
         foreach ($this->fields['automated_agent_stop_statuses'] as $value) {
-            $values[] = new AutomatedAgentStopStatus($value);
+            $values[] = new PropertyMatchStatus($value);
         }
 
         return $values;
