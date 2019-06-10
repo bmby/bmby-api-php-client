@@ -174,7 +174,7 @@ class BmbySyncRest extends EntityRest
      */
     public function inviteToPortal($portalId)
     {
-        $response = $this->client->post('bmbyhood/invite-to-portal', ['portal_id' => $portalId]);
+        $response = $this->client->post('bmbysync/invite-to-portal', ['portal_id' => $portalId]);
 
         return $this->response($response);
     }
