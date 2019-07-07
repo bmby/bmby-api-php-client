@@ -14,7 +14,8 @@ class Agency extends BmbyhoodEntity
             'agency_name' => '',
             'color' => '',
             'localization_id' => 0,
-            'logo_id' => ''
+            'logo_id' => '',
+            'bmbyhood_operator_id' => ''
         ];
     }
 
@@ -31,6 +32,21 @@ class Agency extends BmbyhoodEntity
     public function getAgencyId()
     {
         return $this->fields['agency_id'];
+    }
+
+    /**
+     * @param string $value
+     */
+    public function setBmbyhoodOperatorId($value)
+    {
+        $this->fields['bmbyhood_operator_id'] = $value;
+    }
+    /**
+     * @return string
+     */
+    public function getBmbyhoodOperatorId()
+    {
+        return $this->fields['bmbyhood_operator_id'];
     }
 
     /**
