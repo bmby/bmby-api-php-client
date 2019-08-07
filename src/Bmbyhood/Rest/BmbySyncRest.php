@@ -6,6 +6,7 @@ use Bmbyhood\Rest\QueryParams\ClientQueryParams;
 use Bmbyhood\Rest\QueryParams\TimeLineSummaryQueryParams;
 use Bmbyhood\Rest\Response\TimeLineStats;
 use Bmbyhood\Rest\Response\TimeLineResponse;
+use Bmbyhood\Rest\Response\PortalStatsResponse;
 
 class BmbySyncRest extends EntityRest
 {
@@ -261,6 +262,17 @@ class BmbySyncRest extends EntityRest
         $response = $this->client->get('bmbysync/timeline-stats', $queryParams->toArray());
 
         return $this->response($response, TimeLineStats::class);
+    }
+
+    /**
+     * @param TimeLineSummaryQueryParams $queryParams
+     * @return PortalStatsResponse
+     */
+    public function portalStats(TimeLineSummaryQueryParams $queryParams)
+    {
+        $response = $this->client->get('bmbysync/portal-stats', $queryParams->toArray());
+
+        return $this->response($response, PortalStatsResponse::class);
     }
 
     /**
