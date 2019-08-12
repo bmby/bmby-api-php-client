@@ -17,7 +17,9 @@ class PortalStats extends BmbyhoodEntity
             'likes' => 0,
             'dislikes' => 0,
             'not_sure' => 0,
-            'signed' => 0
+            'signed' => 0,
+            'broker_matches' => 0,
+            'automatic_matches' => 0
         ];
     }
 
@@ -169,6 +171,36 @@ class PortalStats extends BmbyhoodEntity
     public function getNotSure()
     {
         return $this->fields['not_sure'];
+    }
+
+    /**
+     * @param int $value
+     */
+    public function setBrokerMatches($value)
+    {
+        $this->fields['broker_matches'] = (int)$value;
+    }
+    /**
+     * @return int
+     */
+    public function getBrokerMatches()
+    {
+        return $this->fields['broker_matches'];
+    }
+
+    /**
+     * @param int $value
+     */
+    public function setAutomaticMatches($value)
+    {
+        $this->fields['automatic_matches'] = (int)$value;
+    }
+    /**
+     * @return int
+     */
+    public function getAutomaticMatches()
+    {
+        return $this->fields['automatic_matches'];
     }
 
     /**
