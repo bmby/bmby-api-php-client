@@ -5,11 +5,17 @@ namespace Bmbyhood\Rest\QueryParams;
 
 class TimeLineSummaryQueryParams extends QueryParams
 {
-    public function __construct($bmbyInstanceId, $bmbyProjectId, $bmbyUserId)
+    /**
+     * TimeLineSummaryQueryParams constructor.
+     * @param $bmbyInstanceId
+     * @param $bmbyProjectId
+     * @param $bmbyUserIds[]
+     */
+    public function __construct($bmbyInstanceId, $bmbyProjectId, $bmbyUserIds)
     {
         $this->params['bmbyInstanceId'] = $bmbyInstanceId;
         $this->params['bmbyProjectId'] = $bmbyProjectId;
-        $this->params['bmbyUserId'] = $bmbyUserId;
+        $this->params['bmbyUserIds'] = $bmbyUserIds;
         $this->params['fromDate'] = NULL;
         $this->params['toDate'] = NULL;
         $this->params['type'] = NULL;
