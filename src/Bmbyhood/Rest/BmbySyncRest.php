@@ -265,10 +265,10 @@ class BmbySyncRest extends EntityRest
     }
 
     /**
-     * @param TimeLineSummaryQueryParams $queryParams
+     * @param PortalQueryParams $queryParams
      * @return PortalStatsResponse
      */
-    public function portalStats(TimeLineSummaryQueryParams $queryParams)
+    public function portalStats(PortalQueryParams $queryParams)
     {
         $response = $this->client->get('bmbysync/portal-stats', $queryParams->toArray());
 
