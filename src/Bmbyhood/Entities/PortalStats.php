@@ -7,6 +7,9 @@ class PortalStats extends BmbyhoodEntity
     {
         $this->fields = [
             'portal_id' => '',
+            'agency_id' => '',
+            'broker_id' => 0,
+            'bmby_broker_id' => 0,
             'bmby_client_id' => 0,
             'customer_id' => '',
             'creation_time' => '',
@@ -39,6 +42,36 @@ class PortalStats extends BmbyhoodEntity
     }
 
     /**
+     * @param int $value
+     */
+    public function setBrokerId($value)
+    {
+        $this->fields['broker_id'] = (int)$value;
+    }
+    /**
+     * @return int
+     */
+    public function getBrokerId()
+    {
+        return $this->fields['broker_id'];
+    }
+
+    /**
+     * @param int $value
+     */
+    public function setBmbyBrokerId($value)
+    {
+        $this->fields['bmby_broker_id'] = (int)$value;
+    }
+    /**
+     * @return int
+     */
+    public function getBmbyBrokerId()
+    {
+        return $this->fields['bmby_broker_id'];
+    }
+
+    /**
      * @param string $value
      */
     public function setPortalId($value)
@@ -51,6 +84,36 @@ class PortalStats extends BmbyhoodEntity
     public function getPortalId()
     {
         return $this->fields['portal_id'];
+    }
+
+    /**
+     * @param string $value
+     */
+    public function setCustomerId($value)
+    {
+        $this->fields['customer_id'] = (string)$value;
+    }
+    /**
+     * @return string
+     */
+    public function getCustomerId()
+    {
+        return $this->fields['customer_id'];
+    }
+
+    /**
+     * @param string $value
+     */
+    public function setAgencyId($value)
+    {
+        $this->fields['agency_id'] = (string)$value;
+    }
+    /**
+     * @return string
+     */
+    public function getAgencyId()
+    {
+        return $this->fields['agency_id'];
     }
 
     /**

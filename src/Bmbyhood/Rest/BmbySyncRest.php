@@ -8,6 +8,7 @@ use Bmbyhood\Rest\QueryParams\PortalQueryParams;
 use Bmbyhood\Rest\Response\TimeLineStats;
 use Bmbyhood\Rest\Response\TimeLineResponse;
 use Bmbyhood\Rest\Response\PortalStatsResponse;
+use Bmbyhood\Rest\Response\PortalStatsByBrokerResponse;
 
 class BmbySyncRest extends EntityRest
 {
@@ -274,6 +275,17 @@ class BmbySyncRest extends EntityRest
         $response = $this->client->get('bmbysync/portal-stats', $queryParams->toArray());
 
         return $this->response($response, PortalStatsResponse::class);
+    }
+
+    /**
+     * @param PortalQueryParams $queryParams
+     * @return PortalStatsByBrokerResponse
+     */
+    public function portalStatsByBroker(PortalQueryParams $queryParams)
+    {
+        $response = $this->client->get('bmbysync/portal-stats-by-broker', $queryParams->toArray());
+
+        return $this->response($response, PortalStatsByBrokerResponse::class);
     }
 
     /**
