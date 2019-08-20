@@ -11,6 +11,8 @@ class PortalStatsByBroker extends BmbyhoodEntity
             'not_visited_clients' => 0,
             'active_clients' => 0,
             'not_active_clients' => 0,
+            'invitations' => 0,
+            'signed_properties' => 0,
         ];
     }
 
@@ -87,5 +89,35 @@ class PortalStatsByBroker extends BmbyhoodEntity
     public function getNotActiveClients()
     {
         return $this->fields['not_active_clients'];
+    }
+
+    /**
+     * @param int $value
+     */
+    public function setInvitations($value)
+    {
+        $this->fields['invitations'] = (int)$value;
+    }
+    /**
+     * @return int
+     */
+    public function getInvitations()
+    {
+        return $this->fields['invitations'];
+    }
+
+    /**
+     * @param int $value
+     */
+    public function setSignedProperties($value)
+    {
+        $this->fields['signed_properties'] = (int)$value;
+    }
+    /**
+     * @return int
+     */
+    public function getSignedProperties()
+    {
+        return $this->fields['signed_properties'];
     }
 }

@@ -22,7 +22,8 @@ class PortalStats extends BmbyhoodEntity
             'not_sure' => 0,
             'signed' => 0,
             'broker_matches' => 0,
-            'automatic_matches' => 0
+            'automatic_matches' => 0,
+            'invitations' => 0
         ];
     }
 
@@ -279,5 +280,20 @@ class PortalStats extends BmbyhoodEntity
     public function getSigned()
     {
         return $this->fields['signed'];
+    }
+
+    /**
+     * @param int $value
+     */
+    public function setInvitations($value)
+    {
+        $this->fields['invitations'] = (int)$value;
+    }
+    /**
+     * @return int
+     */
+    public function getInvitations()
+    {
+        return $this->fields['invitations'];
     }
 }
