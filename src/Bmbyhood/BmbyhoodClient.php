@@ -132,7 +132,9 @@ class BmbyhoodClient
         $this->checkToken();
 
         $params = [
-            'headers' => $this->getHeaders()
+            'headers' => $this->getHeaders(),
+            'verify' => false,
+            'curl' => array( CURLOPT_SSL_VERIFYPEER => false, CURLOPT_SSL_VERIFYHOST => false)
         ];
 
         if ($method == "GET") {
