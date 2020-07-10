@@ -14,6 +14,7 @@ class BmbyhoodClient
     const AUTH_URI = '/connect/auth';
     const AUTH_BASE_PATH = 'https://identity.bmby.com/';
     const API_BASE_PATH = 'https://api.bmby.com/';
+    const MESSAGING_ENDPOINT = 'https://messaging.bmby.com';
 
     /**
      * @var ClientInterface $http
