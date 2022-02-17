@@ -19,7 +19,8 @@ class User extends BmbyhoodEntity
             'avatar_url' => '',
             'notification_interval' => Enumerations\NotificationInterval::Online,
             'user_type' => Enumerations\UserType::Unknown,
-            'agencies' => array()
+            'agencies' => array(),
+            'is_2fa_enabled' => false
         ];
     }
 
@@ -203,6 +204,24 @@ class User extends BmbyhoodEntity
     public function getUserType()
     {
         return new Enumerations\UserType($this->fields['user_type']);
+    }
+
+    /**
+     * @return bool
+     */
+    public function getIs2FaEnabled()
+    {
+        return $this->fields['is_2fa_enabled'];
+    }
+
+    /**
+     * @param $value
+     *
+     * @return void
+     */
+    public function setIs2FaEnabled($value)
+    {
+        $this->fields['is_2fa_enabled'] = (bool) $value;
     }
 
     /**
