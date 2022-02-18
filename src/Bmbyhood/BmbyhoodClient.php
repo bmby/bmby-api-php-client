@@ -102,7 +102,7 @@ class BmbyhoodClient
         }
     }
 
-    public function __construct(array $config = [], $apiEndpoint = '')
+    public function __construct(array $config = [], $apiEndpoint = '', $authEndpoint = '')
     {
         $this->config = array_merge(
             [
@@ -114,16 +114,17 @@ class BmbyhoodClient
             $config
         );
 
-        $endPoint = $apiEndpoint ? $apiEndpoint : self::API_BASE_PATH;
+        $apiEndpoint = $apiEndpoint ? $apiEndpoint : self::API_BASE_PATH;
+        $authEndpoint = $authEndpoint ? $authEndpoint : self::AUTH_BASE_PATH;
 
         $this->apiHttp = new GuzzleHttp\Client([
-            'base_uri' => $endPoint,
+            'base_uri' => $apiEndpoint,
             'verify' => false,
             'http_errors' => false
         ]);
 
         $this->authHttp = new GuzzleHttp\Client([
-            'base_uri' => self::AUTH_BASE_PATH,
+            'base_uri' => $authEndpoint,
             'verify' => false,
             'http_errors' => false
         ]);
