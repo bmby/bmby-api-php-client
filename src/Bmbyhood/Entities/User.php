@@ -20,7 +20,8 @@ class User extends BmbyhoodEntity
             'notification_interval' => Enumerations\NotificationInterval::Online,
             'user_type' => Enumerations\UserType::Unknown,
             'agencies' => array(),
-            'is_2fa_enabled' => false
+            'is_2fa_enabled' => false,
+            'client_id' => ''
         ];
     }
 
@@ -222,6 +223,14 @@ class User extends BmbyhoodEntity
     public function setIs2FaEnabled($value)
     {
         $this->fields['is_2fa_enabled'] = (bool) $value;
+    }
+
+    /**
+     * @param $clientId
+     */
+    public function setClientId($clientId)
+    {
+        $this->fields['client_id'] = (string) $value;
     }
 
     /**
