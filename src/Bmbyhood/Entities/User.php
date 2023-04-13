@@ -21,7 +21,8 @@ class User extends BmbyhoodEntity
             'user_type' => Enumerations\UserType::Unknown,
             'agencies' => array(),
             'is_2fa_enabled' => false,
-            'client_id' => ''
+            'client_id' => '',
+            'ips' => ''
         ];
     }
 
@@ -230,7 +231,15 @@ class User extends BmbyhoodEntity
      */
     public function setClientId($clientId)
     {
-        $this->fields['client_id'] = (string) $value;
+        $this->fields['client_id'] = (string) $clientId;
+    }
+
+    /**
+     * @param $ips
+     */
+    public function setIPs($ips)
+    {
+        $this->fields['ips'] = (string) $ips;
     }
 
     /**
