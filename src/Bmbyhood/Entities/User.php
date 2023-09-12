@@ -13,6 +13,7 @@ class User extends BmbyhoodEntity
             'password' => '',
             'is_active' => false,
             'bmby_user_id' => 0,
+            'phone' => '',
             'mobile' => '',
             'first_name' => '',
             'last_name' => '',
@@ -116,6 +117,22 @@ class User extends BmbyhoodEntity
     public function getBmbyUserId()
     {
         return $this->fields['bmby_user_id'];
+    }
+
+    /**
+     * @return string
+     */
+    public function getPhone()
+    {
+        return $this->fields['phone'];
+    }
+
+    /**
+     * @param string $value
+     */
+    public function setPhone($value)
+    {
+        $this->fields['phone'] = (string)$value;
     }
 
     /**

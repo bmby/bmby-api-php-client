@@ -68,6 +68,22 @@ class UsersRest extends EntityRest
 
         return $this->response($response);
     }
+
+    /**
+     * @param Entities\Password $user
+     * @return RestResponse|mixed
+     */
+    public function syncUserPassword(Entities\Password $user)
+    {
+        $identityServerID = $user->getIdentityServerID();
+        $data = [
+            'PasswordHash' => $user->getPasswordHash(),
+            'PasswordDate' => $user->getPasswordDate()
+        ];
+        $response = $this->client->post("users/update?userId={$identityServerID}", $data);
+
+        return $this->response($response);
+    }
 }
 
 ?>
