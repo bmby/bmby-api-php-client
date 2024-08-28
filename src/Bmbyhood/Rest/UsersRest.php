@@ -87,13 +87,15 @@ class UsersRest extends EntityRest
 
     /**
      * @param $bmbyUserId
+     * @param $clientId
      * @param $isActive
      * @return RestResponse|mixed
      */
-    public function syncUserActive($bmbyUserId, $isActive)
+    public function syncUserActive($bmbyUserId, $clientId, $isActive)
     {
         $data = [
             'bmby_user_id' => (int) $bmbyUserId,
+            'client_id' => (int) $clientId,
             'is_active' => (bool) $isActive,
         ];
         $response = $this->client->post("users/active", $data);
