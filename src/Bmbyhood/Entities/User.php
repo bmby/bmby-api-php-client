@@ -244,6 +244,14 @@ class User extends BmbyhoodEntity
     }
 
     /**
+     * @return mixed
+     */
+    public function getClientId()
+    {
+        return $this->fields['client_id'];
+    }
+
+    /**
      * @param $clientId
      */
     public function setClientId($clientId)

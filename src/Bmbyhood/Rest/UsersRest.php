@@ -84,6 +84,22 @@ class UsersRest extends EntityRest
 
         return $this->response($response);
     }
+
+    /**
+     * @param Entities\User $user
+     * @return RestResponse|mixed
+     */
+    public function syncUserActive(Entities\User $user)
+    {
+        $data = [
+            'bmby_user_id' => $user->getBmbyUserId(),
+            'client_id' => $user->getClientId(),
+            'is_active' => $user->getIsActive(),
+        ];
+        $response = $this->client->post("users/active", $data);
+
+        return $this->response($response);
+    }
 }
 
 ?>
