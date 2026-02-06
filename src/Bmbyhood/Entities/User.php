@@ -128,7 +128,7 @@ class User extends BmbyhoodEntity
     }
 
     /**
-     * @param string $value
+     * @param string @value
      */
     public function setPhone($value)
     {

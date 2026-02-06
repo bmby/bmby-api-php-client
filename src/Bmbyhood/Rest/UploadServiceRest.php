@@ -13,14 +13,15 @@ class UploadServiceRest extends EntityRest
      * @param string $container
      * @return RestResponse
      */
-    public function uploadFile($fileData, $folder, $container = '$web')
+    public function uploadFile($fileData, $folder, $withoutGuid = false, $container = '$web')
     {
         $postData = [
             'action' => __FUNCTION__,
             'fileName' => $fileData['name'],
             'fileType' => $fileData['type'],
             'folder' => $folder,
-            'container' => $container
+            'container' => $container,
+            'withoutGuid' => $withoutGuid
         ];
 
         $file = [
