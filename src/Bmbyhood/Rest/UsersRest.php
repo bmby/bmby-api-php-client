@@ -102,6 +102,17 @@ class UsersRest extends EntityRest
 
         return $this->response($response);
     }
+
+    /**
+     * @param $queryParameters
+     * @return RestResponse|mixed
+     */
+    public function usersPaginated($queryParameters)
+    {
+        $response = $this->client->get('users/paginate', $queryParameters);
+
+        return $this->response($response);
+    }
 }
 
 ?>
