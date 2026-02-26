@@ -86,30 +86,29 @@ class UsersRest extends EntityRest
     }
 
     /**
-     * @param $bmbyUserId
-     * @param $clientId
-     * @param $isActive
+     * @param $queryParameters
      * @return RestResponse|mixed
      */
-    public function syncUserActive($bmbyUserId, $clientId, $isActive)
+    public function getIdentityUserProfiles($queryParameters)
     {
-        $data = [
-            'bmby_user_id' => (int) $bmbyUserId,
-            'client_id' => (int) $clientId,
-            'is_active' => (bool) $isActive,
-        ];
-        $response = $this->client->post("users/active", $data);
+        $response = $this->client->get('users/profiles', $queryParameters);
 
         return $this->response($response);
     }
 
     /**
-     * @param $queryParameters
+     * @param Entities\UserProfile $userProfile
      * @return RestResponse|mixed
      */
-    public function usersPaginated($queryParameters)
+    public function updateIdentityUserProfile(Entities\UserProfile $userProfile)
     {
-        $response = $this->client->get('users/paginate', $queryParameters);
+        $identityServerID = $userProfile->getIdentityServerID();
+        $data = [
+            'ValidEmail' => $userProfile->getValidEmail(),
+            'ValidPhone' => $userProfile->getValidPhone(),
+            'PasswordDate' => $userProfile->getPasswordDate()
+        ];
+        $response = $this->client->post("users/update?userId={$identityServerID}", $data);
 
         return $this->response($response);
     }
