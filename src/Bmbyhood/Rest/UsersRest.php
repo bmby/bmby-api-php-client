@@ -112,6 +112,28 @@ class UsersRest extends EntityRest
 
         return $this->response($response);
     }
-}
 
-?>
+    /**
+     * @param $queryParameters
+     * @return RestResponse|mixed
+     */
+    public function getIdentityUserLockouts($queryParameters)
+    {
+        $response = $this->client->get('users/lockouts', $queryParameters);
+
+        return $this->response($response);
+    }
+
+    /**
+     * @param Entities\UserLockout $userLockout
+     * @return RestResponse|mixed
+     */
+    public function updateIdentityUserLockout(Entities\UserLockout $userLockout)
+    {
+        $identityServerID = $userLockout->getIdentityServerID();
+        $data = ['LockoutEnd' => $userLockout->getPasswordDate()];
+        $response = $this->client->post("users/update?userId={$identityServerID}", $data);
+
+        return $this->response($response);
+    }
+}
