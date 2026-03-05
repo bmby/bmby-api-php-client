@@ -125,13 +125,24 @@ class UsersRest extends EntityRest
     }
 
     /**
+     * @param Entities\UserUnlock $userUnlock
+     * @return RestResponse|mixed
+     */
+    public function unlockUser(Entities\UserUnlock $userUnlock)
+    {
+        $response = $this->client->post('users/unlock', $userUnlock->ToArray());
+
+        return $this->response($response);
+    }
+
+    /**
      * @param Entities\UserLockout $userLockout
      * @return RestResponse|mixed
      */
     public function updateIdentityUserLockout(Entities\UserLockout $userLockout)
     {
         $identityServerID = $userLockout->getIdentityServerID();
-        $data = ['LockoutEnd' => $userLockout->getPasswordDate()];
+        $data = ['LockoutEnd' => $userLockout->getLockoutEnd()];
         $response = $this->client->post("users/update?userId={$identityServerID}", $data);
 
         return $this->response($response);

@@ -2,13 +2,12 @@
 
 namespace Bmbyhood\Entities;
 
-class UserLockout extends BmbyhoodEntity
+class UserUnlock extends BmbyhoodEntity
 {
     public function __construct()
     {
         $this->fields = [
             'IdentityServerID' => '',
-            'LockoutEnd' => ''
         ];
     }
 
@@ -26,8 +25,7 @@ class UserLockout extends BmbyhoodEntity
     public function toArray()
     {
         return [
-            'IdentityServerID' => $this->fields['IdentityServerID'],
-            'LockoutEnd' => $this->fields['LockoutEnd']
+            'user_id' => $this->fields['IdentityServerID'],
         ];
     }
 
@@ -44,20 +42,5 @@ class UserLockout extends BmbyhoodEntity
     public function getIdentityServerID()
     {
         return $this->fields['IdentityServerID'];
-    }
-
-    /**
-     * @param string $value
-     */
-    public function setLockoutEnd($value)
-    {
-        $this->fields['LockoutEnd'] = (string) $value;
-    }
-    /**
-     * @return string
-     */
-    public function getLockoutEnd()
-    {
-        return $this->fields['LockoutEnd'];
     }
 }
