@@ -106,7 +106,7 @@ class UsersRest extends EntityRest
         $data = [
             'ValidEmail' => $userProfile->getValidEmail(),
             'ValidPhone' => $userProfile->getValidPhone(),
-            'PasswordDate' => $userProfile->getPasswordDate()
+//            'PasswordDate' => $userProfile->getPasswordDate()
         ];
         $response = $this->client->post("users/update?userId={$identityServerID}", $data);
 

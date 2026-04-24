@@ -8,7 +8,7 @@ class UserProfile extends BmbyhoodEntity
     {
         $this->fields = [
             'IdentityServerID' => '',
-            'PasswordDate' => '',
+//            'PasswordDate' => '',
             'ValidEmail' => '',
             'ValidPhone' => ''
         ];
@@ -29,7 +29,7 @@ class UserProfile extends BmbyhoodEntity
     {
         return [
             'IdentityServerID' => $this->fields['IdentityServerID'],
-            'PasswordDate' => $this->fields['PasswordDate'],
+//            'PasswordDate' => $this->fields['PasswordDate'],
             'ValidEmail' => $this->fields['ValidEmail'],
             'ValidPhone' => $this->fields['ValidPhone']
         ];
@@ -53,17 +53,17 @@ class UserProfile extends BmbyhoodEntity
     /**
      * @param string $value
      */
-    public function setPasswordDate($value)
-    {
-        $this->fields['PasswordDate'] = (string) $value;
-    }
+//    public function setPasswordDate($value)
+//    {
+//        $this->fields['PasswordDate'] = (string) $value;
+//    }
     /**
      * @return string
      */
-    public function getPasswordDate()
-    {
-        return $this->fields['PasswordDate'];
-    }
+//    public function getPasswordDate()
+//    {
+//        return $this->fields['PasswordDate'];
+//    }
 
     /**
      * @param string $value
