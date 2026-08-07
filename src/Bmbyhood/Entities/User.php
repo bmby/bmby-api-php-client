@@ -23,7 +23,8 @@ class User extends BmbyhoodEntity
             'agencies' => array(),
             'is_2fa_enabled' => false,
             'client_id' => '',
-            'ips' => ''
+            'ips' => '',
+            'is_2fa_required' => false
         ];
     }
 
@@ -306,6 +307,24 @@ class User extends BmbyhoodEntity
     public function getAgencies()
     {
         return $this->fields['agencies'];
+    }
+
+    /**
+     * @return bool
+     */
+    public function getIs2FaRequired()
+    {
+        return $this->fields['is_2fa_required'];
+    }
+
+    /**
+     * @param $value
+     *
+     * @return void
+     */
+    public function setIs2FaRequired($value)
+    {
+        $this->fields['is_2fa_required'] = (bool) $value;
     }
 }
 
